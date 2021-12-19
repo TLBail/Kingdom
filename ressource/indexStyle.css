@@ -1,0 +1,30 @@
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+article{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+article h1{
+    width: 100%;
+}
+
+section{
+    background-color: rgba(0, 0, 0, 0.061);
+    margin: 2em;
+    padding: 1em;
+}
+
+section:hover{
+    font-weight: bold;
+}
+
+section:active{
+    background-color: rgba(0, 0, 0, 0.261);
+    font-weight: bold;
+}
+
