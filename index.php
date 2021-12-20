@@ -47,49 +47,74 @@ include("./model/userManager.php");
         <section onclick="onAmeliorationClick('Scierie')">
             <p>Scierie</p>
             <p>
-                lvl <span id="lvlScierie"></span>
+                lvl <span id="lvlScierie"></span> <br>
+                ressource par heure<span id="ressourceRateScierie"></span> <br>
+                consomation en villageois <span id="villageoisCostScierie"></span> <br>
+                coût en bois pour le level suivant <span id="woodCostScierie"></span> <br>
+                coût en pierre pour le level suivant <span id="pierreCostScierie"></span>
             </p>
         </section>
 
         <section onclick="onAmeliorationClick('Carriere')">
             <p>Carrière</p>
             <p>
-                lvl <span id="lvlCarriere"></span>
+                lvl <span id="lvlCarriere"></span> <br>
+                ressource par heure<span id="ressourceRateCarriere"></span> <br>
+                consomation en villageois <span id="villageoisCostCarriere"></span> <br>
+                coût en bois pour le level suivant <span id="woodCostCarriere"></span> <br>
+                coût en pierre pour le level suivant <span id="pierreCostCarriere"></span>
+
             </p>
         </section>
 
         <section onclick="onAmeliorationClick('Ferme')">
             <p>Ferme</p>
             <p>
-                lvl <span id="lvlFerme"></span>
+                lvl <span id="lvlFerme"></span> <br>
+                ressource par heure<span id="ressourceRateFerme"></span> <br>
+                consomation en villageois <span id="villageoisCostFerme"></span> <br>
+                coût en bois pour le level suivant <span id="woodCostFerme"></span> <br>
+                coût en pierre pour le level suivant <span id="pierreCostFerme"></span>
             </p>
         </section>
 
         <section onclick="onAmeliorationClick('EntrepotDeBois')">
             <p>Entrepot de bois</p>
             <p>
-                lvl <span id="lvlEntrepotDeBois"></span>
+                lvl <span id="lvlEntrepotDeBois"></span> <br>
+                capacité en Bois <span id="storageCapacityEntrepotDeBois"></span> <br>
+                coût en bois pour le level suivant <span id="woodCostEntrepotDeBois"></span> <br>
+                coût en pierre pour le level suivant <span id="pierreCostEntrepotDeBois"></span>
             </p>
         </section>
 
         <section onclick="onAmeliorationClick('EntrepotDePierre')">
             <p>Entrepot de pierre</p>
             <p>
-                lvl <span id="lvlEntrepotDePierre"></span>
+                lvl <span id="lvlEntrepotDePierre"></span> <br>
+                capacité en pierre <span id="storageCapacityEntrepotDePierre"></span> <br>
+                coût en bois pour le level suivant <span id="woodCostEntrepotDePierre"></span> <br>
+                coût en pierre pour le level suivant <span id="pierreCostEntrepotDePierre"></span>
             </p>
         </section>
 
         <section onclick="onAmeliorationClick('Silo')">
             <p>Silo</p>
             <p>
-                lvl <span id="lvlSilo"></span>
+                lvl <span id="lvlSilo"></span> <br>
+                capacité en nourriture <span id="storageCapacitySilo"></span> <br>
+                coût en bois pour le level suivant <span id="woodCostSilo"></span> <br>
+                coût en pierre pour le level suivant <span id="pierreCostSilo"></span>
             </p>
         </section>
 
         <section onclick="onAmeliorationClick('Maison')">
             <p>maison</p>
             <p>
-                lvl <span id="lvlMaison"></span>
+                lvl <span id="lvlMaison"></span> <br>
+                nombre de villageois<span id="ressourceRateMaison"></span> <br>
+                coût en bois pour le level suivant <span id="woodCostMaison"></span> <br>
+                coût en pierre pour le level suivant <span id="pierreCostMaison"></span>
             </p>
         </section>
 

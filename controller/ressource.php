@@ -12,14 +12,19 @@ session_start();
 if (isset($_GET['upgrade'])) {
 
 
+
+    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path .= "/view/batimentsToJson.php";
+    include_once($path);
+
+
     $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
     $path .= "/model/ressourceManager.php";
     include_once($path);
 
-    $lvl = upgradeBatiment($_GET['upgrade']);
-    if (isset($lvl)) {
-        $lvlBat[$_GET['upgrade']] = $lvl;
-        echo json_encode($lvlBat);
+    $batiment = upgradeBatiment($_GET['upgrade']);
+    if (isset($batiment)) {
+        echo getBatimentsToJson(array($batiment));
     } else {
         echo "erreur";
     }
@@ -41,4 +46,20 @@ if (isset($_GET['lvl'])) {
     $batiments = getBatimentsOfUser();
 
     echo json_encode(getLvlInJsonFromBatiments($batiments));
+}
+
+if (isset($_GET['all'])) {
+
+    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path .= "/model/ressourceManager.php";
+    include_once($path);
+
+    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path .= "/view/batimentsToJson.php";
+    include_once($path);
+
+
+    $batiments = getBatimentsOfUser();
+
+    echo getBatimentsToJson($batiments);
 }

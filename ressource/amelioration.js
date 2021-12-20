@@ -10,12 +10,24 @@ function onAmeliorationClick(batiment) {
     var xhr = getXMLHttp();
     var saisie;
 
+    var fieldNames = [
+        "lvl",
+        "ressourceRate",
+        "woodCost",
+        "pierreCost",
+        "storageCapacity",
+        "villageoisCost"
+    ];
+
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = xhr.responseText;
             console.log("receive : " + response);
             const object = JSON.parse(response);
-            document.getElementById("lvl" + batiment).innerHTML = object[batiment];
+            fieldNames.forEach(fieldName => {
+                let field = document.getElementById(fieldName + batiment);
+                if (field && object[batiment]) field.innerHTML = object[batiment][fieldName];
+            });
         }
     }
 
@@ -25,26 +37,46 @@ function onAmeliorationClick(batiment) {
 }
 
 
-displayLvl();
-function displayLvl() {
+
+displayBatiment();
+function displayBatiment() {
     var xhr = getXMLHttp();
     var saisie;
+
+    var batimentNames = [
+        "Scierie",
+        "Carriere",
+        "Ferme",
+        "EntrepotDeBois",
+        "EntrepotDePierre",
+        "Silo",
+        "Maison"
+    ];
+
+    var fieldNames = [
+        "lvl",
+        "ressourceRate",
+        "woodCost",
+        "pierreCost",
+        "storageCapacity",
+        "villageoisCost"
+    ];
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = xhr.responseText;
             console.log("receive : " + response);
             const object = JSON.parse(response);
-            document.getElementById("lvlScierie").innerHTML = object.Scierie;
-            document.getElementById("lvlCarriere").innerHTML = object.Carriere;
-            document.getElementById("lvlFerme").innerHTML = object.Ferme;
-            document.getElementById("lvlEntrepotDeBois").innerHTML = object.EntrepotDeBois;
-            document.getElementById("lvlEntrepotDePierre").innerHTML = object.EntrepotDePierre;
-            document.getElementById("lvlSilo").innerHTML = object.Silo;
-            document.getElementById("lvlMaison").innerHTML = object.Maison;
+            batimentNames.forEach(batimentName => {
+                fieldNames.forEach(fieldName => {
+                    let field = document.getElementById(fieldName + batimentName);
+                    if (field && object[batimentName]) field.innerHTML = object[batimentName][fieldName];
+                });
+            }
+            );
         }
     }
 
-    xhr.open('GET', './controller/ressource.php?lvl=true', true);
+    xhr.open('GET', './controller/ressource.php?all=true', true);
     xhr.send(null);
 }

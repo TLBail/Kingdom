@@ -77,12 +77,21 @@ function upgradeBatiment($batimentsName)
         $query = $bdd->prepare($sql);
         $query->execute(array($batiment->getLevel() + 1, $user->getId(), $batiment->getType()));
 
-        return $batiment->getLevel() + 1;
+        return new Batiment(
+            $batiment->getType(),
+            $batiment->getStandardProduction(),
+            $batiment->getLevel() + 1,
+        );
     } else {
         // le batiment n'existe pas on le créer
         $sql = "INSERT INTO `BATIMENT` (`playerId`, `type`, `standardProduction`, `level`) VALUES (? , ?, '10', '1')";
         $query = $bdd->prepare($sql);
         $query->execute(array($user->getId(), $batimentsName));
-        return 1;
+
+        return new Batiment(
+            $batimentsName,
+            10,
+            1,
+        );
     }
 }
