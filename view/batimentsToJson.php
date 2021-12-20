@@ -10,6 +10,7 @@ function getBatimentsToJson($batiments)
                 "lvl" => $batiment->getLevel(),
                 "woodCost" => floor($batiment->getWoodCostForNextLevel()),
                 "pierreCost" => floor($batiment->getPierreCostForNextLevel()),
+                "nourritureCost" => floor($batiment->getNourritureCostForNextLevel()),
                 "ressourceRate" => floor($batiment->getRessourceRatePerHour()->getAmount()),
                 "villageoisCost" => floor($batiment->getTotalVillageoisCost())
             );

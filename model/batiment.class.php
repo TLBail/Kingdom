@@ -9,6 +9,7 @@ EntrepotDeBois
 EntrepotDePierre
 Silo
 Maison
+Immeuble => spécial consomme de la nourriture 
 
 */
 
@@ -69,6 +70,9 @@ class Batiment
             case 'Maison':
                 return 75 * pow(1.5, $this->level);
                 break;
+            case 'Immeuble':
+                return 900 * pow(1.8, $this->level);
+                break;
             default:
                 return 0;
                 break;
@@ -97,6 +101,21 @@ class Batiment
             case 'Maison':
                 return 30 * pow(1.5, $this->level);
                 break;
+            case 'Immeuble':
+                return 360 * pow(1.8, $this->level);
+                break;
+            default:
+                return 0;
+                break;
+        }
+    }
+
+    public function getNourritureCostForNextLevel()
+    {
+        switch ($this->type) {
+            case 'Immeuble':
+                return 180 * pow(1.8, $this->level);
+                break;
             default:
                 return 0;
                 break;
@@ -123,6 +142,9 @@ class Batiment
                 break;
             case 'Maison':
                 return new Ressource('Villageois', 20 * $this->level * pow(1.1, $this->level));
+                break;
+            case 'Immeuble':
+                return new Ressource('Villageois', 30 * $this->level * pow(1.1, $this->level));
                 break;
             default:
                 return null;

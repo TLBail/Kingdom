@@ -45,7 +45,7 @@ include("./model/userManager.php");
         <h1>Ressource</h1>
 
         <section onclick="onAmeliorationClick('Scierie')">
-            <p>Scierie</p>
+            <h3>Scierie</h3>
             <p>
                 lvl <span id="lvlScierie"></span> <br>
                 ressource par heure<span id="ressourceRateScierie"></span> <br>
@@ -56,7 +56,7 @@ include("./model/userManager.php");
         </section>
 
         <section onclick="onAmeliorationClick('Carriere')">
-            <p>Carrière</p>
+            <h3>Carrière</h3>
             <p>
                 lvl <span id="lvlCarriere"></span> <br>
                 ressource par heure<span id="ressourceRateCarriere"></span> <br>
@@ -68,7 +68,7 @@ include("./model/userManager.php");
         </section>
 
         <section onclick="onAmeliorationClick('Ferme')">
-            <p>Ferme</p>
+            <h3>Ferme</h3>
             <p>
                 lvl <span id="lvlFerme"></span> <br>
                 ressource par heure<span id="ressourceRateFerme"></span> <br>
@@ -79,7 +79,7 @@ include("./model/userManager.php");
         </section>
 
         <section onclick="onAmeliorationClick('EntrepotDeBois')">
-            <p>Entrepot de bois</p>
+            <h3>Entrepot de bois</h3>
             <p>
                 lvl <span id="lvlEntrepotDeBois"></span> <br>
                 capacité en Bois <span id="storageCapacityEntrepotDeBois"></span> <br>
@@ -89,7 +89,7 @@ include("./model/userManager.php");
         </section>
 
         <section onclick="onAmeliorationClick('EntrepotDePierre')">
-            <p>Entrepot de pierre</p>
+            <h3>Entrepot de pierre</h3>
             <p>
                 lvl <span id="lvlEntrepotDePierre"></span> <br>
                 capacité en pierre <span id="storageCapacityEntrepotDePierre"></span> <br>
@@ -99,7 +99,7 @@ include("./model/userManager.php");
         </section>
 
         <section onclick="onAmeliorationClick('Silo')">
-            <p>Silo</p>
+            <h3>Silo</h3>
             <p>
                 lvl <span id="lvlSilo"></span> <br>
                 capacité en nourriture <span id="storageCapacitySilo"></span> <br>
@@ -109,12 +109,23 @@ include("./model/userManager.php");
         </section>
 
         <section onclick="onAmeliorationClick('Maison')">
-            <p>maison</p>
+            <h3>maison</h3>
             <p>
                 lvl <span id="lvlMaison"></span> <br>
                 nombre de villageois<span id="ressourceRateMaison"></span> <br>
                 coût en bois pour le level suivant <span id="woodCostMaison"></span> <br>
                 coût en pierre pour le level suivant <span id="pierreCostMaison"></span>
+            </p>
+        </section>
+
+        <section onclick="onAmeliorationClick('Immeuble')">
+            <h3>Immeuble</h3>
+            <p>
+                lvl <span id="lvlImmeuble"></span> <br>
+                nombre de villageois<span id="ressourceRateImmeuble"></span> <br>
+                coût en bois pour le level suivant <span id="woodCostImmeuble"></span> <br>
+                coût en pierre pour le level suivant <span id="pierreCostImmeuble"></span> <br>
+                coût en Nourriture pour le level suivant <span id="nourritureCostImmeuble"></span>
             </p>
         </section>
 

@@ -16,6 +16,7 @@ function onAmeliorationClick(batiment) {
         "woodCost",
         "pierreCost",
         "storageCapacity",
+        "nourritureCost",
         "villageoisCost"
     ];
 
@@ -50,6 +51,7 @@ function displayBatiment() {
         "EntrepotDeBois",
         "EntrepotDePierre",
         "Silo",
+        "Immeuble",
         "Maison"
     ];
 
@@ -59,6 +61,7 @@ function displayBatiment() {
         "woodCost",
         "pierreCost",
         "storageCapacity",
+        "nourritureCost",
         "villageoisCost"
     ];
 
