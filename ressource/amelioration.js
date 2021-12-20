@@ -24,6 +24,7 @@ function onAmeliorationClick(batiment) {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = xhr.responseText;
             console.log("receive : " + response);
+            if (response == "erreur") alert("Ressources insufisantes");
             const object = JSON.parse(response);
             fieldNames.forEach(fieldName => {
                 let field = document.getElementById(fieldName + batiment);
