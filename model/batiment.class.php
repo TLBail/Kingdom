@@ -21,12 +21,14 @@ class Batiment
     private $type;
     private $standardProduction;
     private $level;
+    private $timeRemainingAmelioration;
 
-    public function __construct($type, $standardProduction, $level)
+    public function __construct($type, $standardProduction, $level, $timeRemainingAmelioration)
     {
         $this->type = $type;
         $this->standardProduction = $standardProduction;
         $this->level = $level;
+        $this->timeRemainingAmelioration = $timeRemainingAmelioration;
     }
 
 
@@ -43,6 +45,11 @@ class Batiment
     public function getLevel()
     {
         return $this->level;
+    }
+
+    public function getTimeRemainingAmelioration()
+    {
+        return $this->timeRemainingAmelioration;
     }
 
     public function getWoodCostForNextLevel()
@@ -124,30 +131,24 @@ class Batiment
 
     public function getRessourceRatePerHour()
     {
-
-        $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
-        $path .= "/model/ressource.class.php";
-        include_once($path);
-
-
         switch ($this->type) {
             case 'Scierie':
-                return new Ressource('Bois', 30 * self::SERVERSPEED * $this->level * pow(1.1, $this->level));
+                return 30 * self::SERVERSPEED * $this->level * pow(1.1, $this->level);
                 break;
             case 'Carriere':
-                return new Ressource('Pierre', 20 * self::SERVERSPEED * $this->level * pow(1.1, $this->level));
+                return 20 * self::SERVERSPEED * $this->level * pow(1.1, $this->level);
                 break;
             case 'Ferme':
-                return new Ressource('Nourriture', 10 * self::SERVERSPEED * $this->level * pow(1.1, $this->level));
+                return 10 * self::SERVERSPEED * $this->level * pow(1.1, $this->level);
                 break;
             case 'Maison':
-                return new Ressource('Villageois', 20 * $this->level * pow(1.1, $this->level));
+                return 20 * $this->level * pow(1.1, $this->level);
                 break;
             case 'Immeuble':
-                return new Ressource('Villageois', 30 * $this->level * pow(1.1, $this->level));
+                return 30 * $this->level * pow(1.1, $this->level);
                 break;
             default:
-                return null;
+                return 0;
                 break;
         }
     }
@@ -194,5 +195,11 @@ class Batiment
                 return 0;
                 break;
         }
+    }
+
+    public function getUpgradeTimeForNextLevelInSeconde()
+    {
+        $timeInHour = ($this->getWoodCostForNextLevel() + $this->getPierreCostForNextLevel()) / (2500 * 5 * self::SERVERSPEED);
+        return $timeInHour * 60 * 60;
     }
 }

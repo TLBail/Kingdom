@@ -20,6 +20,10 @@ include("../model/userManager.php");
 
 <body>
 
+    <iframe id="bateau" src="https://tlbail.fr/bateau" frameborder="0">
+    </iframe>
+
+
     <main>
 
         <div class="wrapper">

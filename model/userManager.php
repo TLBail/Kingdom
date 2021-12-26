@@ -9,13 +9,6 @@ if (isset($_POST['newusername'])) {
     creationCompte();
 }
 
-function getBDD()
-{
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
-    $path .= "/model/dc.inc.php";
-    include($path);
-    return new PDO("$server:host=$host;dbname=$base", $user, $pass);
-}
 
 
 
@@ -71,6 +64,12 @@ function connect($username, $password)
     $path .= "/model/user.class.php";
     include_once($path);
 
+
+
+    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path .= "/model/bddManager.php";
+    include_once($path);
+
     $sql = "SELECT * FROM `USER` WHERE username=? AND password=?;";
     $bdd = getBDD();
 
@@ -100,6 +99,11 @@ function getUser()
     $path .= "/model/user.class.php";
     include_once($path);
 
+    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path .= "/model/bddManager.php";
+    include_once($path);
+
+
     if (isset($_SESSION['id'])) {
 
         $id = $_SESSION['id'];
@@ -126,6 +130,5 @@ function getUser()
             return $useros[1];
         }
     } else {
-        echo "connecte toi toto user";
     }
 }

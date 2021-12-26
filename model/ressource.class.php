@@ -32,4 +32,8 @@ class Ressource
     {
         return $this->amount;
     }
+
+    public function addAmount($amount){
+        $this->amount += $amount;
+    }
 }

@@ -10,34 +10,29 @@ function onAmeliorationClick(batiment) {
     var xhr = getXMLHttp();
     var saisie;
 
-    var fieldNames = [
-        "lvl",
-        "ressourceRate",
-        "woodCost",
-        "pierreCost",
-        "storageCapacity",
-        "nourritureCost",
-        "villageoisCost"
-    ];
-
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = xhr.responseText;
             console.log("receive : " + response);
-            if (response == "erreur") alert("Ressources insufisantes");
+            if (response == "erreur") alert("Impossible pour le moment");
             const object = JSON.parse(response);
-            fieldNames.forEach(fieldName => {
-                let field = document.getElementById(fieldName + batiment);
-                if (field && object[batiment]) field.innerHTML = object[batiment][fieldName];
-            });
+            let field = document.getElementById(batiment);
+            field.innerHTML = "";
+            if (object[batiment]) {
+                Object.keys(object[batiment]).forEach(function (key, index) {
+                    let fieldName = key;
+                    field.innerHTML += fieldName + " " + object[batiment][fieldName] + "<br>";
+                });
+            } else {
+                field.innerHTML = "batiment non débloquer ";
+            }
         }
     }
 
-    xhr.open('GET', './controller/ressource.php?upgrade=' + batiment, true);
+    xhr.open('GET', './controller/batiment.php?upgrade=' + batiment, true);
     xhr.send(null);
 
 }
-
 
 
 displayBatiment();
@@ -45,42 +40,59 @@ function displayBatiment() {
     var xhr = getXMLHttp();
     var saisie;
 
-    var batimentNames = [
-        "Scierie",
-        "Carriere",
-        "Ferme",
-        "EntrepotDeBois",
-        "EntrepotDePierre",
-        "Silo",
-        "Immeuble",
-        "Maison"
-    ];
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            let response = xhr.responseText;
+            console.log("receive : " + response);
+            const object = JSON.parse(response);
+            Object.keys(object).forEach(function (key, index) {
+                let batimentName = key;
+                let field = document.getElementById(batimentName);
+                field.innerHTML = "";
+                Object.keys(object[key]).forEach(function (key, index) {
+                    let fieldName = key;
+                    field.innerHTML += fieldName + " " + object[batimentName][fieldName] + "<br>";
+                });
+            });
+        }
+    }
 
-    var fieldNames = [
-        "lvl",
-        "ressourceRate",
-        "woodCost",
-        "pierreCost",
-        "storageCapacity",
-        "nourritureCost",
-        "villageoisCost"
-    ];
+    xhr.open('GET', './controller/batiment.php?all=true', true);
+    xhr.send(null);
+}
+
+
+
+displayRessources();
+function displayRessources() {
+    var xhr = getXMLHttp();
+    var saisie;
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = xhr.responseText;
             console.log("receive : " + response);
             const object = JSON.parse(response);
-            batimentNames.forEach(batimentName => {
-                fieldNames.forEach(fieldName => {
-                    let field = document.getElementById(fieldName + batimentName);
-                    if (field && object[batimentName]) field.innerHTML = object[batimentName][fieldName];
-                });
-            }
-            );
+            let field = document.getElementById("ressourceContainer");
+            field.innerHTML = "";
+            Object.keys(object).forEach(function (key, index) {
+                let ressourceName = key;
+                let ammount = object[ressourceName];
+                field.innerHTML += ressourceName + " " + ammount + "<br>";
+            });
         }
     }
 
     xhr.open('GET', './controller/ressource.php?all=true', true);
     xhr.send(null);
 }
+
+
+var intervalId = window.setInterval(function () {
+    /// call your function here
+    displayBatiment();
+    displayRessources();
+}, 1000);
+
+
+

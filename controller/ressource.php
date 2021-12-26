@@ -14,12 +14,12 @@ if (isset($_GET['upgrade'])) {
 
 
     $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
-    $path .= "/view/batimentsToJson.php";
+    $path .= "/view/batimentToJson.php";
     include_once($path);
 
 
     $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
-    $path .= "/model/ressourceManager.php";
+    $path .= "/model/batimentManager.php";
     include_once($path);
 
     $batiment = upgradeBatiment($_GET['upgrade']);
@@ -30,23 +30,6 @@ if (isset($_GET['upgrade'])) {
     }
 }
 
-if (isset($_GET['lvl'])) {
-
-
-
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
-    $path .= "/model/ressourceManager.php";
-    include_once($path);
-
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
-    $path .= "/view/batimentsLvlToJson.php";
-    include_once($path);
-
-
-    $batiments = getBatimentsOfUser();
-
-    echo json_encode(getLvlInJsonFromBatiments($batiments));
-}
 
 if (isset($_GET['all'])) {
 
@@ -55,11 +38,31 @@ if (isset($_GET['all'])) {
     include_once($path);
 
     $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
-    $path .= "/view/batimentsToJson.php";
+    $path .= "/view/ressourceToJson.php";
     include_once($path);
 
 
-    $batiments = getBatimentsOfUser();
+    $batiments = getRessourcesAtConnection();
 
-    echo getBatimentsToJson($batiments);
+    echo ressourcesToJson($batiments);
+}
+
+if(isset($_GET['start'])){
+    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path .= "/model/ressourceManager.php";
+    include_once($path);
+    
+    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path .= "/model/ressource.class.php";
+    include_once($path);
+
+    $ressources = ressourcesAtConnection();
+
+    $values;
+    foreach ($ressources as $ressource) {
+        if(!isset($values)) $values .= $ressource->getAmount();
+        else $values .= "/" . $ressource->getAmount();
+    }
+
+    echo $values;
 }

@@ -1,130 +1,136 @@
 <?php
 
+function getRessourceByName($ressourceName)
+{
+    $ressources = getRessourcesAtConnection();
+    foreach ($ressources as $ressource) {
+        if (strcmp($ressource->getType(), $ressourceName)) {
+            return $ressource->getAmount();
+        }
+    }
+}
+
+function getRessourcesAtConnection()
+{
+
+    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path .= "/model/userManager.php";
+    include_once($path);
+    $user = getUser();
+
+    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path .= "/model/bddManager.php";
+    include_once($path);
+    $bdd = getBDD();
 
 
+    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path .= "/model/batimentManager.php";
+    include_once($path);
+    $buildings = getBatimentsofUser();
 
-function getBatimentsOfUser()
+    $time = time();
+    $elapsedTime = (time() - strtotime($user->getLastTimeOnline())) / 3600;
+
+    $ressources = getRessources($bdd);
+
+    foreach ($ressources as $ressource) {
+        foreach ($buildings as $building) {
+            if (isBuildingAndRessourceBound($building->getType(), $ressource->getType())) {
+                $rate = $building->getRessourceRatePerHour();
+                $ressource->addAmount($rate * $elapsedTime);
+                updateRessourceOfUser($ressource);
+            }
+        }
+    }
+    return $ressources;
+}
+
+function getRessources()
 {
 
     $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
     $path .= "/model/userManager.php";
     include_once($path);
 
+
     $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
-    $path .= "/model/batiment.class.php";
+    $path .= "/model/ressource.class.php";
     include_once($path);
 
     $user = getUser();
 
-    $sql = "SELECT * FROM `BATIMENT` WHERE playerId=?;";
-    $bdd = getBDD();
 
-    $query = $bdd->prepare($sql);
-    $query->execute(array($user->getId()));
-
-
-    $index = 1;
-    foreach ($query as $ligne) {
-        $batiments[$index] = new Batiment(
-            $ligne['type'],
-            $ligne['standardProduction'],
-            $ligne['level']
-        );
-        $index = $index + 1;
+    $array = array();
+    $sql = "select * from RESSOURCES where playerId=" . $user->getId();
+    $response = getBDD()->query($sql);
+    if (is_object($response)) {
+        $line = $response->fetch();
+        array_push($array, new Ressource('bois', $line['bois']));
+        array_push($array, new Ressource('pierre', $line['pierre']));
+        array_push($array, new Ressource('nourriture', $line['nourriture']));
+        array_push($array, new Ressource('villageois', $line['villageois']));
     }
-    if (isset($batiments)) {
-        return $batiments;
-    }
+    return $array;
+}
+
+function isBuildingAndRessourceBound($buildingType, $ressourceType)
+{
+    if ($buildingType == 'Scierie' && $ressourceType == 'bois') return true;
+    if ($buildingType == 'Carriere' && $ressourceType == 'pierre') return true;
+    if ($buildingType == 'Ferme' && $ressourceType == 'nourriture') return true;
+    if ($buildingType == 'Maison' && $ressourceType == 'villageois') return true;
+    if ($buildingType == 'Immeuble' && $ressourceType == 'villageois') return true;
+    return false;
 }
 
 
-function upgradeBatiment($batimentsName)
+function updateRessourceOfUser($ressource)
 {
-
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
-    $path .= "/model/batiment.class.php";
-    include_once($path);
 
     $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
     $path .= "/model/userManager.php";
     include_once($path);
-
     $user = getUser();
 
+    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path .= "/model/ressource.class.php";
+    include_once($path);
 
-
-
-    //check if batiment already exist
-
-    $sql = "SELECT * FROM `BATIMENT` WHERE type= ? AND playerId= ? ;";
+    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path .= "/model/bddManager.php";
+    include_once($path);
     $bdd = getBDD();
 
+    $sql = "UPDATE `RESSOURCES` SET `" . $ressource->getType() . "`= ? WHERE `RESSOURCES`.`playerId` = ? ";
     $query = $bdd->prepare($sql);
-    $query->execute(array($batimentsName, $user->getId()));
-
-    $index = 1;
-    foreach ($query as $ligne) {
-        $batiments[$index] = new Batiment(
-            $ligne['type'],
-            $ligne['standardProduction'],
-            $ligne['level']
-        );
-        $index = $index + 1;
-    }
-    if (isset($batiments)) {
-        $batiment = $batiments[1];
-    }
-
-
-
-
-    if (isset($batiment)) {
-        //le batiment existe déjà on lui rajoute un level
-
-        if (buyBatiment($batiment) === null) return; //si l'achat est un échec on annule la transaction
-
-        $sql = "UPDATE `BATIMENT` SET `level` = ? WHERE `BATIMENT`.`playerId` = ? AND  type= ?;";
-        $query = $bdd->prepare($sql);
-        $query->execute(array($batiment->getLevel() + 1, $user->getId(), $batiment->getType()));
-
-        return new Batiment(
-            $batiment->getType(),
-            $batiment->getStandardProduction(),
-            $batiment->getLevel() + 1,
-        );
-    } else {
-        // le batiment n'existe pas on le créer
-        $batiment = new Batiment($batimentsName, 10, 1,);
-
-        if (buyBatiment($batiment) === null) return; //si l'achat est un échec on annule la transaction
-        $sql = "INSERT INTO `BATIMENT` (`playerId`, `type`, `standardProduction`, `level`) VALUES (? , ?, '10', '1')";
-        $query = $bdd->prepare($sql);
-        $query->execute(array($user->getId(), $batimentsName));
-
-        return $batiment;
-    }
+    $query->execute(array($ressource->getAmount(), $user->getId()));
 }
 
 
-function buyBatiment($batiment)
+/*function updateBDD($bdd, $ressources, $time, $playerId)
 {
-    //on recupère le coût en bois, pierre, nourriture
-    $coutPiere = $batiment->getPierreCostForNextLevel();
-    $coutBois = $batiment->getWoodCostForNextLevel();
-    $coutNourriture = $batiment->getNourritureCostForNextLevel();
-    //on vérifie que le joueur a assez de nourriture
-    //pas implementer pour l'instant
-    $actualPierre = 2147483647;
-    $actualBois = 2147483647;
-    $actualNourriture = 2147483647;
-
-    if ($actualBois >= $coutBois && $actualPierre >= $coutPiere && $actualNourriture > $coutNourriture) {
-        $actualBois += -$coutBois;
-        $actualNourriture += -$coutNourriture;
-        $actualPierre += -$coutPiere;
-        return 1;
-        //update les valeur dans la bdd
-    } else {
-        return null;
-    }
+    updateTime($bdd, $time, $playerId);
+    updateRessources($bdd, $ressources, $playerId);
 }
+
+function updateTime($bdd, $time, $playerId)
+{
+    $updateRequest = '';
+    $bdd->exec($updateRequest);
+}
+
+function updateRessources($bdd, $ressources, $playerId)
+{
+    $updateRequest = 'update RESSOURCES set ';
+    $endRequest = ' where playerId='.$playerId;
+    
+    foreach ($ressources as $ressource) {
+        if($ressource == $ressources->end())
+            $updateRessources .= $ressource->getType() .'='.$ressource->getAmount();
+        else
+            $updateRessources .= $ressource->getType() .'='.$ressource->getAmount().', ';
+    }
+    $updateRequest .= $endRequest;
+    $bdd->exec($updateRequest);
+}*/
