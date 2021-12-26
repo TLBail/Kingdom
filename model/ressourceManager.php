@@ -31,7 +31,6 @@ function getRessourcesAtConnection()
 
     $time = time();
     $elapsedTime = (time() - strtotime($user->getLastTimeOnline())) / 3600;
-
     $ressources = getRessources($bdd);
 
     foreach ($ressources as $ressource) {
@@ -43,8 +42,33 @@ function getRessourcesAtConnection()
             }
         }
     }
+
+    updateLastTimeOnlineOfUser();
+
     return $ressources;
 }
+
+function updateLastTimeOnlineOfUser()
+{
+
+    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path .= "/model/userManager.php";
+    include_once($path);
+    $user = getUser();
+
+    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path .= "/model/bddManager.php";
+    include_once($path);
+    $bdd = getBDD();
+
+    $date = new DateTime();
+    $dateTime = $date->format('Y-m-d H:i:s');
+
+    $sql = "UPDATE `USER` SET `lastTimeOnline` = ? WHERE `USER`.`id` = ? ";
+    $query = $bdd->prepare($sql);
+    $query->execute(array($dateTime, $user->getId()));
+}
+
 
 function getRessources()
 {
