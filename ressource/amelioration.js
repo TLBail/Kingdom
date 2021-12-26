@@ -87,12 +87,33 @@ function displayRessources() {
     xhr.send(null);
 }
 
+displayVillageois();
+function displayVillageois() {
+    var xhr = getXMLHttp();
+    var saisie;
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            let response = xhr.responseText;
+            console.log("receive : " + response);
+            let field = document.getElementById("villageoisContainer");
+            field.innerHTML = response;
+        }
+    }
+
+    xhr.open('GET', './controller/ressource.php?villageois=true', true);
+    xhr.send(null);
+}
+
+
 
 var intervalId = window.setInterval(function () {
     /// call your function here
     displayBatiment();
     displayRessources();
+    displayVillageois();
 }, 1000);
+
 
 
 

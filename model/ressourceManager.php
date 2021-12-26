@@ -2,6 +2,23 @@
 
 function getRessourceByName($ressourceName)
 {
+    if ($ressourceName == "villageois") {
+        $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+        $path .= "/model/batimentManager.php";
+        include_once($path);
+        $buildings = getBatimentsofUser();
+
+        $total = 0;
+        foreach ($buildings as $building) {
+            if (strcmp($building->getType(), "Immeuble") == 0 || strcmp($building->getType(), "Maison") == 0) {
+                $total += $building->getRessourceRatePerHour();
+            } else {
+                $total -= $building->getTotalVillageoisCost();
+            }
+        }
+        return floor($total);
+    }
+
     $ressources = getRessourcesAtConnection();
     foreach ($ressources as $ressource) {
         if (strcmp($ressource->getType(), $ressourceName)) {
@@ -32,6 +49,7 @@ function getRessourcesAtConnection()
     $time = time();
     $elapsedTime = (time() - strtotime($user->getLastTimeOnline())) / 3600;
     $ressources = getRessources($bdd);
+
 
     foreach ($ressources as $ressource) {
         foreach ($buildings as $building) {
@@ -93,7 +111,6 @@ function getRessources()
         array_push($array, new Ressource('bois', $line['bois']));
         array_push($array, new Ressource('pierre', $line['pierre']));
         array_push($array, new Ressource('nourriture', $line['nourriture']));
-        array_push($array, new Ressource('villageois', $line['villageois']));
     }
     return $array;
 }

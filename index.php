@@ -16,8 +16,6 @@ if (isset($_POST['logOut'])) {
 
 include("./model/userManager.php");
 
-
-
 ?>
 
 
@@ -45,7 +43,7 @@ include("./model/userManager.php");
         echo '<input type="submit" id="logOut" value="Log out">';
     } else {
         echo '<form style="display:inline;" action="./controller/LogIn.php" method="POST">';
-        echo "<h2>Non connecter</h2>";
+        echo "<h2>Non connecté</h2>";
         echo '<input type="submit" id="logIn" value="se connecter">';
         echo '</form>';
         echo '<form  style="display:inline;" action="./controller/creationAccout.php" method="POST">';
@@ -62,12 +60,17 @@ include("./model/userManager.php");
 
         <section id="ressourceContainer"></section>
 
-    </article>
+        <section>
+            <img src="./ressource/villageois.png" alt="">
 
+            <p id="villageoisContainer"></p>
+        </section>
+
+    </article>
 
     <article>
 
-        <h1>Batiment 🏢</h1>
+        <h1>Ressource</h1>
 
         <section onclick="onAmeliorationClick('Scierie')">
             <h3>Scierie</h3>

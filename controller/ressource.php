@@ -47,11 +47,11 @@ if (isset($_GET['all'])) {
     echo ressourcesToJson($batiments);
 }
 
-if(isset($_GET['start'])){
+if (isset($_GET['start'])) {
     $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
     $path .= "/model/ressourceManager.php";
     include_once($path);
-    
+
     $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
     $path .= "/model/ressource.class.php";
     include_once($path);
@@ -60,9 +60,17 @@ if(isset($_GET['start'])){
 
     $values;
     foreach ($ressources as $ressource) {
-        if(!isset($values)) $values .= $ressource->getAmount();
+        if (!isset($values)) $values .= $ressource->getAmount();
         else $values .= "/" . $ressource->getAmount();
     }
 
     echo $values;
+}
+
+if (isset($_GET['villageois'])) {
+    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path .= "/model/ressourceManager.php";
+    include_once($path);
+
+    echo getRessourceByName("villageois");
 }

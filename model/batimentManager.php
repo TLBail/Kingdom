@@ -150,12 +150,13 @@ function buyBatiment($batiment)
     if ($actualBois >= $coutBois && $actualPierre >= $coutPiere && $actualNourriture > $coutNourriture) {
         $actualBois += -$coutBois;
         updateRessourceOfUser(new Ressource("bois", $actualBois));
-        $actualNourriture += -$coutNourriture;
-        updateRessourceOfUser(new Ressource("nourriture", $actualNourriture));
+        if ($coutNourriture !== 0) {
+            $actualNourriture += -$coutNourriture;
+            updateRessourceOfUser(new Ressource("nourriture", $actualNourriture));
+        }
         $actualPierre += -$coutPiere;
         updateRessourceOfUser(new Ressource("pierre", $actualPierre));
         return 1;
-        //update les valeur dans la bdd
     } else {
         return null;
     }
