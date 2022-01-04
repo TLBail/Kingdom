@@ -2,12 +2,14 @@
 
 function getRessourceByName($ressourceName)
 {
+
     if ($ressourceName == "villageois") {
-        $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+       $path = explode("/projet", __DIR__ )[0]."/projet";
         $path .= "/model/batimentManager.php";
         include_once($path);
         $buildings = getBatimentsofUser();
 
+        if ($buildings == null) return null;
         $total = 0;
         foreach ($buildings as $building) {
             if (strcmp($building->getType(), "Immeuble") == 0 || strcmp($building->getType(), "Maison") == 0) {
@@ -30,18 +32,18 @@ function getRessourceByName($ressourceName)
 function getRessourcesAtConnection()
 {
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+   $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/userManager.php";
     include_once($path);
     $user = getUser();
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+   $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/bddManager.php";
     include_once($path);
     $bdd = getBDD();
 
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+   $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/batimentManager.php";
     include_once($path);
     $buildings = getBatimentsofUser();
@@ -50,6 +52,9 @@ function getRessourcesAtConnection()
     $elapsedTime = (time() - strtotime($user->getLastTimeOnline())) / 3600;
     $ressources = getRessources($bdd);
 
+    //si le nombre de villageois dispo est négatif on divise la prod par 2
+    $villageois = getRessourceByName("villageois");
+    if ($villageois < 0) $elapsedTime =  $elapsedTime / 2;
 
     foreach ($ressources as $ressource) {
         foreach ($buildings as $building) {
@@ -69,12 +74,12 @@ function getRessourcesAtConnection()
 function updateLastTimeOnlineOfUser()
 {
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+   $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/userManager.php";
     include_once($path);
     $user = getUser();
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+   $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/bddManager.php";
     include_once($path);
     $bdd = getBDD();
@@ -91,12 +96,12 @@ function updateLastTimeOnlineOfUser()
 function getRessources()
 {
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+   $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/userManager.php";
     include_once($path);
 
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+   $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/ressource.class.php";
     include_once($path);
 
@@ -129,20 +134,48 @@ function isBuildingAndRessourceBound($buildingType, $ressourceType)
 function updateRessourceOfUser($ressource)
 {
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+   $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/userManager.php";
     include_once($path);
     $user = getUser();
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+   $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/ressource.class.php";
     include_once($path);
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+   $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/bddManager.php";
     include_once($path);
     $bdd = getBDD();
 
+   $path = explode("/projet", __DIR__ )[0]."/projet";
+    $path .= "/model/batimentManager.php";
+    include_once($path);
+    $buildings = getBatimentsofUser();
+
+    // on récupère les stockage maximal (10 000 = stockage de base sans entrepot)
+    $boisMax = 10000;
+    $pierreMax = 10000;
+    $nourritureMax = 10000;
+
+    foreach ($buildings as $building) {
+        if (strcmp($building->getType(), "EntrepotDeBois") == 0) {
+            $boisMax = $building->getStorageCapacity();
+        }
+        if (strcmp($building->getType(), "EntrepotDePierre") == 0) {
+            $pierreMax = $building->getStorageCapacity();
+        }
+        if (strcmp($building->getType(), "Silo") == 0) {
+            $nourritureMax = $building->getStorageCapacity();
+        }
+    }
+
+    // on bloque les ressource au seuil si supérieurr a la capacité
+    if (strcmp($ressource->getType(), "bois") == 0 && $ressource->getAmount() > $boisMax) $ressource->setAmount($boisMax);
+    if (strcmp($ressource->getType(), "pierre") == 0 && $ressource->getAmount() > $pierreMax) $ressource->setAmount($pierreMax);
+    if (strcmp($ressource->getType(), "nourriture") == 0 && $ressource->getAmount() > $nourritureMax) $ressource->setAmount($nourritureMax);
+
+    // on update les valeurs dans la bdd
     $sql = "UPDATE `RESSOURCES` SET `" . $ressource->getType() . "`= ? WHERE `RESSOURCES`.`playerId` = ? ";
     $query = $bdd->prepare($sql);
     $query->execute(array($ressource->getAmount(), $user->getId()));

@@ -2,11 +2,11 @@
 
 function ressourcesToJson($ressources)
 {
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/ressourceManager.php";
     include_once($path);
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/ressource.class.php";
     include_once($path);
 

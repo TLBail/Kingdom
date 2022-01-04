@@ -13,12 +13,12 @@ if (isset($_GET['upgrade'])) {
 
 
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/view/batimentToJson.php";
     include_once($path);
 
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/batimentManager.php";
     include_once($path);
 
@@ -33,11 +33,11 @@ if (isset($_GET['upgrade'])) {
 
 if (isset($_GET['all'])) {
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/ressourceManager.php";
     include_once($path);
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/view/ressourceToJson.php";
     include_once($path);
 
@@ -48,11 +48,11 @@ if (isset($_GET['all'])) {
 }
 
 if (isset($_GET['start'])) {
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/ressourceManager.php";
     include_once($path);
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/ressource.class.php";
     include_once($path);
 
@@ -68,7 +68,7 @@ if (isset($_GET['start'])) {
 }
 
 if (isset($_GET['villageois'])) {
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/ressourceManager.php";
     include_once($path);
 

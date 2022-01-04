@@ -12,13 +12,12 @@ session_start();
 if (isset($_GET['upgrade'])) {
 
 
-
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/view/batimentsToJson.php";
     include_once($path);
 
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/batimentManager.php";
     include_once($path);
 
@@ -33,11 +32,11 @@ if (isset($_GET['upgrade'])) {
 
 if (isset($_GET['all'])) {
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/batimentManager.php";
     include_once($path);
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/view/batimentsToJson.php";
     include_once($path);
 

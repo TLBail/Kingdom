@@ -6,11 +6,11 @@
 function getBatimentsOfUser()
 {
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/userManager.php";
     include_once($path);
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/batiment.class.php";
     include_once($path);
 
@@ -58,11 +58,11 @@ function getBatimentsOfUser()
 function upgradeBatiment($batimentsName)
 {
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/batiment.class.php";
     include_once($path);
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/userManager.php";
     include_once($path);
 
@@ -133,7 +133,7 @@ function upgradeBatiment($batimentsName)
 function buyBatiment($batiment)
 {
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/ressourceManager.php";
     include_once($path);
 
@@ -166,11 +166,11 @@ function buyBatiment($batiment)
 function updateLvlOfBatiment($batimentsName)
 {
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/batiment.class.php";
     include_once($path);
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/projet";
+    $path = explode("/projet", __DIR__ )[0]."/projet";
     $path .= "/model/userManager.php";
     include_once($path);
 

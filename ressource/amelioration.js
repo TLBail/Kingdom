@@ -35,7 +35,7 @@ function onAmeliorationClick(batiment) {
 }
 
 
-displayBatiment();
+// displayBatiment();
 function displayBatiment() {
     var xhr = getXMLHttp();
     var saisie;
@@ -63,7 +63,6 @@ function displayBatiment() {
 
 
 
-displayRessources();
 function displayRessources() {
     var xhr = getXMLHttp();
     var saisie;
