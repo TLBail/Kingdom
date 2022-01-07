@@ -1,46 +1,46 @@
-<article onloadeddata="setupInterval()">
-	<h1>Batiments 🏢</h1>
-	<canvas id="canvasBatiments"></canvas>
+<article>
+	<h1 style="position: relative; top: 0; left: 0;display: block; height: 10%; z-index: 2;">Batiments 🏢</h1>
+	<div id="batimentPanelContainer" style="position: relative; top: -15%; left: 0;display: block;">
+		<canvas id="canvasBatiments"></canvas>
 
-	<div id="batimentContainer">
-		<section onclick="onAmeliorationClick('Scierie')">
-			<h3>Scierie</h3>
-			<p id="Scierie"></p>
-		</section>
 
-		<section onclick="onAmeliorationClick('Carriere')">
-			<h3>Carrière</h3>
-			<p id="Carriere"></p>
-		</section>
 
-		<section id="fermeBat" onclick="onAmeliorationClick('Ferme')">
-			<h3>Ferme</h3>
-			<p id="Ferme"></p>
-		</section>
 
-		<section onclick="onAmeliorationClick('EntrepotDeBois')">
-			<h3>Entrepot de bois</h3>
-			<p id="EntrepotDeBois"></p>
-		</section>
 
-		<section onclick="onAmeliorationClick('EntrepotDePierre')">
-			<h3>Entrepot de pierre</h3>
-			<p id="EntrepotDePierre"></p>
-		</section>
+		<div id="batimentContainer">
 
-		<section onclick="onAmeliorationClick('Silo')">
-			<h3>Silo</h3>
-			<p id="Silo"></p>
-		</section>
 
-		<section onclick="onAmeliorationClick('Maison')">
-			<h3>maison</h3>
-			<p id="Maison"></p>
-		</section>
+			<section style="background-image: url('./ressource/sawmill.jpg')" onclick="displayPanel('Scierie')">
+				<h3>Scierie</h3>
+			</section>
 
-		<section onclick="onAmeliorationClick('Immeuble')">
-			<h3>Immeuble</h3>
-			<p id="Immeuble"></p>
-		</section>
+			<section style="background-image: url('./ressource/quarry.jpg')" onclick="displayPanel('Carriere')">
+				<h3>Carrière</h3>
+			</section>
+
+			<section style="background-image: url('./ressource/ferme.png')" onclick="displayPanel('Ferme')">
+				<h3>Ferme</h3>
+			</section>
+
+			<section onclick="displayPanel('EntrepotDeBois')">
+				<h3>Entrepot de bois</h3>
+			</section>
+
+			<section onclick="displayPanel('EntrepotDePierre')">
+				<h3>Entrepot de pierre</h3>
+			</section>
+
+			<section onclick="displayPanel('Silo')">
+				<h3>Silo</h3>
+			</section>
+
+			<section style="background-image: url('./ressource/assets/house.png')" onclick="displayPanel('Maison')">
+				<h3>maison</h3>
+			</section>
+
+			<section onclick="displayPanel('Immeuble')">
+				<h3>Immeuble</h3>
+			</section>
 		</div>
+	</div>
 </article>

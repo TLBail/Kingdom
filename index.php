@@ -143,6 +143,7 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'true') {
     if ($connected) {
         echo ("<script type='text/javascript' src='./ressource/amelioration.js' async defer></script>
             <script type='text/javascript' src='./ressource/unit.js' async defer></script>
+            <script type='text/javascript' src='./ressource/batimentPanel.js' async defer></script>
 	    	<script type='text/javascript' src='./ressource/canvas.js'></script>");
     }
     ?>
@@ -160,7 +161,7 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'true') {
                     document.getElementById("PageContainer").innerHTML = xhr.responseText;
                 }
 
-                if(page.endsWith("Batiments.html")){
+                if (page.endsWith("Batiments.html")) {
                     updateCanvas();
                 }
 

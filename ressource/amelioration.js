@@ -13,7 +13,7 @@ function onAmeliorationClick(batiment) {
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = xhr.responseText;
-            console.log("receive : " + response);
+            // console.log("receive : " + response);
             if (response == "erreur") alert("Impossible pour le moment");
             const object = JSON.parse(response);
             let field = document.getElementById(batiment);
@@ -43,15 +43,18 @@ function displayBatiment() {
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = xhr.responseText;
-            console.log("receive : " + response);
+            // console.log("receive : " + response);
             const object = JSON.parse(response);
             Object.keys(object).forEach(function (key, index) {
                 let batimentName = key;
                 let field = document.getElementById(batimentName);
+                if (!field) {
+                    return;
+                }
                 field.innerHTML = "";
                 Object.keys(object[key]).forEach(function (key, index) {
                     let fieldName = key;
-                    field.innerHTML += fieldName + " " + object[batimentName][fieldName] + "<br>";
+                    field.innerHTML += fieldName + " " + object[batimentName][fieldName] + "\n<br>";
                 });
             });
         }
@@ -76,7 +79,7 @@ function displayRessources() {
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = xhr.responseText;
-            console.log("receive : " + response);
+            // console.log("receive : " + response);
             const object = JSON.parse(response);
 
             for (let index = 0; index < foodFields.length; index++) {
@@ -123,7 +126,7 @@ function displayVillageois() {
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = xhr.responseText;
-            console.log("receive : " + response);
+            // console.log("receive : " + response);
             for (let index = 0; index < fields.length; index++) {
                 const field = fields[index];
                 field.innerHTML = response;
