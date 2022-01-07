@@ -1,32 +1,52 @@
 <?php
 
 
-class Units
+class Unit
 {
 
     private $name;
-    private $nombre;
+    private $number;
+    private $timeRemainingAmelioration;
+    private $dateTimeAtLastUpdate;
+    private $nbToAdd;
 
-    public function __construct($name, $nombre)
+    public function __construct($name, $number, $timeRemainingAmelioration, $nbToAdd, $dateTimeAtLastUpdate)
     {
-        $this->name = $nombre;
-        $this->nombre = $nombre;
+        $this->name = $name;
+        $this->number = $number;
+        $this->timeRemainingAmelioration = $timeRemainingAmelioration;
+        $this->dateTimeAtLastUpdate = $dateTimeAtLastUpdate;
+        $this->nbToAdd = $nbToAdd;
     }
 
+    public function timeRemainingGenerate()
+    {
+        $this->timeRemainingAmelioration = $this->nbToAdd * ((this->getWoodCost()+$this->getStoneCost())/2500*6);
+    }
 
     public function getName()
     {
         return $this->name;
     }
 
-    public function getNombre()
+    public function getNumber()
     {
-        return $this->nombre;
+        return $this->number;
     }
 
-    public function setNombre($nombre)
+    public function getTimeRemainingAmelioration()
     {
-        $this->nombre = $nombre;
+        return $this->timeRemainingAmelioration;
+    }
+
+    public function setNumber($number)
+    {
+        $this->number = $number;
+    }
+
+    public function setNumberToAdd($number)
+    {
+        $this->nbToAdd += $number;
     }
 
     public function getWoodCost()

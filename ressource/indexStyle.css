@@ -2,12 +2,12 @@ body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-article {
+/* article {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-flow: row wrap;
-}
+} */
 
 article h1{
     width: 100%;
@@ -42,4 +42,110 @@ section img{
     height: 150%;
     max-width: 100px;
     max-height: 100px;
+}
+
+#ressourceBar .boisNumber{
+    color: white;
+    padding: 0;
+    margin: 0;
+    
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 85px;
+    height: 20px; 
+    width: 100px;
+}
+
+#ressourceBar .foodNumber{
+    padding: 0;
+    margin: 0;
+    
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 80px;
+    height: 20px;
+    width: 100px;   
+}
+
+
+#ressourceBar .pierreNumber{
+    padding: 0;
+    margin: 0;
+    
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 80px;
+    height: 20px;   
+    width: 100px;
+}
+
+
+#ressourceBar .villageoisNumber{
+    padding: 0;
+    margin: 0;
+    
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 80px;
+    height: 20px;   
+ 
+    width: 100px;
+}
+#ressourceBar{
+    background-image: url("./ressourcebar.png");
+    background-size: contain;
+    width: 715px;
+    height: 96px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    font-size: 15px;
+    
+    color: white;
+}
+
+
+li {
+    display: block;
+    float: left;
+    position: relative;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+    
+.dropdownWrapper li .dropdown {
+    opacity: 0;
+    visibility: hidden;
+    left: 0;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 0px;
+    background-color: unset;
+    background-image: url("./tileBack.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    transition: all 0.5s ease;
+    color: white;
+    
+}
+
+.dropdownWrapper li .dropdown > *{
+    margin-left: 2em;   
+}
+  
+.dropdownWrapper li:hover > .dropdown,
+.dropdownWrapper li .dropdown:hover {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+    height: 300px;
+}
+
+
+#fermeBat{
+    background-image: url("./ferme.png");
+    background-size: cover;
 }

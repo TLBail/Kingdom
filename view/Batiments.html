@@ -1,7 +1,8 @@
-<article>
+<article onloadeddata="setupInterval()">
 	<h1>Batiments 🏢</h1>
+	<canvas id="canvasBatiments"></canvas>
 
-	<div>
+	<div id="batimentContainer">
 		<section onclick="onAmeliorationClick('Scierie')">
 			<h3>Scierie</h3>
 			<p id="Scierie"></p>
@@ -12,7 +13,7 @@
 			<p id="Carriere"></p>
 		</section>
 
-		<section onclick="onAmeliorationClick('Ferme')">
+		<section id="fermeBat" onclick="onAmeliorationClick('Ferme')">
 			<h3>Ferme</h3>
 			<p id="Ferme"></p>
 		</section>
@@ -41,5 +42,5 @@
 			<h3>Immeuble</h3>
 			<p id="Immeuble"></p>
 		</section>
-	</div>
+		</div>
 </article>

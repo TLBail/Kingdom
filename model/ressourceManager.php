@@ -4,7 +4,7 @@ function getRessourceByName($ressourceName)
 {
 
     if ($ressourceName == "villageois") {
-       $path = explode("/projet", __DIR__ )[0]."/projet";
+        $path = explode("/projet", __DIR__)[0] . "/projet";
         $path .= "/model/batimentManager.php";
         include_once($path);
         $buildings = getBatimentsofUser();
@@ -32,18 +32,18 @@ function getRessourceByName($ressourceName)
 function getRessourcesAtConnection()
 {
 
-   $path = explode("/projet", __DIR__ )[0]."/projet";
+    $path = explode("/projet", __DIR__)[0] . "/projet";
     $path .= "/model/userManager.php";
     include_once($path);
     $user = getUser();
 
-   $path = explode("/projet", __DIR__ )[0]."/projet";
+    $path = explode("/projet", __DIR__)[0] . "/projet";
     $path .= "/model/bddManager.php";
     include_once($path);
     $bdd = getBDD();
 
 
-   $path = explode("/projet", __DIR__ )[0]."/projet";
+    $path = explode("/projet", __DIR__)[0] . "/projet";
     $path .= "/model/batimentManager.php";
     include_once($path);
     $buildings = getBatimentsofUser();
@@ -74,12 +74,12 @@ function getRessourcesAtConnection()
 function updateLastTimeOnlineOfUser()
 {
 
-   $path = explode("/projet", __DIR__ )[0]."/projet";
+    $path = explode("/projet", __DIR__)[0] . "/projet";
     $path .= "/model/userManager.php";
     include_once($path);
     $user = getUser();
 
-   $path = explode("/projet", __DIR__ )[0]."/projet";
+    $path = explode("/projet", __DIR__)[0] . "/projet";
     $path .= "/model/bddManager.php";
     include_once($path);
     $bdd = getBDD();
@@ -96,12 +96,12 @@ function updateLastTimeOnlineOfUser()
 function getRessources()
 {
 
-   $path = explode("/projet", __DIR__ )[0]."/projet";
+    $path = explode("/projet", __DIR__)[0] . "/projet";
     $path .= "/model/userManager.php";
     include_once($path);
 
 
-   $path = explode("/projet", __DIR__ )[0]."/projet";
+    $path = explode("/projet", __DIR__)[0] . "/projet";
     $path .= "/model/ressource.class.php";
     include_once($path);
 
@@ -134,21 +134,21 @@ function isBuildingAndRessourceBound($buildingType, $ressourceType)
 function updateRessourceOfUser($ressource)
 {
 
-   $path = explode("/projet", __DIR__ )[0]."/projet";
+    $path = explode("/projet", __DIR__)[0] . "/projet";
     $path .= "/model/userManager.php";
     include_once($path);
     $user = getUser();
 
-   $path = explode("/projet", __DIR__ )[0]."/projet";
+    $path = explode("/projet", __DIR__)[0] . "/projet";
     $path .= "/model/ressource.class.php";
     include_once($path);
 
-   $path = explode("/projet", __DIR__ )[0]."/projet";
+    $path = explode("/projet", __DIR__)[0] . "/projet";
     $path .= "/model/bddManager.php";
     include_once($path);
     $bdd = getBDD();
 
-   $path = explode("/projet", __DIR__ )[0]."/projet";
+    $path = explode("/projet", __DIR__)[0] . "/projet";
     $path .= "/model/batimentManager.php";
     include_once($path);
     $buildings = getBatimentsofUser();

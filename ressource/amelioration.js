@@ -65,20 +65,49 @@ function displayBatiment() {
 
 function displayRessources() {
     var xhr = getXMLHttp();
-    var saisie;
+    var foodFields = document.getElementsByClassName("foodNumber");
+    var pierreFields = document.getElementsByClassName("pierreNumber");
+    var boisFields = document.getElementsByClassName("boisNumber");
+
+    var foodMaxFields = document.getElementsByClassName("nourritureMaxCapacity");
+    var boisMaxFields = document.getElementsByClassName("boisMaxCapacity");
+    var pierreMaxFields = document.getElementsByClassName("pierreMaxCapacity");
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = xhr.responseText;
             console.log("receive : " + response);
             const object = JSON.parse(response);
-            let field = document.getElementById("ressourceContainer");
-            field.innerHTML = "";
-            Object.keys(object).forEach(function (key, index) {
-                let ressourceName = key;
-                let ammount = object[ressourceName];
-                field.innerHTML += ressourceName + " " + ammount + "<br>";
-            });
+
+            for (let index = 0; index < foodFields.length; index++) {
+                const foodField = foodFields[index];
+                foodField.innerHTML = object['nourriture']['amout'];
+            }
+            for (let index = 0; index < pierreFields.length; index++) {
+                const pierreField = pierreFields[index];
+                pierreField.innerHTML = object['pierre']['amout'];
+
+            }
+            for (let index = 0; index < boisFields.length; index++) {
+                const boisField = boisFields[index];
+                boisField.innerHTML = object['bois']['amout'];
+            }
+
+
+            for (let index = 0; index < foodMaxFields.length; index++) {
+                const foodMaxField = foodMaxFields[index];
+                foodMaxField.innerHTML = object['nourriture']['capacity'];
+            }
+
+            for (let index = 0; index < boisMaxFields.length; index++) {
+                const boisMaxField = boisMaxFields[index];
+                boisMaxField.innerHTML = object['bois']['capacity'];
+            }
+            for (let index = 0; index < pierreMaxFields.length; index++) {
+                const pierreMaxField = pierreMaxFields[index];
+                pierreMaxField.innerHTML = object['pierre']['capacity'];
+            }
+
         }
     }
 
@@ -89,20 +118,24 @@ function displayRessources() {
 displayVillageois();
 function displayVillageois() {
     var xhr = getXMLHttp();
-    var saisie;
+    var fields = document.getElementsByClassName("villageoisNumber");
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = xhr.responseText;
             console.log("receive : " + response);
-            let field = document.getElementById("villageoisContainer");
-            field.innerHTML = response;
+            for (let index = 0; index < fields.length; index++) {
+                const field = fields[index];
+                field.innerHTML = response;
+            }
         }
     }
 
     xhr.open('GET', './controller/ressource.php?villageois=true', true);
     xhr.send(null);
 }
+
+
 
 
 
