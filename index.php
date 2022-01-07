@@ -141,10 +141,10 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'true') {
     </div>
     <?php
     if ($connected) {
-        echo ("<script type='text/javascript' src='./ressource/amelioration.js' async defer></script>
-            <script type='text/javascript' src='./ressource/unit.js' async defer></script>
-            <script type='text/javascript' src='./ressource/batimentPanel.js' async defer></script>
-	    	<script type='text/javascript' src='./ressource/canvas.js'></script>");
+        echo ("<script type='text/javascript' src='./ressource/javascript/client.js' async defer></script>
+            <script type='text/javascript' src='./ressource/javascript/unit.js' async defer></script>
+            <script type='text/javascript' src='./ressource/javascript/batimentPanel.js' async defer></script>
+	    	<script type='text/javascript' src='./ressource/javascript/canvas.js'></script>");
     }
     ?>
     <script defer>

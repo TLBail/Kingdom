@@ -54,6 +54,11 @@ function displayBatiment() {
                 field.innerHTML = "";
                 Object.keys(object[key]).forEach(function (key, index) {
                     let fieldName = key;
+                    let spanfields = document.getElementsByClassName(fieldName + batimentName);
+                    for (let index = 0; index < spanfields.length; index++) {
+                        const spanfield = spanfields[index];
+                        spanfield.innerHTML = object[batimentName][fieldName];
+                    }
                     field.innerHTML += fieldName + " " + object[batimentName][fieldName] + "\n<br>";
                 });
             });
