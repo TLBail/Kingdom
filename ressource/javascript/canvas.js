@@ -65,7 +65,7 @@ async function updateCanvas() {
         } else {
             console.log(batimentSection);
             let batimentName = batimentSection.childNodes[3].innerText.replace("è", "e").toLowerCase();
-            displayBatimentOnCanvas(ctx, canvas.width, batimentName.replace(/ +/gi, "-"), levelList[batimentName], topMargin);
+            displayBatimentOnCanvas(ctx, canvas.width, batimentName.replace(/ +/gi, "-"), levelList[batimentName.replace(/ +/gi, "")], topMargin);
             topMargin += 50;
         }
     }
@@ -75,6 +75,7 @@ async function updateCanvas() {
 function displayBatimentOnCanvas(ctx, width, name, level, offsetHeight) {
     let rightMargin = 10;
     console.log("Processing " + name + " with level " + level);
+    console.log("src : " + `./ressource/assets/${name}.png`);
     var iMax = level;
     switch(name){
         case "immeuble" : {
