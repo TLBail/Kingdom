@@ -11,6 +11,22 @@ function displayPanel(batimentName, batimentUrlImage, info) {
     if (!ispaneldisplayed) {
         origin = container.innerHTML;
     }
+
+    let addition = "";
+    if (batimentName == "EntrepotDePierre" ||
+        batimentName == "EntrepotDeBois" ||
+        batimentName == "Silo") {
+        addition = 'capacité : <span class="storageCapacity' + batimentName + '"></span> <br>';
+    } else if (
+        batimentName == "Scierie" || batimentName == "Carriere" || batimentName == "Ferme"
+    ) {
+        addition = 'ressource par heure : <span class="ressourceRate' + batimentName + '"></span> <br>';
+    } else {
+        addition = 'nombre de villageois : <span class="ressourceRate' + batimentName + '"></span> <br>';
+
+    }
+
+
     container.innerHTML += panel +
         '<div class="headPanel">' +
         '<h1>' +
@@ -23,7 +39,7 @@ function displayPanel(batimentName, batimentUrlImage, info) {
         '<div class="subFlexPanel">' +
         '<img src="' + batimentUrlImage + '">' +
         '<div class="infoBlocPanel">' +
-        '<p id="' + batimentName + '"></p>' +
+        'batiment level : <span class="lvl' + batimentName + '"></span> <br>' + addition +
         '<div class="ressourceCostPanel">' +
         '<div class="ressourceBlock">' +
         '<img src="./ressource/image/woodIcon.png">' +

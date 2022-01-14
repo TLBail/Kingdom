@@ -62,8 +62,17 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'true') {
 </head>
 
 <body>
+
+
     <div class='parent'>
-        <div class='div1' id="PageContainer"><?php echo file_get_contents("mainPage.html") ?></div>
+        <div class='div1'>
+            <div class="animationLoading off">
+            </div>
+
+            <div id="PageContainer">
+                <?php echo file_get_contents("mainPage.html") ?>
+            </div>
+        </div>
         <div class='div2'>
             <article class="dropdownWrapper">
                 <li>
@@ -122,7 +131,7 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'true') {
                 </div>
             </div>
             <div class="pageButtonsHolder">
-                <button class='pageButton' onclick="changePage('mainPage.html')">🏠</button>
+                <button class='pageButton' onclick="changePage('mainPage.html')">Accueil 🏠</button>
                 <?php
                 foreach ($phpFiles as $file) {
                     $fileName = basename($file);
@@ -143,7 +152,9 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'true') {
     if ($connected) {
         echo ("<script type='text/javascript' src='./ressource/javascript/client.js' async defer></script>
             <script type='text/javascript' src='./ressource/javascript/unit.js' async defer></script>
+            <script type='text/javascript' src='./ressource/javascript/unitPanel.js' async defer></script>
             <script type='text/javascript' src='./ressource/javascript/batimentPanel.js' async defer></script>
+            <script type='text/javascript' src='./ressource/javascript/expeditions.js' async defer></script>
 	    	<script type='text/javascript' src='./ressource/javascript/canvas.js'></script>");
     }
     ?>
@@ -152,13 +163,37 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'true') {
             window.location.href = page;
         }
 
+
         //change displayed page
         function changePage(page) {
+            var container = document.getElementById("PageContainer");
             let xhr = new XMLHttpRequest();
+            var loading = document.getElementsByClassName("animationLoading")[0];
+            console.log(loading.innerHTML);
+            loading.classList.remove("off");
+            loading.classList.add("on");
+
+
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4) {
                     // console.log(xhr.responseText);
-                    document.getElementById("PageContainer").innerHTML = xhr.responseText;
+                    container.innerHTML = xhr.responseText;
+
+
+                    let imgLoadings = container.getElementsByTagName('img');
+                    if (imgLoadings.length == 0) {
+                        loading.classList.remove("on");
+                        loading.classList.add("off");
+                    }
+                    for (let imgIndex = 0; imgIndex < imgLoadings.length; imgIndex++) {
+                        const imgLoading = imgLoadings[imgIndex];
+                        remainingImg++;
+                        imgLoading.addEventListener('load', (event) => {
+                            finish();
+                        });
+                    }
+
+
                 }
 
                 if (page.endsWith("Batiments.html")) {
@@ -169,5 +204,19 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'true') {
             xhr.open('GET', page, true);
             xhr.send();
         }
+
+
+        var remainingImg = 0;
+
+        function finish() {
+            var loading = document.getElementsByClassName("animationLoading")[0];
+
+            remainingImg--;
+            if (remainingImg <= 0) {
+                loading.classList.remove("on");
+                loading.classList.add("off");
+            }
+        }
+    </script>";
     </script>
 </body>

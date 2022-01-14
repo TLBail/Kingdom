@@ -1,0 +1,50 @@
+<article>
+    <h1 style="position: relative; top: 0; left: 0;display: block; height: 10%; z-index: 2;">Expeditions 🏢</h1>
+    <div id="batimentPanelContainer" style="position: relative; top: -15%; left: 0;display: block;">
+        <div class="expeditionsList">
+            <h1>List des expédition réalisé par le joueur</h1>
+            <ul id="expeditionsListContainer">
+                <li>
+                    <h5>
+                        Expédition 1
+                    </h5>
+                </li>
+            </ul>
+        </div>
+
+        <div class="itemPanelContainer" id="unitPanelContainer">
+
+            <section style="background-image: url('./ressource/image/chasseur.jpeg')">
+                <h3>Chasseur</h3>
+                <span>chasseur disponible
+                    <span class="numberchasseur"></span>
+                </span>
+                <input type="number" name="nbchasseur" id="nbchasseur">
+            </section>
+            <section style="background-image: url('./ressource/image/warrior.png')">
+                <h3>chevalier</h3>
+                <span>chevalier disponible
+                    <span class="numberchevalier"></span>
+                </span>
+                <input type="number" name="nbchevalier" id="nbchevalier">
+            </section>
+            <section style="background-image: url('./ressource/image/templier.jpg')">
+                <h3>templier</h3>
+                <span>templier disponible
+                    <span class="numbertemplier"></span>
+                </span>
+                <input type="number" name="nbtemplier" id="nbtemplier">
+            </section>
+
+
+
+
+            <button onclick="sendExpeditions()">
+                Envoyer l'expeditions !
+            </button>
+
+        </div>
+
+
+    </div>
+</article>

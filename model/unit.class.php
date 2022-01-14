@@ -21,7 +21,7 @@ class Unit
 
     public function timeRemainingGenerate()
     {
-        $this->timeRemainingAmelioration = $this->nbToAdd * ((this->getWoodCost()+$this->getStoneCost())/2500*6);
+        $this->timeRemainingAmelioration = $this->nbToAdd * (($this->getWoodCost() + $this->getStoneCost()) / 2500 * 6);
     }
 
     public function getName()
@@ -44,6 +44,11 @@ class Unit
         $this->number = $number;
     }
 
+    public function getNbToAdd()
+    {
+        return $this->nbToAdd;
+    }
+
     public function setNumberToAdd($number)
     {
         $this->nbToAdd += $number;
@@ -53,8 +58,12 @@ class Unit
     {
 
         switch ($this->name) {
-            case 'Chasseur':
+            case 'chasseur':
                 return 3000;
+            case 'chevalier':
+                return 6000;
+            case 'templier':
+                return 20000;
 
             default:
                 return 0;
@@ -65,8 +74,12 @@ class Unit
     {
 
         switch ($this->name) {
-            case 'Chasseur':
+            case 'chasseur':
                 return 1000;
+            case 'chevalier':
+                return 4000;
+            case 'templier':
+                return 7000;
 
             default:
                 return 0;
@@ -76,8 +89,12 @@ class Unit
     public function getLife()
     {
         switch ($this->name) {
-            case 'Chasseur':
+            case 'chasseur':
                 return 4800;
+            case 'chevalier':
+                return 12000;
+            case 'chevalier':
+                return 32400;
 
             default:
                 return 0;

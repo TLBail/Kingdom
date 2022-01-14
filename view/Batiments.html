@@ -1,5 +1,5 @@
 <article>
-	<h1 style="position: relative; top: 0; left: 0;display: block; height: 10%; z-index: 2;">Batiments 🏢</h1>
+	<h1 style="position: relative; top: 0; left: 0;display: block; height: 10%; z-index: 2;margin: 0;">Batiments 🏢</h1>
 	<div id="batimentPanelContainer" style="position: relative; top: -15%; left: 0;display: block;">
 		<canvas id="canvasBatiments"></canvas>
 
@@ -7,54 +7,110 @@
 
 
 
-		<div id="batimentContainer">
+		<div class="itemPanelContainer" id="batimentContainer">
 
 
 			<section style="background-image: url('./ressource/sawmill.jpg')" onclick="displayPanel('Scierie', './ressource/sawmill.jpg',
 				'Les scieries sont des industries de première transformation du bois. Elles fournissent des produits semi-finis, les sciages, qui sont généralement destinés à une industrie de seconde transformation (menuiserie, ébénisterie, construction, etc.) chargée de fabriquer des objets ou des parties d\'objets de consommation.  '
 				)">
+				<div class="loadingBlack">
+					<sub>temps restant</sub>
+					<sub class="timeRemainingScierie"></sub>
+					<br>
+					<sub>prochain level</sub>
+					<sub class="nextlvlScierie"></sub>
+				</div>
 				<h3>Scierie</h3>
 			</section>
 
 			<section style="background-image: url('./ressource/quarry.jpg')" onclick="displayPanel('Carriere', './ressource/quarry.jpg',
 				'Une carrière est le lieu d\'où sont extraits des matériaux de construction tels que la pierre (la carrière est dans ce cas parfois appelée perrière), le sable ou différents minéraux non métalliques ou carbonifères. Le chantier se fait à ciel ouvert, soit « à flanc de coteau », soit « en fosse » (jusqu\'à une centaine de mètres de profondeur parfois). '
 				)">
+				<div class="loadingBlack">
+					<sub>temps restant</sub>
+					<sub class="timeRemainingCarriere"></sub>
+					<br>
+					<sub>prochain level</sub>
+					<sub class="nextlvlCarriere"></sub>
+				</div>
 				<h3>Carrière</h3>
 			</section>
 
 			<section style="background-image: url('./ressource/ferme.png')" onclick="displayPanel('Ferme', './ressource/ferme.png',
 				'Le terme de « ferme » a été utilisé en Angleterre dès le XVIIe siècle pour désigner des domaines agricole, ainsi que dans les colonies anglaises d\'Amérique. Il n\'a été adopté en France qu\'à partir de la Révolution française pour remplacer les mots manse (mesnil), censive, borie (boriage), etc. qui étaient des concessions perpétuelles abolies en même temps que les institutions féodales pour être remplacées par des contrats de location de gré à gré. '
 				)">
+				<div class="loadingBlack">
+					<sub>temps restant</sub>
+					<sub class="timeRemainingFerme"></sub>
+					<br>
+					<sub>prochain level</sub>
+					<sub class="nextlvlFerme"></sub>
+				</div>
 				<h3>Ferme</h3>
 			</section>
 
 			<section style="background-image: url('./ressource/image/woodpile.jpg')" onclick="displayPanel('EntrepotDeBois', './ressource/image/woodpile.jpg',
 				'Les dispositifs de mise en réserve – en silos, greniers, granges ou entrepôts – représentent une dimension essentielle des économies anciennes, renvoyant aux processus de production, d’accumulation et de redistribution des fruits du labeur des hommes.'
 				)">
+				<div class="loadingBlack">
+					<sub>temps restant</sub>
+					<sub class="timeRemainingEntrepotDeBois"></sub>
+					<br>
+					<sub>prochain level</sub>
+					<sub class="nextlvlEntrepotDeBois"></sub>
+				</div>
 				<h3>Entrepot de bois</h3>
 			</section>
 
 			<section style="background-image: url('./ressource/image/rocks.png')" onclick="displayPanel('EntrepotDePierre', './ressource/image/rocks.png',
 				'Les dispositifs de mise en réserve – en silos, greniers, granges ou entrepôts – représentent une dimension essentielle des économies anciennes, renvoyant aux processus de production, d’accumulation et de redistribution des fruits du labeur des hommes.'
 				)">
+				<div class="loadingBlack">
+					<sub>temps restant</sub>
+					<sub class="timeRemainingEntrepotDePierre"></sub>
+					<br>
+					<sub>prochain level</sub>
+					<sub class="nextlvlEntrepotDePierre"></sub>
+				</div>
 				<h3>Entrepot de pierre</h3>
 			</section>
 
 			<section style="background-image: url('./ressource/image/silo.png')" onclick="displayPanel('Silo', './ressource/image/silo.png',
 				'Les dispositifs de mise en réserve – en silos, greniers, granges ou entrepôts – représentent une dimension essentielle des économies anciennes, renvoyant aux processus de production, d’accumulation et de redistribution des fruits du labeur des hommes.'
 				)">
+				<div class="loadingBlack">
+					<sub>temps restant</sub>
+					<sub class="timeRemainingSilo"></sub>
+					<br>
+					<sub>prochain level</sub>
+					<sub class="nextlvlSilo"></sub>
+				</div>
 				<h3>Silo</h3>
 			</section>
 
 			<section style="background-image: url('./ressource/image/housecased.png')" onclick="displayPanel('Maison', './ressource/image/housecased.png',
 				'une maison de maître, accompagnée de bâtiments utilitaires (entrepôts, usine), et des cases pour loger les captifs puis les employés. La maison de maître, au sein de la maison coloniale peut être plus ou moins modeste en fonction de l\'importance de la plantation. Elles sont d\'une grande diversité architecturale, et s\'inspirent parfois du style de la région d\'origine du colon. Se retrouvent néanmoins des caractéristiques fréquentes dues à l\'adaptation au climat, comme la présence de portiques. '
 				)">
+				<div class="loadingBlack">
+					<sub>temps restant</sub>
+					<sub class="timeRemainingMaison"></sub>
+					<br>
+					<sub>prochain level</sub>
+					<sub class="nextlvlMaison"></sub>
+				</div>
 				<h3>maison</h3>
 			</section>
 
 			<section style="background-image: url('./ressource/image/immeublecased.png')" onclick="displayPanel('Immeuble', './ressource/image/immeublecased.png', 
 				'Un immeuble d\'habitation, ou immeuble collectif, est un bâtiment collectif à usage d\'habitation. Il peut être découpé en appartements formant des « parties privatives », auxquelles sont adjointes des « parties communes » constituées notamment de passages, de locaux techniques et de jardins. '
 				)">
+				<div class="loadingBlack">
+					<sub>temps restant</sub>
+					<sub class="timeRemainingImmeuble"></sub>
+					<br>
+					<sub>prochain level</sub>
+					<sub class="nextlvlImmeuble"></sub>
+				</div>
 				<h3>Immeuble</h3>
 			</section>
 		</div>

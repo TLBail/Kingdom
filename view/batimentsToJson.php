@@ -21,8 +21,11 @@ function getBatimentsToJson($batiments)
             $levels[$batiment->getType()]["villageoisCost"] = floor($batiment->getTotalVillageoisCost());
         if ($batiment->getStorageCapacity() !== 0)
             $levels[$batiment->getType()]["storageCapacity"] = floor($batiment->getStorageCapacity());
-        if ($batiment->getTimeRemainingAmelioration() !== 0)
-            $levels[$batiment->getType()]["temps restant"] = floor($batiment->getTimeRemainingAmelioration());
+        if ($batiment->getTimeRemainingAmelioration() !== 0) {
+            $levels[$batiment->getType()]["timeRemaining"] = floor($batiment->getTimeRemainingAmelioration());
+            $levels[$batiment->getType()]["timefrom"] = floor($batiment->getUpgradeTimeForNextLevelInSeconde());
+        }
+
         $index = $index + 1;
     }
     if (isset($levels)) {

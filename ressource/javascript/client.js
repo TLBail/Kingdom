@@ -48,19 +48,53 @@ function displayBatiment() {
             Object.keys(object).forEach(function (key, index) {
                 let batimentName = key;
                 let field = document.getElementById(batimentName);
-                if (!field) {
-                    return;
-                }
-                field.innerHTML = "";
+
+                if (field) field.innerHTML = "";
                 Object.keys(object[key]).forEach(function (key, index) {
                     let fieldName = key;
                     let spanfields = document.getElementsByClassName(fieldName + batimentName);
-                    for (let index = 0; index < spanfields.length; index++) {
-                        const spanfield = spanfields[index];
-                        spanfield.innerHTML = object[batimentName][fieldName];
+                    if (spanfields.length > 0) {
+
+                        for (let index = 0; index < spanfields.length; index++) {
+                            const spanfield = spanfields[index];
+                            spanfield.innerHTML = object[batimentName][fieldName];
+                        }
+
                     }
-                    field.innerHTML += fieldName + " " + object[batimentName][fieldName] + "\n<br>";
+                    if (field) field.innerHTML += fieldName + " " + object[batimentName][fieldName] + "\n<br>";
+
                 });
+
+
+                let fieldName = 'nextlvl';
+                let spanfields = document.getElementsByClassName(fieldName + batimentName);
+                for (let index = 0; index < spanfields.length; index++) {
+                    const spanfield = spanfields[index];
+                    spanfield.innerHTML = parseFloat(object[batimentName]['lvl']) + 1;
+                }
+
+
+
+                if (object[batimentName]['timefrom'] != 0) {
+                    var percentComplition = object[batimentName]['timeRemaining'] / object[batimentName]['timefrom'] * 100;
+                    let elementLoadings = document.getElementsByClassName('timeRemaining' + batimentName);
+                    if (elementLoadings) {
+                        for (let index = 0; index < elementLoadings.length; index++) {
+                            const elementBlackLoading = elementLoadings[index].parentNode;
+                            elementBlackLoading.style.opacity = 1;
+                            elementBlackLoading.style.height = percentComplition + "%";
+
+                        }
+                    }
+                } else {
+                    let elementLoadings = document.getElementsByClassName('timeRemaining' + batimentName);
+                    if (elementLoadings) {
+                        for (let index = 0; index < elementLoadings.length; index++) {
+                            const allNodes = elementLoadings[index].parentNode;
+                            allNodes.style.opacity = 0;
+                        }
+                    }
+                }
             });
         }
     }

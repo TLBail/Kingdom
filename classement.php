@@ -8,7 +8,7 @@ include_once($path);
 //get results from database
 $db = getBDD();
 
-$sql = "SELECT username, SUM(level) AS level_total FROM USER INNER JOIN BATIMENT ON USER.id = BATIMENT.playerId GROUP BY username";
+$sql = "SELECT username, (SUM(level)*100) AS score FROM USER INNER JOIN BATIMENT ON USER.id = BATIMENT.playerId GROUP BY username";
 
 ?>
 <html>
@@ -20,10 +20,13 @@ $sql = "SELECT username, SUM(level) AS level_total FROM USER INNER JOIN BATIMENT
 </head>
 
 <body>
+
     <div class="parent">
         <div class="div1"> </div>
         <div class="div2"> </div>
-        <div class="div3"> </div>
+        <div class="div3"> <a href="https://play.google.com/store/apps/details?id=com.tlbail.ptuts3androidapp&gl=FR"><img class="im1" width="100" src="ressource/pub/IconPTS3.png" alt="logo citydex"/></a>
+            <a class="titre" href="https://play.google.com/store/apps/details?id=com.tlbail.ptuts3androidapp&gl=FR">JOUER MAINTENANT !</a>
+            <a href="https://play.google.com/store/apps/details?id=com.tlbail.ptuts3androidapp&gl=FR"><img class="im2" width="100" src="ressource/pub/IconPTS3.png" alt="logo citydex"/></a></div>
         <div class="div4">
             <center>
             <table>
@@ -37,7 +40,7 @@ $sql = "SELECT username, SUM(level) AS level_total FROM USER INNER JOIN BATIMENT
                 <?php foreach ($db->query($sql) as $ligne): ?>
                 <tr>
                     <td><?= $ligne['username']?></td>
-                    <td><?= $ligne['level_total']?></td>
+                    <td><?= $ligne['score']?></td>
                 </tr>
                 <?php $db = null;
                 endforeach; ?>

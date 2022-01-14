@@ -38,7 +38,7 @@ function connexion()
 {
 
 
-    $path = explode("/projet", __DIR__ )[0]."/projet";
+    $path = explode("/projet", __DIR__)[0] . "/projet";
     $path .= "/model/user.class.php";
     include_once($path);
 
@@ -60,13 +60,13 @@ function connexion()
 
 function connect($username, $password)
 {
-    $path = explode("/projet", __DIR__ )[0]."/projet";
+    $path = explode("/projet", __DIR__)[0] . "/projet";
     $path .= "/model/user.class.php";
     include_once($path);
 
 
 
-    $path = explode("/projet", __DIR__ )[0]."/projet";
+    $path = explode("/projet", __DIR__)[0] . "/projet";
     $path .= "/model/bddManager.php";
     include_once($path);
 
@@ -95,11 +95,11 @@ function connect($username, $password)
 function getUser()
 {
 
-    $path = explode("/projet", __DIR__ )[0]."/projet";
+    $path = explode("/projet", __DIR__)[0] . "/projet";
     $path .= "/model/user.class.php";
     include_once($path);
 
-    $path = explode("/projet", __DIR__ )[0]."/projet";
+    $path = explode("/projet", __DIR__)[0] . "/projet";
     $path .= "/model/bddManager.php";
     include_once($path);
 

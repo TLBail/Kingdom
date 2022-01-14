@@ -1,5 +1,6 @@
 body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
 }
 
 /* article {
@@ -16,7 +17,6 @@ article h1{
 section{
     background-color: rgba(0, 0, 0, 0.061);
     margin: 2em;
-    padding: 1em;
 }
 
 section:hover{
@@ -255,3 +255,152 @@ li {
     flex: 1;
     margin-right: 2em;
 }
+
+
+#PageContainer #canvasBatiments {
+	position: relative;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 450px;
+	display: block;
+}
+#PageContainer .itemPanelContainer {
+	position: relative;
+	z-index: 0;
+	left: 0;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: nowrap;
+	height: fit-content;
+	width: 100%;
+}
+
+.itemPanelContainer > * {
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin: 2px;
+	width: 100%;
+	height: 200%;
+	padding: 0;
+    position: relative;
+}
+
+.itemPanelContainer > * h3{
+	position: relative;
+	bottom: 0;
+	margin: 0;
+	margin-top: 150px;
+
+	background-color: #463d3d61;
+	width: fit-content;
+	padding: 1em;
+	border-radius: 0 1em 1em 0;
+}
+
+.itemPanelContainer > * input{
+    width: 40%;
+    margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline;
+
+}
+
+.loadingBlack {
+    background-color: #000000b3;
+    width: 100%;
+    height: 0%;
+    top: 0;
+    position: absolute;
+    transition: all 1s ease;
+
+}
+
+.sendExpeditionsBoxWrapper{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 5vw;
+}
+
+.animationLoading{
+    background-color: black;
+    background-image: url("https://c.tenor.com/YRq8y_V1cxIAAAAj/spirit-pixel.gif");
+    z-index: 3;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    /* transition: all 1s ease; */
+
+}
+
+
+.on{
+    animation: show 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    visibility: visible;
+}
+
+.off{
+    animation: unshow 1s ease;
+    visibility: hidden;
+}
+
+
+@keyframes show {
+    0% {
+        left: 0;
+        visibility: visible;
+        width: 0%;
+
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes unshow {
+    0% {
+        visibility: visible;
+        width: 100%;
+        left: 0;
+    }
+    100% {
+        left: 100%;
+        visibility: hidden;
+    }
+}
+
+.expeditionsList {
+    margin-top: 50px;
+    width: 100%;
+	height: 300px;
+	display: block;
+    background-image: url("./tileBack.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+}
+
+
+.expeditionsList h1{
+    padding-top: 30px;
+    margin-left: 30px;
+}
+
+#unitePanelFon{
+    width: 100%;
+	height: 450px;
+	display: block;
+    background-image: url("./image/war.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+}
+
