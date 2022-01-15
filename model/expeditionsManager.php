@@ -52,6 +52,7 @@ function getExpedition()
                 $ligne['id'],
                 $ligne['dateTimeDepart'],
                 $ligne['tempsPourArriver'],
+                $ligne['position'],
                 $ligne['playerId']
             );
             array_push($units, new Unit($ligne['unitName'], $ligne['nbUnit'], 0, 0, 0));
@@ -87,14 +88,14 @@ function addnewExpedition($units, $coo)
     $distance = abs($coo - $user->getPosition());
 
 
-    $sql  = 'INSERT INTO `EXPEDITIONS` (`id`, `dateTimeDepart`, `tempsPourArriver`, `playerId`) VALUES (NULL, ?, ?, ?)';
+    $sql  = 'INSERT INTO `EXPEDITIONS` (`id`, `dateTimeDepart`, `tempsPourArriver`, `position`, `playerId`) VALUES (NULL, ?, ?, ?, ?)';
     $bdd = getBDD();
 
     $dateTime = (new DateTime())->format('Y-m-d H:i:s');
 
 
     $query = $bdd->prepare($sql);
-    $query->execute(array($dateTime, $distance, $user->getId()));
+    $query->execute(array($dateTime, $distance, $coo, $user->getId()));
 
     $id = $bdd->lastInsertId();
     $sql  = 'INSERT INTO `UNITEXPEDITIONS` (`expeditionsId`, `unitName`, `nbUnit`) VALUES (? , ?, ?)';
@@ -144,4 +145,18 @@ function getPlayersForExpeditions()
     if (isset($players)) {
         return $players;
     }
+}
+
+
+function updateExpedition()
+{
+
+
+    $path = explode("/projet", __DIR__)[0] . "/projet";
+    $path .= "/model/user.class.php";
+    include_once($path);
+
+    $user = getUser();
+    $time = time();
+    $elapsedTime = (time() - strtotime($user->getLastTimeOnline())) / 3600;
 }

@@ -75,6 +75,15 @@ function updateLastTimeOnlineOfUser()
 {
 
     $path = explode("/projet", __DIR__)[0] . "/projet";
+    $path .= "/model/expeditionsManager.php";
+    include_once($path);
+    $user = getUser();
+
+
+    updateExpedition();
+
+
+    $path = explode("/projet", __DIR__)[0] . "/projet";
     $path .= "/model/userManager.php";
     include_once($path);
     $user = getUser();

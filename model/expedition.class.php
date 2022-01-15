@@ -8,14 +8,17 @@ class Expedition
     private $dateDepart;
     private $tempsPourArriver;
     private $playerId;
+    private $position;
     private $units;
 
-    public function __construct($id, $dateDepart, $tempsPourArriver, $playerId)
+
+    public function __construct($id, $dateDepart, $tempsPourArriver, $position, $playerId)
     {
         $this->id = $id;
         $this->dateDepart = $dateDepart;
         $this->tempsPourArriver = $tempsPourArriver;
         $this->playerId = $playerId;
+        $this->position = $position;
     }
 
 
@@ -32,6 +35,11 @@ class Expedition
     public function getTempsPourArriver()
     {
         return $this->tempsPourArriver;
+    }
+
+    public function getPosition()
+    {
+        return $this->position;
     }
 
     public function getPlayerId()

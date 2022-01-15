@@ -13,6 +13,7 @@ function viewExpedition($expeditions)
 
         $arrayToReturn[$index]['depart'] = $expedition->getDateDepart();
         $arrayToReturn[$index]['arriver'] = $expedition->getTempsPourArriver();
+        $arrayToReturn[$index]['coo'] = $expedition->getPosition();
         foreach ($expedition->getUnits() as $unit) {
             $arrayToReturn[$index][$unit->getName()] = $unit->getNumber();
         }

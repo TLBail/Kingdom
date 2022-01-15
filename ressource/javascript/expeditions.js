@@ -21,13 +21,20 @@ function updateExpeditions() {
             field.innerHTML = "";
             Object.keys(object).forEach(function (key, index) {
                 const element = object[key];
-                field.innerHTML += " expeditions " + " : <br>";
-                Object.keys(element).forEach(function (key, index) {
-                    let fieldName = key;
-                    field.innerHTML += key + " " + element[key] + "<br>";
 
-                });
-                field.innerHTML += "<br>";
+
+
+                let bloc = " expeditions " + " : <br>";
+                bloc += "date de départ de l'expédition : " + object[key]['depart'] + "<br>";
+                bloc += " position a laquel l'expéditon est envoyé : " + object[key]['coo'] + "<br>";
+                if (object[key]['arriver'] && object[key]['arriver'] > 0)
+                    bloc += "temps restant avant arrivé : " + object[key]['arriver'] + "<br>";
+                bloc += " unité :" + "<br>";
+                if (object[key]['chasseur']) bloc += "- chasseur : " + object[key]['chasseur'] + "<br>";
+                if (object[key]['chevalier']) bloc += "- chevalier : " + object[key]['chevalier'] + "<br>";
+                if (object[key]['templier']) bloc += "- templier : " + object[key]['templier'] + "<br>";
+
+                field.innerHTML += bloc + "<br>";
             });
 
             setTimeout(updateExpeditions, 1000);
