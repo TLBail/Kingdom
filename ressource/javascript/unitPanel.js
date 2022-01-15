@@ -112,6 +112,11 @@ function updateUnitCost() {
                         }
                     }
                 }
+
+                let elementToAddMax = document.getElementById('nb' + unitName);
+                if (elementToAddMax) {
+                    elementToAddMax.max = object[unitName]['number'];
+                }
             });
         }
     }

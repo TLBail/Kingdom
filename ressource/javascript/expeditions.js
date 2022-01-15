@@ -3,20 +3,33 @@ var troupe;
 updateExpeditions();
 function updateExpeditions() {
 
-    console.log('salut');
-    var xhr = getXMLHttp();
-    var saisie;
+    var xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = xhr.responseText;
             // console.log("receive : " + response);
             if (response == "erreur") alert("Impossible pour le moment");
-            // const object = JSON.parse(response);
+            const object = JSON.parse(response);
             const field = document.getElementById('expeditionsListContainer');
-            if (field) {
-                field.innerHTML = response;
+
+            if (!field || !object) {
+                setTimeout(updateExpeditions, 1000);
+
+                return;
             }
+            field.innerHTML = "";
+            Object.keys(object).forEach(function (key, index) {
+                const element = object[key];
+                field.innerHTML += " expeditions " + " : <br>";
+                Object.keys(element).forEach(function (key, index) {
+                    let fieldName = key;
+                    field.innerHTML += key + " " + element[key] + "<br>";
+
+                });
+                field.innerHTML += "<br>";
+            });
+
             setTimeout(updateExpeditions, 1000);
         }
     }
@@ -37,9 +50,32 @@ function sendExpeditions() {
         Object.keys(troupe).forEach(function (key, index) {
             msg += key + " " + troupe[key] + " |";
         });
-        alert(msg);
-        troupe = null;
 
+        let coo = document.getElementById("coordinate");
+        const xhr = getXMLHttp();
+        let request = './controller/expeditions.php?new=true&coo=' + coo.value;
+        if (troupe['nbchasseur']) request += '&chasseur=' + troupe['nbchasseur'];
+        if (troupe['nbtemplier']) request += '&templier=' + troupe['nbtemplier'];
+        if (troupe['nbchevalier']) request += '&chevalier=' + troupe['nbchevalier'];
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                let response = xhr.responseText;
+                if (response == "erreur") alert("Impossible pour le moment");
+                console.log(response);
+                try {
+                    const object = JSON.parse(response);
+                    alert(msg);
+
+                }
+                catch (err) {
+                    alert(msg);
+                }
+            }
+        }
+        xhr.open('GET', request, true);
+        xhr.send(null);
+        troupe = null;
 
     } else {
         // on est a l'étape 1
@@ -60,5 +96,62 @@ function sendExpeditions() {
         }
 
     }
+
+}
+
+function lamax(elementId) {
+
+    let max = document.getElementById(elementId).max;
+    document.getElementById(elementId).value = max;
+
+}
+
+
+
+showPlayers();
+function showPlayers() {
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            let response = xhr.responseText;
+            // console.log("receive : " + response);
+            if (response == "erreur") alert("Impossible pour le moment");
+            const object = JSON.parse(response);
+            const field = document.getElementById('playerList');
+
+            if (!field || !object) {
+                setTimeout(showPlayers, 1000);
+
+                return;
+            }
+            field.innerHTML = "";
+            let futurToAdd = "";
+            Object.keys(object).forEach(function (key, index) {
+                const element = object[key];
+                let futurToAdd = "<p onclick=\"coordo('" + element['position'] + "')\"> players " + " : <br>";
+                Object.keys(element).forEach(function (key, index) {
+                    let fieldName = key;
+                    futurToAdd += key + " " + element[key] + "<br>";
+
+                });
+                futurToAdd += "</p>";
+                field.innerHTML += futurToAdd;
+            });
+
+            setTimeout(showPlayers, 1000);
+        }
+    }
+
+    xhr.open('GET', './controller/expeditions.php?players=true', true);
+    xhr.send(null);
+
+
+}
+
+function coordo(coordone) {
+
+    document.getElementById("coordinate").value = coordone;
 
 }

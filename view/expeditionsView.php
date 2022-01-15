@@ -3,18 +3,20 @@
 function viewExpedition($expeditions)
 {
 
-    $text = "expeditions : ";
-
     if (!isset($expeditions)) {
         return "aucune expéditions de lancer ..";
     }
 
+    $arrayToReturn = array();
     $index = 1;
     foreach ($expeditions as $expedition) {
 
-        $text += "départ " + $expedition->getDateDepart();
-        $text += " arriver dans " + $expedition->getTempsPourArriver() + " s";
+        $arrayToReturn[$index]['depart'] = $expedition->getDateDepart();
+        $arrayToReturn[$index]['arriver'] = $expedition->getTempsPourArriver();
+        foreach ($expedition->getUnits() as $unit) {
+            $arrayToReturn[$index][$unit->getName()] = $unit->getNumber();
+        }
         $index = $index + 1;
     }
-    return $text;
+    return json_encode($arrayToReturn);
 }
