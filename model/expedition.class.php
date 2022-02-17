@@ -6,7 +6,7 @@ class Expedition
 
     private $id;
     private $dateDepart;
-    private $tempsPourArriver;
+    public $tempsPourArriver;
     private $playerId;
     private $position;
     private $units;

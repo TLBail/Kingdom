@@ -35,7 +35,7 @@ function onAmeliorationClick(batiment) {
 }
 
 
-// displayBatiment();
+displayBatiment();
 function displayBatiment() {
     var xhr = getXMLHttp();
     var saisie;
@@ -96,6 +96,8 @@ function displayBatiment() {
                     }
                 }
             });
+            setTimeout(displayBatiment, 1000);
+
         }
     }
 
@@ -104,7 +106,7 @@ function displayBatiment() {
 }
 
 
-
+displayRessources();
 function displayRessources() {
     var xhr = getXMLHttp();
     var foodFields = document.getElementsByClassName("foodNumber");
@@ -118,7 +120,7 @@ function displayRessources() {
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = xhr.responseText;
-            // console.log("receive : " + response);
+            console.log("receive : " + response);
             const object = JSON.parse(response);
 
             for (let index = 0; index < foodFields.length; index++) {
@@ -149,7 +151,7 @@ function displayRessources() {
                 const pierreMaxField = pierreMaxFields[index];
                 pierreMaxField.innerHTML = object['pierre']['capacity'];
             }
-
+            setTimeout(displayRessources, 1000);
         }
     }
 
@@ -170,6 +172,8 @@ function displayVillageois() {
                 const field = fields[index];
                 field.innerHTML = response;
             }
+            setTimeout(displayVillageois, 1000);
+
         }
     }
 
@@ -179,14 +183,6 @@ function displayVillageois() {
 
 
 
-
-
-var intervalId = window.setInterval(function () {
-    /// call your function here
-    displayBatiment();
-    displayRessources();
-    displayVillageois();
-}, 1000);
 
 
 

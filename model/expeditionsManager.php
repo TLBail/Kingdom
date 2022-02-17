@@ -122,6 +122,7 @@ function getPlayersForExpeditions()
     include_once($path);
 
 
+
     $sql = "SELECT * FROM USER";
     $bdd = getBDD();
 
@@ -156,7 +157,118 @@ function updateExpedition()
     $path .= "/model/user.class.php";
     include_once($path);
 
+    $path = explode("/projet", __DIR__)[0] . "/projet";
+    $path .= "/model/userManager.php";
+    include_once($path);
+
+    $path = explode("/projet", __DIR__)[0] . "/projet";
+    $path .= "/model/expedition.class.php";
+    include_once($path);
+
+    $path = explode("/projet", __DIR__)[0] . "/projet";
+    $path .= "/model/ressourceManager.php";
+    include_once($path);
+
     $user = getUser();
     $time = time();
-    $elapsedTime = (time() - strtotime($user->getLastTimeOnline())) / 3600;
+    $elapsedTime = (time() - strtotime($user->getLastTimeOnline()));
+
+    $expeditions = getExpedition();
+
+    foreach ($expeditions as $expedition) {
+
+        if ($expedition->getTempsPourArriver() < 0) return;
+
+        $path = explode("/projet", __DIR__)[0] . "/projet";
+        $path .= "/model/bddManager.php";
+        include_once($path);
+
+
+        $bdd = getBDD();
+
+        $time = $expedition->getTempsPourArriver() - $elapsedTime;
+
+        if ($time < 0) {
+            $unitofuser = $expedition->getUnits();
+
+            $poweruser = 0;
+            foreach ($unitofuser as $unit) {
+                $poweruser += $unit->getLife();
+            }
+
+            $sql2  = 'SELECT DISTINCT unitName, nbUnit FROM UNIT INNER JOIN USER ON UNIT.playerId=USER.id WHERE USER.position= ?';
+
+
+            $query = $bdd->prepare($sql2);
+            $query->execute(array($expedition->getPosition()));
+
+
+            $unitsoftarget = array();
+
+            $index = 0;
+            foreach ($query as $ligne) {
+                $index = $index + 1;
+                $unitsoftarget[$index] = new Unit(
+                    $ligne['unitName'],
+                    $ligne['nbUnit'],
+                    0,
+                    0,
+                    0
+                );
+            }
+
+            // on calcul la puissance des deux armer
+
+
+            $powertarget = 0;
+            foreach ($unitsoftarget as $unit) {
+                $powertarget += $unit->getLife();
+            }
+
+            if ($poweruser > $powertarget) {
+                $sql  = 'SELECT RESSOURCES.bois, RESSOURCES.pierre, RESSOURCES.nourriture FROM RESSOURCES INNER JOIN USER ON USER.id=RESSOURCES.playerId WHERE USER.position= ?';
+
+                $query = $bdd->prepare($sql);
+                $query->execute(array($expedition->getPosition()));
+
+                $ressources = getRessources();
+
+
+                foreach ($ressources as $ressource) {
+                    if (strcmp($ressource->getType(), "bois")) {
+                        $bois =  $ressource->getAmount();
+                    }
+
+                    if (strcmp($ressource->getType(), "pierre")) {
+                        $pierre =  $ressource->getAmount();
+                    }
+
+                    if (strcmp($ressource->getType(), "nourriture")) {
+                        $nourriture =  $ressource->getAmount();
+                    }
+                }
+
+                foreach ($query as $ligne) {
+                    $bois += $ligne['bois'];
+                    $pierre += $ligne['pierre'];
+                    $nourriture += $ligne['nourriture'];
+                }
+
+                $sql  = 'UPDATE `RESSOURCES` SET `bois` = ?, `pierre` = ?, `nourriture` = ? WHERE RESSOURCES.playerId = ?';
+
+                $query = $bdd->prepare($sql);
+                $query->execute(array($bois, $pierre, $nourriture, $user->getId()));
+
+
+                $sql  = 'UPDATE `RESSOURCES` SET `bois` = ?, `pierre` = ?, `nourriture` = ? WHERE RESSOURCES.playerId = (SELECT id FROM USER WHERE position= ?)';
+
+                $query = $bdd->prepare($sql);
+                $query->execute(array(0, 0, 0, $expedition->getPosition()));
+            }
+        }
+
+        $sql  = 'UPDATE `EXPEDITIONS` SET `tempsPourArriver` = ? WHERE `EXPEDITIONS`.`id` = ?';
+        $query = $bdd->prepare($sql);
+        $query->execute(array($time, $expedition->getId()));
+    }
 }

@@ -450,3 +450,55 @@ li {
 
     background-color: rgb(62, 121, 121);
 }
+
+.chatbutton{
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 20;
+    background-color: #ffffff6b;
+    padding: 2em;
+    height: 74px;
+    border-radius: 10px 0 0 10px;
+    color: black;
+    transition: all ease 1s;
+}
+
+
+.chatbutton:hover{
+    background-color: #ffffff96;
+
+}
+
+
+.chatbutton:active{
+    background-color: #ffffffde;
+
+}
+
+
+.onchat{
+    width: 60%;
+    height: 60%;
+}
+
+#mainchat{
+
+    overflow-y: scroll;
+    height: 80%;
+    position: absolute;
+}
+
+#mainchat ul li{
+    display: block;
+    margin: 1em;
+    width: 100%;
+}
+
+
+.chatbox{
+    bottom: 0;
+position: absolute;
+margin-bottom: 0;
+}

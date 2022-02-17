@@ -1,7 +1,3 @@
-var intervalId2 = window.setInterval(function () {
-    /// call your function here
-    updateUnitCost();
-}, 1000);
 updateUnitCost();
 
 
@@ -118,6 +114,7 @@ function updateUnitCost() {
                     elementToAddMax.max = object[unitName]['number'];
                 }
             });
+            setTimeout(updateUnitCost, 1000);
         }
     }
 

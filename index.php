@@ -63,6 +63,10 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'true') {
 
 <body>
 
+    <div id="chatcontainer" class="chatbutton" onclick="showchat()">
+        chat
+    </div>
+
 
     <div class='parent'>
         <div class='div1'>
@@ -72,6 +76,7 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'true') {
             <div id="PageContainer">
                 <?php echo file_get_contents("mainPage.html") ?>
             </div>
+
         </div>
         <div class='div2'>
             <article class="dropdownWrapper">
@@ -155,6 +160,7 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'true') {
             <script type='text/javascript' src='./ressource/javascript/unitPanel.js' async defer></script>
             <script type='text/javascript' src='./ressource/javascript/batimentPanel.js' async defer></script>
             <script type='text/javascript' src='./ressource/javascript/expeditions.js' async defer></script>
+            <script type='text/javascript' src='./ressource/javascript/chatscript.js' async defer></script>
 	    	<script type='text/javascript' src='./ressource/javascript/canvas.js'></script>");
     }
     ?>
