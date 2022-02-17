@@ -197,6 +197,7 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'true') {
                         imgLoading.addEventListener('load', (event) => {
                             finish();
                         });
+                        setTimeout(finishWhatever, 1000);       
                     }
 
 
@@ -216,12 +217,21 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'true') {
 
         function finish() {
             var loading = document.getElementsByClassName("animationLoading")[0];
-
+            console.log("remaining image" + remainingImg);
             remainingImg--;
             if (remainingImg <= 0) {
                 loading.classList.remove("on");
                 loading.classList.add("off");
             }
+        }
+
+        function finishWhatever(){
+            if(remainingImg <=  0) return;
+            console.log('finishing');
+            var loading = document.getElementsByClassName("animationLoading")[0];
+            remainingImg = 0;
+            loading.classList.remove("on");
+            loading.classList.add("off");
         }
     </script>";
     </script>

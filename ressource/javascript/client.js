@@ -120,7 +120,7 @@ function displayRessources() {
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = xhr.responseText;
-            console.log("receive : " + response);
+            // console.log("receive : " + response);
             const object = JSON.parse(response);
 
             for (let index = 0; index < foodFields.length; index++) {

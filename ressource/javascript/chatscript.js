@@ -1,5 +1,5 @@
 var working = false;
-console.log("salut");
+// console.log("salut");
 function onLogin() {
     console.log("login..");
     let targetURL = './session.php';
