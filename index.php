@@ -59,6 +59,7 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'true') {
     <title>Projet</title>
     <link rel='stylesheet' href='style.css'>
     <link rel='stylesheet' href='ressource/indexStyle.css'>
+    <link rel='stylesheet' href='ressource/classement.css'>
 </head>
 
 <body>
@@ -161,10 +162,13 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'true') {
             <script type='text/javascript' src='./ressource/javascript/batimentPanel.js' async defer></script>
             <script type='text/javascript' src='./ressource/javascript/expeditions.js' async defer></script>
             <script type='text/javascript' src='./ressource/javascript/chatscript.js' async defer></script>
+            <script type='text/javascript' src='./ressource/javascript/classement.js' async defer></script>
 	    	<script type='text/javascript' src='./ressource/javascript/canvas.js'></script>");
     }
     ?>
     <script defer>
+        const event = new Event('changePage');
+
         function goto(page) {
             window.location.href = page;
         }
@@ -184,6 +188,7 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'true') {
                 if (xhr.readyState === 4) {
                     // console.log(xhr.responseText);
                     container.innerHTML = xhr.responseText;
+                    document.body.dispatchEvent(event);
 
 
                     let imgLoadings = container.getElementsByTagName('img');
@@ -197,7 +202,7 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'true') {
                         imgLoading.addEventListener('load', (event) => {
                             finish();
                         });
-                        setTimeout(finishWhatever, 1000);       
+                        setTimeout(finishWhatever, 1000);
                     }
 
 
@@ -225,8 +230,8 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'true') {
             }
         }
 
-        function finishWhatever(){
-            if(remainingImg <=  0) return;
+        function finishWhatever() {
+            if (remainingImg <= 0) return;
             console.log('finishing');
             var loading = document.getElementsByClassName("animationLoading")[0];
             remainingImg = 0;
