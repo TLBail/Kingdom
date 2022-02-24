@@ -489,3 +489,54 @@ li {
 position: absolute;
 margin-bottom: 0;
 }
+
+
+.main-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 25vw;
+    height: 25vw;
+}
+.map-grid{
+    display: grid;
+    grid-template: repeat(10, 1fr) / repeat(10, 1fr);
+    grid-column: 2;
+    grid-row: 2;
+    margin: auto;
+    width: 20vw;
+    height: 20vw;
+}
+
+.map-grid-item{
+    border: 0.01px solid black;
+    text-align: center;
+}
+.top-btn{
+    grid-column: 2;
+    margin: 0 auto;
+}
+.left-btn{
+    grid-column: 1;
+    grid-row: 2;
+    margin: auto 0;
+}
+.right-btn{
+    grid-column: 3;
+    grid-row: 2;
+    margin: auto 0;
+}
+.down-btn{
+    grid-column: 2;
+    grid-row: 3;
+    margin: 0 auto;
+}
+.btn{
+    background-color: red;
+    height: 100%;
+    width: 100%;
+    border: none;
+}
+.btn:hover{
+    background-color: blue;
+}
