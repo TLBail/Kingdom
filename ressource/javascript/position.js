@@ -17,47 +17,40 @@ function createElement(i, j, playersCoordinate){
 document.body.addEventListener("changePage", ()=>{
     let x = 0;
     let y = 0;
-    let playersCoordinate;
-    getPlayerCoordinateList(playersCoordinate);
-    populateMapGrid(x, y, playersCoordinate);
+    getPlayerCoordinateList(x, y);
     document.querySelector(".top-btn").addEventListener("click", ()=>{
         x-=10
-        getPlayerCoordinateList(playersCoordinate)
-        populateMapGrid(x,y,playersCoordinate)
+        getPlayerCoordinateList(x, y)
     })
     document.querySelector(".left-btn").addEventListener("click", ()=>{
         y-=10
-        getPlayerCoordinateList(playersCoordinate)
-        populateMapGrid(x,y,playersCoordinate)
+        getPlayerCoordinateList(x, y)
     })
     document.querySelector(".right-btn").addEventListener("click", ()=>{
         y+=10
-        getPlayerCoordinateList(playersCoordinate)
-        populateMapGrid(x,y,playersCoordinate)
+        getPlayerCoordinateList(x, y)
     })
     document.querySelector(".down-btn").addEventListener("click", ()=>{
         x+=10
-        getPlayerCoordinateList(playersCoordinate)
-        populateMapGrid(x,y,playersCoordinate)
+        getPlayerCoordinateList(x, y)
     })
 }, false)
 
-
-function getPlayerCoordinateList(playersCoordinate){
+function getPlayerCoordinateList(x, y){
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = ()=>{
         if(xhr.readyState == 4 && xhr.status == 200)
-            playersCoordinate = processResponse(xhr.responseText)
+            processResponse(xhr.responseText, x, y)
     }
     xhr.open("GET", "./controller/map.php?")
     xhr.send(null)
 }
 
-function processResponse(response){
+function processResponse(response, x, y){
     const playerListJSON = JSON.parse(response);
     let playersCoordinate = [];
     Object.keys(playerListJSON).forEach((key, index)=>{
       playersCoordinate.push(playerListJSON[key]['position'])  
     })
-    return playersCoordinate
+    populateMapGrid(x, y, playersCoordinate)
 }
