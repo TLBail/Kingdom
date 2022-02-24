@@ -678,14 +678,9 @@ li {
 }
 
 .btn {
-  background-color: red;
   height: 100%;
   width: 100%;
   border: none;
-}
-
-.btn:hover {
-  background-color: blue;
 }
 
 .PageContainer {

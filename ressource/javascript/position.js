@@ -14,26 +14,28 @@ function createElement(i, j, playersCoordinate){
     return item
 }
 
+document.body.addEventListener("changePage", ()=>{
+    let x = 0;
+    let y = 0;
+    populateMapGrid(x, y);
+    document.querySelector(".top-btn").addEventListener("click", ()=>{
+        x-=10
+        populateMapGrid(x,y,getPlayerCoordinateList())
+    })
+    document.querySelector(".left-btn").addEventListener("click", ()=>{
+        y-=10
+        populateMapGrid(x,y,getPlayerCoordinateList())
+    })
+    document.querySelector(".right-btn").addEventListener("click", ()=>{
+        y+=10
+        populateMapGrid(x,y,getPlayerCoordinateList())
+    })
+    document.querySelector(".down-btn").addEventListener("click", ()=>{
+        x+=10
+        populateMapGrid(x,y,getPlayerCoordinateList())
+    })
+})
 
-let x = 0;
-let y = 0;
-populateMapGrid(x, y);
-document.querySelector(".top-btn").addEventListener("click", ()=>{
-    x-=10
-    populateMapGrid(x,y,getPlayerCoordinateList())
-})
-document.querySelector(".left-btn").addEventListener("click", ()=>{
-    y-=10
-    populateMapGrid(x,y,getPlayerCoordinateList())
-})
-document.querySelector(".right-btn").addEventListener("click", ()=>{
-    y+=10
-    populateMapGrid(x,y,getPlayerCoordinateList())
-})
-document.querySelector(".down-btn").addEventListener("click", ()=>{
-    x+=10
-    populateMapGrid(x,y,getPlayerCoordinateList())
-})
 
 function getPlayerCoordinateList(){
     let xhr = new XMLHttpRequest();
