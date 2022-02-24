@@ -17,33 +17,37 @@ function createElement(i, j, playersCoordinate){
 document.body.addEventListener("changePage", ()=>{
     let x = 0;
     let y = 0;
-    populateMapGrid(x, y, getPlayerCoordinateList());
+    let playersCoordinate;
+    getPlayerCoordinateList(playersCoordinate);
+    populateMapGrid(x, y, playersCoordinate);
     document.querySelector(".top-btn").addEventListener("click", ()=>{
         x-=10
-        populateMapGrid(x,y,getPlayerCoordinateList())
+        getPlayerCoordinateList(playersCoordinate)
+        populateMapGrid(x,y,playersCoordinate)
     })
     document.querySelector(".left-btn").addEventListener("click", ()=>{
         y-=10
-        populateMapGrid(x,y,getPlayerCoordinateList())
+        getPlayerCoordinateList(playersCoordinate)
+        populateMapGrid(x,y,playersCoordinate)
     })
     document.querySelector(".right-btn").addEventListener("click", ()=>{
         y+=10
-        populateMapGrid(x,y,getPlayerCoordinateList())
+        getPlayerCoordinateList(playersCoordinate)
+        populateMapGrid(x,y,playersCoordinate)
     })
     document.querySelector(".down-btn").addEventListener("click", ()=>{
         x+=10
-        populateMapGrid(x,y,getPlayerCoordinateList())
+        getPlayerCoordinateList(playersCoordinate)
+        populateMapGrid(x,y,playersCoordinate)
     })
 }, false)
 
 
-function getPlayerCoordinateList(){
+function getPlayerCoordinateList(playersCoordinate){
     let xhr = new XMLHttpRequest();
-    let playersCoordinate;
     xhr.onreadystatechange = ()=>{
         if(xhr.readyState == 4 && xhr.status == 200)
             playersCoordinate = processResponse(xhr.responseText)
-            return playersCoordinate
     }
     xhr.open("GET", "./controller/map.php?")
     xhr.send(null)
