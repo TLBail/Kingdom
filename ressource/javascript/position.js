@@ -53,7 +53,7 @@ function processResponse(response, x, y){
     Object.keys(playerListJSON).forEach((key, index)=>{
         coordinateString = playerListJSON[key]['position']
         coordinateX = parseInt(coordinateString.slice(0, coordinateString.length/2))
-        coordinateY = parseInt(coordinateString.slice(coordinateString.length/2+1, coordinateString.length))
+        coordinateY = parseInt(coordinateString.slice(coordinateString.length/2, coordinateString.length))
         coordinate = [coordinateX, coordinateY]
         playersCoordinate.push(coordinate)  
     })
