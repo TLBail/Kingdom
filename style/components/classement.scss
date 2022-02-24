@@ -1,0 +1,19 @@
+.classement {
+    width: 100%;
+    height: 100%;   
+}
+
+#tableauClassement{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+#tableauClassement table{
+    padding: 10em;
+    background-image: $parcheminUrl;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: black;
+}

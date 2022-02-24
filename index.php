@@ -57,9 +57,7 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'true') {
 
 <head>
     <title>Projet</title>
-    <link rel='stylesheet' href='style.css'>
-    <link rel='stylesheet' href='ressource/indexStyle.css'>
-    <link rel='stylesheet' href='ressource/classement.css'>
+    <link rel='stylesheet' href='style/dist/index.css'>
 </head>
 
 <body>

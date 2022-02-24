@@ -1,0 +1,520 @@
+article h1 {
+  width: 100%;
+}
+
+section {
+  background-color: rgba(0, 0, 0, 0.061);
+  margin: 2em;
+}
+
+section:hover {
+  background-color: rgba(0, 0, 0, 0.161);
+}
+
+section:active {
+  background-color: rgba(0, 0, 0, 0.261);
+}
+
+section h3 {
+  font-weight: normal;
+}
+
+section:active h3 {
+  font-weight: bold;
+}
+
+section img {
+  display: inline;
+  width: 150%;
+  height: 150%;
+  max-width: 100px;
+  max-height: 100px;
+}
+
+#ressourceBar .boisNumber {
+  color: white;
+  padding: 0;
+  margin: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 85px;
+  height: 20px;
+  width: 100px;
+}
+
+#ressourceBar .foodNumber {
+  padding: 0;
+  margin: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 80px;
+  height: 20px;
+  width: 100px;
+}
+
+#ressourceBar .pierreNumber {
+  padding: 0;
+  margin: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 80px;
+  height: 20px;
+  width: 100px;
+}
+
+#ressourceBar .villageoisNumber {
+  padding: 0;
+  margin: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 80px;
+  height: 20px;
+  width: 100px;
+}
+
+#ressourceBar {
+  background-image: url("./ressourcebar.png");
+  background-size: contain;
+  width: 715px;
+  height: 96px;
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 15px;
+  color: white;
+}
+
+li {
+  display: block;
+  float: left;
+  position: relative;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdownWrapper li .dropdown {
+  opacity: 0;
+  visibility: hidden;
+  left: 0;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 0px;
+  background-color: unset;
+  background-image: url("./tileBack.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  color: white;
+  z-index: 3;
+}
+
+.dropdownWrapper li .dropdown > * {
+  margin-left: 2em;
+}
+
+.dropdownWrapper li:hover > .dropdown,
+.dropdownWrapper li .dropdown:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+  height: 300px;
+}
+
+.batimentPanel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 450px;
+  background-image: url("./tileBack.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  -webkit-animation-duration: 0.8s;
+          animation-duration: 0.8s;
+  -webkit-animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+          animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  -webkit-animation-name: slidein;
+          animation-name: slidein;
+  z-index: 2;
+}
+
+.batimentPanel > * {
+  margin-left: 2em;
+}
+
+@-webkit-keyframes slidein {
+  from {
+    height: 0px;
+    top: 450px;
+    color: rgba(255, 255, 255, 0);
+  }
+  to {
+    height: 450px;
+    top: 0;
+    color: white;
+  }
+}
+
+@keyframes slidein {
+  from {
+    height: 0px;
+    top: 450px;
+    color: rgba(255, 255, 255, 0);
+  }
+  to {
+    height: 450px;
+    top: 0;
+    color: white;
+  }
+}
+
+.batimentPanel .subFlexPanel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 250px;
+}
+
+.batimentPanel .subFlexPanel img {
+  width: auto;
+  height: 100%;
+}
+
+.batimentPanel .infoBlocPanel {
+  width: 100%;
+  margin: 2em;
+}
+
+.infoPanel {
+  width: 90%;
+  margin-top: 2em;
+  border: 2px solid rgba(255, 255, 255, 0.116);
+  border-radius: 2px;
+  height: 58px;
+  padding: 2px;
+  overflow: auto;
+}
+
+.batimentPanel .headPanel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  padding-top: 10px;
+}
+
+.batimentPanel .headPanel h1 {
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+}
+
+.batimentPanel .headPanel button {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-right: 50px;
+}
+
+.batimentPanel .ressourceCostPanel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  padding-right: 2em;
+}
+
+.batimentPanel .ressourceCostPanel .ressourceBlock {
+  display: inline-block;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 80px;
+  margin-left: 20px;
+  margin-right: 2em;
+}
+
+.batimentPanel .ressourceCostPanel .ressourceBlock span {
+  display: block;
+  text-align: center;
+  width: 80px;
+}
+
+.batimentPanel .ressourceCostPanel button {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-right: 2em;
+}
+
+#PageContainer #canvasBatiments {
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 450px;
+  display: block;
+}
+
+#PageContainer .itemPanelContainer {
+  position: relative;
+  z-index: 0;
+  left: 0;
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+}
+
+.itemPanelContainer > * {
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 2px;
+  width: 100%;
+  height: 200%;
+  padding: 0;
+  position: relative;
+}
+
+.itemPanelContainer > * h3 {
+  position: relative;
+  bottom: 0;
+  margin: 0;
+  margin-top: 150px;
+  background-color: #463d3d61;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 1em;
+  border-radius: 0 1em 1em 0;
+}
+
+.itemPanelContainer > * input {
+  width: 40%;
+  margin: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline;
+}
+
+.loadingBlack {
+  background-color: #000000b3;
+  width: 100%;
+  height: 0%;
+  top: 0;
+  position: absolute;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.sendExpeditionsBoxWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 5vw;
+}
+
+.animationLoading {
+  background-color: black;
+  background-image: url("https://c.tenor.com/YRq8y_V1cxIAAAAj/spirit-pixel.gif");
+  z-index: 3;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  /* transition: all 1s ease; */
+}
+
+.on {
+  -webkit-animation: show 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+          animation: show 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  visibility: visible;
+}
+
+.off {
+  -webkit-animation: unshow 1s ease;
+          animation: unshow 1s ease;
+  visibility: hidden;
+}
+
+@-webkit-keyframes show {
+  0% {
+    left: 0;
+    visibility: visible;
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes show {
+  0% {
+    left: 0;
+    visibility: visible;
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@-webkit-keyframes unshow {
+  0% {
+    visibility: visible;
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    left: 100%;
+    visibility: hidden;
+  }
+}
+
+@keyframes unshow {
+  0% {
+    visibility: visible;
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    left: 100%;
+    visibility: hidden;
+  }
+}
+
+.expeditionsList {
+  margin-top: 50px;
+  width: 100%;
+  height: 300px;
+  display: block;
+  background-image: url("./tileBack.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.expeditionsList h1 {
+  padding-top: 30px;
+  margin-left: 30px;
+}
+
+#unitePanelFon {
+  width: 100%;
+  height: 450px;
+  display: block;
+  background-image: url("./image/war.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+#expeditionsListContainer {
+  overflow-y: scroll;
+  height: 200px;
+  width: 90%;
+}
+
+.expedition2List {
+  margin-top: 50px;
+  background-image: url("./tileBack.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 400px;
+  display: block;
+  padding: 1em;
+  padding-bottom: 50px;
+}
+
+#playerList {
+  margin-left: 30px;
+  margin-top: 30px;
+  overflow: scroll;
+  height: 400px;
+}
+
+#playerList p {
+  background-color: azure;
+  color: black;
+  border-radius: 10px;
+  padding: 1em;
+  width: 80%;
+}
+
+#playerList p:hover {
+  background-color: #9fc3c3;
+}
+
+#playerList p:active {
+  background-color: #3e7979;
+}
+
+.chatbutton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 20;
+  background-color: #ffffff6b;
+  padding: 2em;
+  height: 74px;
+  border-radius: 10px 0 0 10px;
+  color: black;
+  -webkit-transition: all ease 1s;
+  transition: all ease 1s;
+}
+
+.chatbutton:hover {
+  background-color: #ffffff96;
+}
+
+.chatbutton:active {
+  background-color: #ffffffde;
+}
+
+.onchat {
+  width: 60%;
+  height: 60%;
+}
+
+#mainchat {
+  overflow-y: scroll;
+  height: 80%;
+  position: absolute;
+}
+
+#mainchat ul li {
+  display: block;
+  margin: 1em;
+  width: 100%;
+}
+
+.chatbox {
+  bottom: 0;
+  position: absolute;
+  margin-bottom: 0;
+}
+/*# sourceMappingURL=content.css.map */

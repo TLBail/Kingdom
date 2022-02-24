@@ -20,7 +20,7 @@ include("../model/userManager.php");
     <title>Log in</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../ressource/style.css">
+    <link rel="stylesheet" href="/projet/style/dist/loginPage.css">
     <script src="../ressource/script.js" async defer></script>
 
 </head>

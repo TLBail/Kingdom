@@ -1,0 +1,142 @@
+$plankUrl: url("/projet/ressource/plank.png");
+$backgroundUrl: url("/projet/ressource/background.jpg");
+$parcheminUrl: url("/projet/ressource/fond_classement.png");
+$ressourceBarUrl: url("/projet/ressource/ressourcebar.png");
+$tileBlackUrl: url("/projet/ressource/tileBack.png");
+$horseRunning: url("https://c.tenor.com/YRq8y_V1cxIAAAAj/spirit-pixel.gif");
+$warUrl: url("/projet/ressource/image/war.jpg");
+
+$green: #0fae00ff;
+$brown: #564138ff;
+$gray: #6b818cff;
+$white: #fffdfdff;
+$yellow: #f0e100ff;
+
+
+@import "./components/structure";
+@import "./components/classement";
+@import "./components/content";
+
+
+body {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	overflow: hidden;
+    color: white;
+}
+
+
+
+
+.sessionInfo {
+	background-image: $plankUrl;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 100%;
+	height: 18vh;
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	justify-content: center;
+	color: var(--white);
+	font-size: 1.6em;
+	font-weight: bold;
+}
+
+.sessionInfo > div > form > input[type="submit"],
+.sessionInfo > div > button {
+	filter: grayscale(100%);
+	font-size: large;
+}
+
+.pageButtonsHolder {
+	position: relative;
+	top: 2vh;
+	width: 100%;
+	height: max-content;
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	align-content: stretch;
+	justify-content: center;
+	gap: 20px;
+}
+
+.pageButton {
+	background-position: center center;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	width: 100%;
+	min-height: 130px;
+	align-self: center;
+	flex-basis: 100%;
+}
+
+button,
+input[type="submit"] {
+	min-width: 150px;
+	min-height: 50px;
+	background: none;
+	background-image: $plankUrl;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	border: none;
+	color: var(--white);
+	font-size: 1.2em;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+button:disabled {
+	filter: grayscale(100%);
+}
+
+button:disabled:hover {
+	cursor: not-allowed;
+}
+
+.loginButton,
+.registerButton {
+	width: 150px;
+	height: 50px;
+	border: none;
+	margin: 50px;
+	/* transition: all 0.2s ease-in-out; */
+}
+
+
+article {
+	height: 100%;
+	width: 100%;
+}
+
+article > div {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: row wrap;
+}
+
+section {
+	background-color: rgba(0, 0, 0, 0.061);
+	margin: 1em;
+}
+
+section:hover {
+	background-color: rgba(0, 0, 0, 0.161);
+}
+
+section:active {
+	background-color: rgba(0, 0, 0, 0.261);
+}
+
+section h3 {
+	font-weight: normal;
+}
+
+section:active h3 {
+	font-weight: bold;
+}

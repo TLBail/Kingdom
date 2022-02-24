@@ -1,15 +1,3 @@
-body{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin: 0;
-}
-
-/* article {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: row wrap;
-} */
-
 article h1{
     width: 100%;
 }
@@ -92,7 +80,7 @@ section img{
     width: 100px;
 }
 #ressourceBar{
-    background-image: url("./ressourcebar.png");
+    background-image: $ressourceBarUrl;
     background-size: contain;
     width: 715px;
     height: 96px;
@@ -124,7 +112,7 @@ li {
     width: 100%;
     height: 0px;
     background-color: unset;
-    background-image: url("./tileBack.png");
+    background-image: $tileBlackUrl;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     transition: all 0.5s ease;
@@ -153,7 +141,7 @@ li {
     top: 0;
     width: 100%;
     height: 450px;
-    background-image: url("./tileBack.png");
+    background-image: $tileBlackUrl;
     background-size: 100% 100%;
     background-repeat: no-repeat;
    
@@ -328,7 +316,7 @@ li {
 
 .animationLoading{
     background-color: black;
-    background-image: url("https://c.tenor.com/YRq8y_V1cxIAAAAj/spirit-pixel.gif");
+    background-image: $horseRunning;
     z-index: 3;
     position: absolute;
     margin: 0;
@@ -337,7 +325,6 @@ li {
     height: 100%;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    /* transition: all 1s ease; */
 
 }
 
@@ -382,7 +369,7 @@ li {
     width: 100%;
 	height: 300px;
 	display: block;
-    background-image: url("./tileBack.png");
+    background-image: $tileBlackUrl;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     
@@ -398,7 +385,7 @@ li {
     width: 100%;
 	height: 450px;
 	display: block;
-    background-image: url("./image/war.jpg");
+    background-image: $warUrl;
     background-size: 100% 100%;
     background-repeat: no-repeat;
 
@@ -415,7 +402,7 @@ li {
 
     margin-top: 50px;
     
-    background-image: url("./tileBack.png");
+    background-image: $tileBlackUrl;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     width: 100%;
