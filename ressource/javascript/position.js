@@ -1,6 +1,7 @@
 function populateMapGrid(x, y, playersCoordinate) {
     let mapGrid = document.querySelector(".map-grid");
     mapGrid.innerHTML = ""
+    console.log(x, y);
     for (let i = 0; i < 10; i++)
         for(let j = 0; j < 10; j++)
             mapGrid.appendChild(createElement(x+i, y+j, playersCoordinate));
