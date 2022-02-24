@@ -43,10 +43,10 @@ function getPlayerCoordinateList(){
     xhr.onreadystatechange = ()=>{
         if(xhr.readyState == 4 && xhr.status == 200)
             playersCoordinate = processResponse(xhr.responseText)
+            return playersCoordinate
     }
     xhr.open("GET", "./controller/map.php?")
     xhr.send(null)
-    return playersCoordinate
 }
 
 function processResponse(response){
