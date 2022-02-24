@@ -27,7 +27,7 @@ function endsWith($string, $endString)
 }
 
 //list every .php file in the folder
-$phpFiles = glob('./view/*.{html}', GLOB_BRACE);
+$phpFiles = glob('./pages/*.{html}', GLOB_BRACE);
 
 //remove this file from the list
 $phpFiles = array_filter($phpFiles, function ($file) {
