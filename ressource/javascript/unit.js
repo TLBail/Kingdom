@@ -1,5 +1,6 @@
 function addUnit(unitName) {
-    let nbUnit = document.getElementById(unitName + 'ToBuy').value;
+
+    let nbUnit = document.getElementById(unitName + 'ToBuy').valueAsNumber;
     console.log("ajout de " + nbUnit + unitName);
     console.log(unitName + 'QuiArrive');
     var field = document.getElementById(unitName + 'QuiArrive');
