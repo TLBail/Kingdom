@@ -8,7 +8,7 @@ include_once($path);
 //get results from database
 $db = getBDD();
 
-$sql = "SELECT username, (SUM(level)*100) AS score FROM USER INNER JOIN BATIMENT ON USER.id = BATIMENT.playerId GROUP BY username";
+$sql = "SELECT username, (SUM(level)*100) AS score FROM USER INNER JOIN BATIMENT ON USER.id = BATIMENT.playerId GROUP BY username ORDER BY score DESC";
 
 
 $array = array();
