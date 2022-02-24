@@ -52,9 +52,9 @@ function processResponse(response, x, y){
     let playersCoordinate = [];
     Object.keys(playerListJSON).forEach((key, index)=>{
         coordinateString = playerListJSON[key]['position']
-        coordinateX = parseInt(coordinateString.slice(0, coordinateString.length/2))
-        coordinateY = parseInt(coordinateString.slice(coordinateString.length/2, coordinateString.length))
-        coordinate = {coordinateX, coordinateY}
+        let i = parseInt(coordinateString.slice(0, coordinateString.length/2))
+        let j = parseInt(coordinateString.slice(coordinateString.length/2, coordinateString.length))
+        coordinate = {i, j}
         playersCoordinate.push(coordinate)  
     })
     populateMapGrid(x, y, playersCoordinate)
