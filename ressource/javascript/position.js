@@ -4,7 +4,7 @@ function populateMapGrid(x, y, playersCoordinate) {
     console.log(x, y);
     for (let i = 0; i < 10; i++)
         for(let j = 0; j < 10; j++)
-            mapGrid.appendChild(createElement(x+i, y+j, playersCoordinate));
+            mapGrid.appendChild(createElement(x+j, y+i, playersCoordinate));
 }
 
 function createElement(i, j, playersCoordinate){
@@ -20,19 +20,19 @@ document.body.addEventListener("changePage", ()=>{
     let y = 0;
     getPlayerCoordinateList(x, y);
     document.querySelector(".top-btn").addEventListener("click", ()=>{
-        x-=10
-        getPlayerCoordinateList(x, y)
-    })
-    document.querySelector(".left-btn").addEventListener("click", ()=>{
         y-=10
         getPlayerCoordinateList(x, y)
     })
+    document.querySelector(".left-btn").addEventListener("click", ()=>{
+        x-=10
+        getPlayerCoordinateList(x, y)
+    })
     document.querySelector(".right-btn").addEventListener("click", ()=>{
-        y+=10
+        x+=10
         getPlayerCoordinateList(x, y)
     })
     document.querySelector(".down-btn").addEventListener("click", ()=>{
-        x+=10
+        y+=10
         getPlayerCoordinateList(x, y)
     })
 }, false)
