@@ -70,6 +70,8 @@ function getExpedition()
 function addnewExpedition($units, $coo)
 {
 
+
+
     if (!isset($units)) {
         echo "no unit";
         return;
@@ -187,6 +189,11 @@ function updateExpedition()
 
     $expeditions = getExpedition();
 
+
+
+    // $myfile = fopen("../logs.txt", "a") or die("Unable to open file!");
+
+
     foreach ($expeditions as $expedition) {
 
         if ($expedition->getTempsPourArriver() < 0) return;
@@ -201,14 +208,18 @@ function updateExpedition()
         $time = $expedition->getTempsPourArriver() - $elapsedTime;
 
         if ($time < 0) {
+
+            // $txt = "expeditions " . $expedition->getId() . " terminer \n";
+            // fwrite($myfile, $txt);
+
             $unitofuser = $expedition->getUnits();
 
             $poweruser = 0;
             foreach ($unitofuser as $unit) {
-                $poweruser += $unit->getLife();
+                $poweruser += $unit->getLife() *  $unit->getNumber();
             }
 
-            $sql2  = 'SELECT DISTINCT unitName, nbUnit FROM UNIT INNER JOIN USER ON UNIT.playerId=USER.id WHERE USER.position= ?';
+            $sql2  = 'SELECT DISTINCT unitName, nbUnit FROM UNIT INNER JOIN USER ON UNIT.playerId=USER.id WHERE USER.position=?';
 
 
             $query = $bdd->prepare($sql2);
@@ -234,10 +245,13 @@ function updateExpedition()
 
             $powertarget = 0;
             foreach ($unitsoftarget as $unit) {
-                $powertarget += $unit->getLife();
+                $powertarget += $unit->getLife() * $unit->getNumber();
             }
 
+
+
             if ($poweruser > $powertarget) {
+
                 $sql  = 'SELECT RESSOURCES.bois, RESSOURCES.pierre, RESSOURCES.nourriture FROM RESSOURCES INNER JOIN USER ON USER.id=RESSOURCES.playerId WHERE USER.position= ?';
 
                 $query = $bdd->prepare($sql);
@@ -266,16 +280,27 @@ function updateExpedition()
                     $nourriture += $ligne['nourriture'];
                 }
 
+                //on ajoute au joueur les ressources gagné
                 $sql  = 'UPDATE `RESSOURCES` SET `bois` = ?, `pierre` = ?, `nourriture` = ? WHERE RESSOURCES.playerId = ?';
 
-                $query = $bdd->prepare($sql);
-                $query->execute(array($bois, $pierre, $nourriture, $user->getId()));
+                try {
+                    $query = $bdd->prepare($sql);
+                    $query->execute(array($bois, $pierre, $nourriture, $user->getId()));
 
+                    //on retire au joueur attaqué les ressource perdu (tout)
+                    $sql  = 'UPDATE `RESSOURCES` SET `bois` = ?, `pierre` = ?, `nourriture` = ? WHERE RESSOURCES.playerId = (SELECT id FROM USER WHERE position= ?)';
 
-                $sql  = 'UPDATE `RESSOURCES` SET `bois` = ?, `pierre` = ?, `nourriture` = ? WHERE RESSOURCES.playerId = (SELECT id FROM USER WHERE position= ?)';
+                    $query = $bdd->prepare($sql);
+                    $query->execute(array(0, 0, 0, $expedition->getPosition()));
+                } catch (PDOException $exception) {
+                    // $txt = "expeditions " . $expedition->getId() . " erreur  " . $exception->getMessage() . "\n";
+                    // fwrite($myfile, $txt);
 
-                $query = $bdd->prepare($sql);
-                $query->execute(array(0, 0, 0, $expedition->getPosition()));
+                    return $exception->getMessage();
+                }
+
+                // $txt = "expeditions " . $expedition->getId() . " ressource enlever \n";
+                // fwrite($myfile, $txt);
             }
         }
 
@@ -283,4 +308,6 @@ function updateExpedition()
         $query = $bdd->prepare($sql);
         $query->execute(array($time, $expedition->getId()));
     }
+
+    // fclose($myfile);
 }
