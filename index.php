@@ -162,7 +162,7 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'true') {
             <script type='text/javascript' src='./ressource/javascript/chatscript.js' async defer></script>
             <script type='text/javascript' src='./ressource/javascript/classement.js' async defer></script>
 	    	<script type='text/javascript' src='./ressource/javascript/canvas.js'></script>
-            <script type='text/javascript' src='./ressource/javascript/position.js async defer></script>");
+            <script type='text/javascript' src='./ressource/javascript/position.js' async defer></script>");
     }
     ?>
     <script defer>
