@@ -8,8 +8,8 @@ function populateMapGrid(x, y, playersCoordinate) {
 
 function createElement(i, j, playersCoordinate){
     item = document.createElement("div")
-    console.log(playersCoordinate.includes(i+j), i, j)
-    if(playersCoordinate.includes(i+j))
+    console.log(playersCoordinate, i, j)
+    if(playersCoordinate.includes([i, j]))
         item.innerHTML = i + ", " + j
     item.classList.add("map-grid-item")
     return item
@@ -51,7 +51,12 @@ function processResponse(response, x, y){
     const playerListJSON = JSON.parse(response);
     let playersCoordinate = [];
     Object.keys(playerListJSON).forEach((key, index)=>{
-      playersCoordinate.push(parseInt(playerListJSON[key]['position']))  
+        coordinateString = playerListJSON[key]['position']
+        coordinateX = parseInt(coordinateString.slice(0, coordinateString.length/2))
+        coordinateY = parseInt(coordinateString.slice(coordinateString.length/2+1, coordinateString.length))
+        coordinate = [coordinateX, coordinateY]
+        playersCoordinate.push(coordinate)  
     })
     populateMapGrid(x, y, playersCoordinate)
 }
+
