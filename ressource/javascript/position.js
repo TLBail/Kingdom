@@ -17,7 +17,7 @@ function createElement(i, j, playersCoordinate){
 document.body.addEventListener("changePage", ()=>{
     let x = 0;
     let y = 0;
-    populateMapGrid(x, y);
+    populateMapGrid(x, y, getPlayerCoordinateList());
     document.querySelector(".top-btn").addEventListener("click", ()=>{
         x-=10
         populateMapGrid(x,y,getPlayerCoordinateList())
@@ -34,7 +34,7 @@ document.body.addEventListener("changePage", ()=>{
         x+=10
         populateMapGrid(x,y,getPlayerCoordinateList())
     })
-})
+}, false)
 
 
 function getPlayerCoordinateList(){
