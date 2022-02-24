@@ -51,7 +51,7 @@ function processResponse(response, x, y){
     const playerListJSON = JSON.parse(response);
     let playersCoordinate = [];
     Object.keys(playerListJSON).forEach((key, index)=>{
-      playersCoordinate.push(playerListJSON[key]['position'])  
+      playersCoordinate.push(parseInt(playerListJSON[key]['position']))  
     })
     populateMapGrid(x, y, playersCoordinate)
 }
