@@ -12,7 +12,7 @@
   grid-row-gap: 2px;
   height: 100vh;
   width: 100vw;
-  background-image: url("/projet/ressource/background.jpg");
+  background-image: url("/projet/ressource/image/background.jpg");
   background-position: 0% 0%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -91,7 +91,7 @@
 
 #tableauClassement table {
   padding: 10em;
-  background-image: url("/projet/ressource/fond_classement.png");
+  background-image: url("/projet/ressource/image/fond_classement.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   color: black;
@@ -172,7 +172,7 @@ section img {
 }
 
 #ressourceBar {
-  background-image: url("/projet/ressource/ressourcebar.png");
+  background-image: url("/projet/ressource/image/ressourcebar.png");
   background-size: contain;
   width: 715px;
   height: 96px;
@@ -204,7 +204,7 @@ li {
   width: 100%;
   height: 0px;
   background-color: unset;
-  background-image: url("/projet/ressource/tileBack.png");
+  background-image: url("/projet/ressource/image/tileBack.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   -webkit-transition: all 0.5s ease;
@@ -231,7 +231,7 @@ li {
   top: 0;
   width: 100%;
   height: 450px;
-  background-image: url("/projet/ressource/tileBack.png");
+  background-image: url("/projet/ressource/image/tileBack.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   -webkit-animation-duration: 0.8s;
@@ -511,7 +511,7 @@ li {
   width: 100%;
   height: 300px;
   display: block;
-  background-image: url("/projet/ressource/tileBack.png");
+  background-image: url("/projet/ressource/image/tileBack.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
@@ -538,7 +538,7 @@ li {
 
 .expedition2List {
   margin-top: 50px;
-  background-image: url("/projet/ressource/tileBack.png");
+  background-image: url("/projet/ressource/image/tileBack.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   width: 100%;
@@ -616,6 +616,91 @@ li {
   margin-bottom: 0;
 }
 
+.PageContainer {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  background-position: 0% 0%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.page-titre {
+  width: 80%;
+  height: 30vw;
+  padding: 5%;
+  margin: auto;
+  background-image: url("/projet/ressource/image/tileBack.png");
+  background-position: 0% 0%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow-y: scroll;
+}
+
+.display-dev {
+  width: 100%;
+  max-height: -webkit-max-content;
+  max-height: -moz-max-content;
+  max-height: max-content;
+  background: transparent;
+  background-position: 0% 0%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.dev-img {
+  width: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.dev-name {
+  padding: 20px;
+}
+
+.dev-img > img {
+  max-width: 128px;
+  max-height: 128px;
+  border-radius: 50%;
+}
+
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   overflow: hidden;
@@ -623,7 +708,7 @@ body {
 }
 
 .sessionInfo {
-  background-image: url("/projet/ressource/plank.png");
+  background-image: url("/projet/ressource/image/plank.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -697,7 +782,7 @@ input[type="submit"] {
   min-width: 150px;
   min-height: 50px;
   background: none;
-  background-image: url("/projet/ressource/plank.png");
+  background-image: url("/projet/ressource/image/plank.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
