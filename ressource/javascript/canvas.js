@@ -37,7 +37,7 @@ async function updateCanvas() {
 
 
     var img1 = new Image();
-    img1.src = './ressource/backgroundCanvas.png';
+    img1.src = './ressource/image/backgroundCanvas.png';
     img1.onload = function () {
 
         ctx.drawImage(img1, 0, 0, canvas.width, canvas.height);
@@ -77,20 +77,20 @@ function displayBatimentOnCanvas(ctx, width, name, level, offsetHeight) {
     console.log("Processing " + name + " with level " + level);
     console.log("src : " + `./ressource/assets/${name}.png`);
     var iMax = level;
-    switch(name){
-        case "immeuble" : {
+    switch (name) {
+        case "immeuble": {
             iMax = Math.min(iMax, 10);
             break;
         }
-        case "maison" : {
+        case "maison": {
             iMax = Math.min(iMax, 15);
             break;
         }
-        case "silo" : {
+        case "silo": {
             iMax = Math.min(iMax, 20);
             break;
         }
-        default:{
+        default: {
             iMax = Math.min(iMax, 25);
             break;
         }
