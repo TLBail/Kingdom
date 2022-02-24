@@ -52,7 +52,7 @@ function sendExpeditions() {
 
     if (troupe) {
         //on est a l'étape 2
-        changePage('view/expedition.html');
+        changePage('pages/expedition.html');
         let msg = "troupe envoyé :";
         Object.keys(troupe).forEach(function (key, index) {
             msg += key + " " + troupe[key] + " |";
@@ -89,7 +89,7 @@ function sendExpeditions() {
         troupe = Array();
         if (document.getElementById("nbchasseur").value || document.getElementById("nbtemplier").value ||
             document.getElementById("nbchevalier").value) {
-            changePage('view/expeditionsSubPage/expeditions2.html');
+            changePage('pages/expeditionsSubPage/expeditions2.html');
             if (document.getElementById("nbchasseur").value)
                 troupe['nbchasseur'] = document.getElementById("nbchasseur").value;
             if (document.getElementById("nbtemplier").value)
