@@ -8,7 +8,7 @@ function populateMapGrid(x, y, playersCoordinate) {
 
 function createElement(i, j, playersCoordinate){
     item = document.createElement("div")
-    console.log(playersCoordinate.includes([i, j]),playersCoordinate, i, j)
+    console.log(playersCoordinate.includes([i, j]),playersCoordinate, [i, j])
     if(playersCoordinate.includes([i, j]))
         item.innerHTML = i + ", " + j
     item.classList.add("map-grid-item")
