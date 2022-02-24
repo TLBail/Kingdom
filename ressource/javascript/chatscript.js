@@ -29,7 +29,7 @@ function updateMsg() {
             if (document.getElementById("mainchat")) {
                 document.getElementById("mainchat").innerHTML = response;
             }
-            updateMsg();
+            setTimeout(updateMsg, 1000);
         }
     }
 
