@@ -87,6 +87,10 @@ function addnewExpedition($units, $coo)
 
     $distance = abs($coo - $user->getPosition());
 
+    if ($distance == 0) {
+        echo "erreur tu t'est envoyé l'expeditions à toi même";
+        return null;
+    }
 
     $sql  = 'INSERT INTO `EXPEDITIONS` (`id`, `dateTimeDepart`, `tempsPourArriver`, `position`, `playerId`) VALUES (NULL, ?, ?, ?, ?)';
     $bdd = getBDD();
@@ -100,12 +104,20 @@ function addnewExpedition($units, $coo)
     $id = $bdd->lastInsertId();
     $sql  = 'INSERT INTO `UNITEXPEDITIONS` (`expeditionsId`, `unitName`, `nbUnit`) VALUES (? , ?, ?)';
 
-    echo $units[0]->getName();
-    //insert unit
+    //ajout des unité dans unitexpeditions et supression des unité dans unite
     foreach ($units as $unit) {
-        echo $unit->getName();
+
+        //ajout
         $query = $bdd->prepare($sql);
         $query->execute(array($id, $unit->getName(), $unit->getNumber()));
+
+        try {
+            $sqlUnit  = 'UPDATE UNIT SET nbUnit = nbUnit - ' . $unit->getNumber() . ' WHERE playerId=? AND unitName=?';
+            $query = $bdd->prepare($sqlUnit);
+            $query->execute(array($user->getId(), $unit->getName()));
+        } catch (PDOException $exception) {
+            return $exception;
+        }
     }
 }
 
