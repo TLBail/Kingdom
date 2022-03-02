@@ -4,7 +4,7 @@ var players = []
 function test(x, y) {
     let i =playersCoordinate.some((t) => isEqual(t,{"x":x,"y":y}));
     if(i != -1)
-        console.log("fjkdlmqjfdklmsq");
+        console.log(players[i]);
 }
 
 
