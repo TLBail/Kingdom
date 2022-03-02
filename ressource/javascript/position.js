@@ -31,7 +31,7 @@ function getPlayerCoordinateList(ctx, cellSize){
 function processResponse(response, ctx, cellSize){
     const playerListJSON = JSON.parse(response);
     Object.keys(playerListJSON).forEach((key, index)=>{
-        console.log(JSON.parse(playerListJSON[key]['username']))
+        console.log(playerListJSON[key]['username'])
         let position = JSON.parse(playerListJSON[key]['position'])
         let player = playerListJSON[key]['username']
         playersCoordinate.push(position) 
