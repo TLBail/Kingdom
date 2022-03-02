@@ -5,6 +5,7 @@ $ressourceBarUrl: url("/projet/ressource/image/ressourcebar.png");
 $tileBlackUrl: url("/projet/ressource/image/tileBack.png");
 $horseRunning: url("https://c.tenor.com/YRq8y_V1cxIAAAAj/spirit-pixel.gif");
 $warUrl: url("/projet/ressource/image/war.jpg");
+$altarUrl: url("/projet/ressource/image/altar.jpg");
 
 $green: #0fae00ff;
 $brown: #564138ff;
@@ -13,10 +14,13 @@ $white: #fffdfdff;
 $yellow: #f0e100ff;
 
 
+
 @import "./components/structure";
 @import "./components/classement";
 @import "./components/content";
 @import "./components/mainPage";
+@import "./components/recherche";
+
 
 body {
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
