@@ -15,7 +15,6 @@ function test2(x,y, canvas, ctx, cellSize) {
         redraw(canvas, ctx, cellSize)
         ctx.fillStyle = "black"
         ctx.font = "12px serif"
-        console.log(x*cellSize+cellSize/2, y*cellSize+12)
         ctx.fillText(players[i], x*cellSize+cellSize/2, y*cellSize+12)
     }else{
         redraw(canvas, ctx, cellSize)
