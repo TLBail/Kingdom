@@ -12,10 +12,9 @@ function test(x, y) {
 function test2(x,y, canvas, ctx, cellSize) {
     let i =playersCoordinate.findIndex((t) => isEqual(t,{"x":x,"y":y}));
     if(i != -1){
-        console.log(canvas, ctx, cellSize)
         ctx.fillStyle = "black"
         ctx.font = "12px serif"
-        ctx.fillText(players[i], x-100, y)
+        ctx.fillText(players[i], x*cellSize+cellSize/2, y-20)
     }else{
         drawGrid(canvas, ctx,cellSize)
         playersCoordinate.forEach(coord =>{
@@ -72,7 +71,7 @@ function drawPresence(ctx, cellSize, x, y) {
     ctx.font = '12px serif'
     ctx.fillStyle = "black"
     ctx.textAlign = 'center'
-    ctx.fillText("here", x*cellSize+cellSize/2, y*cellSize+cellSize/2+6, 40);
+    ctx.fillText("here", x*cellSize+cellSize/2, y*cellSize+cellSize/2+6, cellSize);
 }
 
 
