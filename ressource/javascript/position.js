@@ -1,16 +1,4 @@
-let contentContainer = document.querySelector(".PageContainer")
 
-let canvas = document.createElement("canvas")
-canvas.width = 800
-canvas.height = 800
-contentContainer.append(canvas)
-
-
-
-let ctx = canvas.getContext("2d")
-let cellSize = 40
-
-canvas.addEventListener("click",test)
 
 function test(e) {
     let x =Math.floor(e.clientX/cellSize)
@@ -74,6 +62,19 @@ drawGrid(canvas, ctx, cellSize)
 document.body.addEventListener("changePage", ()=>{
     let x = 0;
     let y = 0;
+    let contentContainer = document.querySelector(".PageContainer")
+
+    let canvas = document.createElement("canvas")
+    canvas.width = 800
+    canvas.height = 800
+    contentContainer.append(canvas)
+
+
+
+    let ctx = canvas.getContext("2d")
+    let cellSize = 40
+
+    canvas.addEventListener("click",test)
     drawGrid(canvas, ctx, cellSize)
     getPlayerCoordinateList();
     document.querySelector(".top-btn").addEventListener("click", ()=>{
