@@ -71,7 +71,7 @@ document.body.addEventListener("changePage", ()=>{
     canvas.addEventListener("click",test)
     drawGrid(canvas, ctx, cellSize)
     getPlayerCoordinateList(ctx, cellSize);
-    document.querySelector(".top-btn").addEventListener("click", ()=>{
+    /*document.querySelector(".top-btn").addEventListener("click", ()=>{
         getPlayerCoordinateList(ctx, cellSize)
     })
     document.querySelector(".left-btn").addEventListener("click", ()=>{
@@ -82,7 +82,7 @@ document.body.addEventListener("changePage", ()=>{
     })
     document.querySelector(".down-btn").addEventListener("click", ()=>{
         getPlayerCoordinateList(ctx, cellSize)
-    })
+    })*/
 }, false)
 
 
