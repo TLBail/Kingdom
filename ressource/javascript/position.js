@@ -12,16 +12,21 @@ function test(x, y) {
 function test2(x,y, canvas, ctx, cellSize) {
     let i =playersCoordinate.findIndex((t) => isEqual(t,{"x":x,"y":y}));
     if(i != -1){
+        redraw(canvas, ctx, cellSize)
         ctx.fillStyle = "black"
         ctx.font = "12px serif"
         console.log(x*cellSize+cellSize/2, y*cellSize+12)
         ctx.fillText(players[i], x*cellSize+cellSize/2, y*cellSize+12)
     }else{
-        drawGrid(canvas, ctx,cellSize)
-        playersCoordinate.forEach(coord =>{
-            drawPresence(ctx, cellSize, coord.x, coord.y)
-        })
+        redraw(canvas, ctx, cellSize)
     }
+}
+
+function redraw(canvas, ctx, cellSize) {
+    drawGrid(canvas, ctx,cellSize)
+    playersCoordinate.forEach(coord =>{
+        drawPresence(ctx, cellSize, coord.x, coord.y)
+    })
 }
 
 function getPlayerCoordinateList(canvas, ctx, cellSize){
