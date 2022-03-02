@@ -623,8 +623,6 @@ li {
       grid-template-columns: repeat(3, 1fr);
   -ms-grid-rows: (1fr)[3];
       grid-template-rows: repeat(3, 1fr);
-  width: 25vw;
-  height: 25vw;
 }
 
 .map {
