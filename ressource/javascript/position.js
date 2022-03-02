@@ -1,8 +1,12 @@
+var playersCoordinate = []
+var players = []
+
 function test(x, y) {
-    if(playersCoordinate.some(t => isEqual(t, '{'+players[playersCoordinate.indexOf(t)]+'}:'+{"x":x,"y":y})))
+    if(playersCoordinate.some((t,i) => isEqual(t,   {[players[i]]:{"x":x,"y":y}})))
         //TODO redirect vers expedition sur un joueur
         console.log("fjkdlmqjfdklmsq");
 }
+
 
 function test2(x,y, ctx) {
     if(playersCoordinate.some(t => isEqual(t, {"x":x,"y":y})))
@@ -22,8 +26,7 @@ function getPlayerCoordinateList(ctx, cellSize){
     xhr.send(null)
 }
 
-var playersCoordinate = []
-var players = []
+
 
 function processResponse(response, ctx, cellSize){
     const playerListJSON = JSON.parse(response);
