@@ -22,8 +22,9 @@ var playersCoordinate = [];
 function processResponse(response, ctx, cellSize){
     const playerListJSON = JSON.parse(response);
     Object.keys(playerListJSON).forEach((key, index)=>{
-        let position = JSON.parse(playerListJSON[key]['position'])
+        let position = playerListJSON[key]['position']
         console.log(typeof position)
+        console.log('-'+position+'-');
         playersCoordinate.push(position) 
     })
     playersCoordinate.forEach(coord => {
