@@ -17,7 +17,7 @@ function test2(x,y, canvas, ctx, cellSize) {
         ctx.font = "12px serif"
         ctx.fillText(players[i], x-100, y)
     }else{
-        getPlayerCoordinateList(canvas, ctx, cellSize)
+        drawGrid(canvas, ctx,cellSize)
     }
 }
 
