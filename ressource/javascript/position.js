@@ -1,8 +1,15 @@
 function test(x, y) {
-    console.log(x, y, {"x":x,"y":y})
-    console.log(playersCoordinate)
+    if(playersCoordinate.some(t => isEqual(t, '"'+players[playersCoordinate.indexOf(t)]+'":'+{"x":x,"y":y})))
+        //TODO redirect vers expedition sur un joueur
+        console.log("fjkdlmqjfdklmsq");
+}
+
+function test2(x,y, ctx) {
     if(playersCoordinate.some(t => isEqual(t, {"x":x,"y":y})))
-        console.log("jfdklmsqfjdklsm")
+        //TODO dessiner texte avec un offset
+        ctx.fillStyle = 'black'
+        ctx.fillText();
+        return;
 }
 
 function getPlayerCoordinateList(ctx, cellSize){
@@ -15,13 +22,16 @@ function getPlayerCoordinateList(ctx, cellSize){
     xhr.send(null)
 }
 
-var playersCoordinate = [];
+var playersCoordinate = []
+var players = []
 
 function processResponse(response, ctx, cellSize){
     const playerListJSON = JSON.parse(response);
     Object.keys(playerListJSON).forEach((key, index)=>{
         let position = JSON.parse(playerListJSON[key]['position'])
+        let player = playerListJSON[key]['username']
         playersCoordinate.push(position) 
+        players.push(player)
     })
     playersCoordinate.forEach(coord => {
         drawPresence(ctx, cellSize, coord.x, coord.y)
@@ -65,10 +75,8 @@ document.body.addEventListener("changePage", ()=>{
     let ctx = canvas.getContext("2d")
     let cellSize = 40
 
-    canvas.addEventListener("click", event => {
-        console.log(event.X)
-        test(Math.floor(event.offsetX/cellSize),Math.floor(event.offsetY/cellSize), cellSize)
-    })
+    canvas.addEventListener("click", event => test(Math.floor(event.offsetX/cellSize),Math.floor(event.offsetY/cellSize)))
+    canvas.addEventListener("mouseover", event => test2(Math.floor(event.offsetX/cellSize), Math.floot(event.offsetY.cellSize), ctx))
     drawGrid(canvas, ctx, cellSize)
     getPlayerCoordinateList(ctx, cellSize);
     /*document.querySelector(".top-btn").addEventListener("click", ()=>{
