@@ -13,6 +13,7 @@ function test2(x,y, canvas, ctx, cellSize) {
     let i =playersCoordinate.findIndex((t) => isEqual(t,{"x":x,"y":y}));
     if(i != -1){
         ctx.fillStyle = "black"
+        ctx.font = "12px serif"
         ctx.fillText(players[i], x-20, y)
     }else{
         getPlayerCoordinateList(canvas, ctx, cellSize)
