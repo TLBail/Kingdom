@@ -4,17 +4,14 @@ var players = []
 function test(x, y) {
     let i =playersCoordinate.findIndex((t) => isEqual(t,{"x":x,"y":y}));
     if(i != -1)
-        console.log(i)
         console.log(players[i])
 }
 
 
 function test2(x,y, ctx) {
-    if(playersCoordinate.some(t => isEqual(t, {"x":x,"y":y})))
-        //TODO dessiner texte avec un offset
-        //ctx.fillStyle = 'black'
-        //ctx.fillText();
-        return;
+    let i =playersCoordinate.findIndex((t) => isEqual(t,{"x":x,"y":y}));
+    if(i != -1)
+        console.log(players[i])
 }
 
 function getPlayerCoordinateList(ctx, cellSize){
@@ -32,7 +29,6 @@ function getPlayerCoordinateList(ctx, cellSize){
 function processResponse(response, ctx, cellSize){
     const playerListJSON = JSON.parse(response);
     Object.keys(playerListJSON).forEach((key, index)=>{
-        console.log(playerListJSON[key]['username'])
         let position = JSON.parse(playerListJSON[key]['position'])
         let player = playerListJSON[key]['username']
         playersCoordinate.push(position) 
