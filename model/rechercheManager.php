@@ -79,7 +79,7 @@ function upgradeRecherche($recherchesName)
         $recherches[$index] = new Recherche(
             $ligne['type'],
             $ligne['level'],
-            $ligne['remaningTimeUpgrade']
+            $ligne['remainingTimeUpgrade']
         );
         $index = $index + 1;
     }
@@ -108,7 +108,6 @@ function upgradeRecherche($recherchesName)
 
         return new Recherche(
             $recherche->getType(),
-            $recherche->getStandardProduction(),
             $recherche->getLevel(),
             $upgradetime
         );

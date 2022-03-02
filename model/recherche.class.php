@@ -4,6 +4,7 @@
 
 class Recherche
 {
+    const SERVERSPEED = 10; // 1 = très long 5 = normal 10 = Super rapide 20  = SPPEEDDDDDDDRUN
 
 
     private $type;
@@ -23,10 +24,6 @@ class Recherche
         return $this->type;
     }
 
-    public function getStandardProduction()
-    {
-        return $this->standardProduction;
-    }
 
     public function getLevel()
     {
