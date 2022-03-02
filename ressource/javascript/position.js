@@ -65,7 +65,10 @@ document.body.addEventListener("changePage", ()=>{
     let ctx = canvas.getContext("2d")
     let cellSize = 40
 
-    canvas.addEventListener("click", event => test(Math.floor(event.clientX/cellSize),Math.floor(event.clientY/cellSize), cellSize))
+    canvas.addEventListener("click", event => {
+        console.log(event.X)
+        test(Math.floor(event.offsetX/cellSize),Math.floor(event.offsetY/cellSize), cellSize)
+    })
     drawGrid(canvas, ctx, cellSize)
     getPlayerCoordinateList(ctx, cellSize);
     /*document.querySelector(".top-btn").addEventListener("click", ()=>{
