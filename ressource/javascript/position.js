@@ -5,20 +5,25 @@ function test(x, y) {
     let i =playersCoordinate.findIndex((t) => isEqual(t,{"x":x,"y":y}));
     if(i != -1)
         console.log(players[i])
+    //TODO link au expedition
 }
 
 
-function test2(x,y, ctx) {
+function test2(x,y, canvas, ctx, cellSize) {
     let i =playersCoordinate.findIndex((t) => isEqual(t,{"x":x,"y":y}));
-    if(i != -1)
-        return;
+    if(i != -1){
+        ctx.fillStyle = "black"
+        ctx.fillText(players[i], x-20, y)
+    }else{
+        getPlayerCoordinateList(canvas, ctx, cellSize)
+    }
 }
 
-function getPlayerCoordinateList(ctx, cellSize){
+function getPlayerCoordinateList(canvas, ctx, cellSize){
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = ()=>{
         if(xhr.readyState == 4 && xhr.status == 200)
-            processResponse(xhr.responseText, ctx, cellSize)
+            processResponse(xhr.responseText,canvas, ctx, cellSize)
     }
     xhr.open("GET", "./controller/map.php?")
     xhr.send(null)
@@ -26,7 +31,7 @@ function getPlayerCoordinateList(ctx, cellSize){
 
 
 
-function processResponse(response, ctx, cellSize){
+function processResponse(response, canvas, ctx, cellSize){
     const playerListJSON = JSON.parse(response);
     Object.keys(playerListJSON).forEach((key, index)=>{
         let position = JSON.parse(playerListJSON[key]['position'])
@@ -34,6 +39,7 @@ function processResponse(response, ctx, cellSize){
         playersCoordinate.push(position) 
         players.push(player)
     })
+    drawGrid(canvas, ctx, cellSize)
     playersCoordinate.forEach(coord => {
         drawPresence(ctx, cellSize, coord.x, coord.y)
     });
@@ -79,7 +85,7 @@ document.body.addEventListener("changePage", ()=>{
     canvas.addEventListener("click", event => test(Math.floor(event.offsetX/cellSize),Math.floor(event.offsetY/cellSize)))
     canvas.addEventListener("pointermove", event => test2(Math.floor(event.offsetX/cellSize), Math.floor(event.offsetY/cellSize), ctx))
     drawGrid(canvas, ctx, cellSize)
-    getPlayerCoordinateList(ctx, cellSize);
+    getPlayerCoordinateList(canvas, ctx, cellSize);
     /*document.querySelector(".top-btn").addEventListener("click", ()=>{
         getPlayerCoordinateList(ctx, cellSize)
     })
