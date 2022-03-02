@@ -14,8 +14,8 @@ function test2(x,y, canvas, ctx, cellSize) {
     if(i != -1){
         ctx.fillStyle = "black"
         ctx.font = "12px serif"
-        console.log(x*cellSize+cellSize/2, y*cellSize)
-        ctx.fillText(players[i], x*cellSize+cellSize/2, y*cellSize)
+        console.log(x*cellSize+cellSize/2, y*cellSize+20)
+        ctx.fillText(players[i], x*cellSize+cellSize/2, y*cellSize+20)
     }else{
         drawGrid(canvas, ctx,cellSize)
         playersCoordinate.forEach(coord =>{
