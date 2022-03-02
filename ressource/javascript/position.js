@@ -9,10 +9,9 @@ function test(x, y) {
 
 
 function test2(x,y, ctx) {
-    console.log(x,y)
     let i =playersCoordinate.findIndex((t) => isEqual(t,{"x":x,"y":y}));
     if(i != -1)
-        console.log(players[i])
+        return;
 }
 
 function getPlayerCoordinateList(ctx, cellSize){
