@@ -18,6 +18,9 @@ function test2(x,y, canvas, ctx, cellSize) {
         ctx.fillText(players[i], x-100, y)
     }else{
         drawGrid(canvas, ctx,cellSize)
+        playersCoordinate.forEach(coord =>{
+            drawPresence(ctx, cellSize, coord.x, coord.y)
+        })
     }
 }
 
