@@ -1,5 +1,4 @@
 function test(x, y) {
-    console.log(e.clientX, e.clientY)
     console.log(x, y, {"x":x,"y":y})
     console.log(playersCoordinate)
     if(playersCoordinate.some(t => isEqual(t, {"x":x,"y":y})))
