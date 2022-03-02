@@ -96,7 +96,7 @@ document.body.addEventListener("changePage", ()=>{
     canvas.addEventListener("pointermove", event => test2(Math.floor(event.offsetX/cellSize), Math.floor(event.offsetY/cellSize), canvas,ctx,cellSize))
     drawGrid(canvas, ctx, cellSize)
     getPlayerCoordinateList(canvas, ctx, cellSize);
-    /*document.querySelector(".top-btn").addEventListener("click", ()=>{
+    document.querySelector(".top-btn").addEventListener("click", ()=>{
         getPlayerCoordinateList(ctx, cellSize)
     })
     document.querySelector(".left-btn").addEventListener("click", ()=>{
@@ -107,7 +107,7 @@ document.body.addEventListener("changePage", ()=>{
     })
     document.querySelector(".down-btn").addEventListener("click", ()=>{
         getPlayerCoordinateList(ctx, cellSize)
-    })*/
+    })
 }, false)
 
 
