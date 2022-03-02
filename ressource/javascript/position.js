@@ -1,7 +1,7 @@
 function test(e, cellSize) {
     let x = Math.floor(e.clientX/cellSize)
     let y = Math.floor(e.clientY/cellSize)
-    if(playersCoordinate.some(e => isEqual(e, {"x":x,"y":y})))
+    if(playersCoordinate.some(t => isEqual(t, {"x":x,"y":y})))
         console.log("jfdklmsqfjdklsm")
 }
 
