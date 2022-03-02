@@ -14,6 +14,7 @@ function test2(x,y, canvas, ctx, cellSize) {
     if(i != -1){
         ctx.fillStyle = "black"
         ctx.font = "12px serif"
+        console.log(x*cellSize+cellSize/2, y-20)
         ctx.fillText(players[i], x*cellSize+cellSize/2, y-20)
     }else{
         drawGrid(canvas, ctx,cellSize)
