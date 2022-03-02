@@ -1,6 +1,4 @@
-function test(e, cellSize) {
-    let x = Math.floor(e.clientX/cellSize)
-    let y = Math.floor(e.clientY/cellSize)
+function test(x, y) {
     console.log(e.clientX, e.clientY)
     console.log(x, y, {"x":x,"y":y})
     console.log(playersCoordinate)
@@ -68,7 +66,7 @@ document.body.addEventListener("changePage", ()=>{
     let ctx = canvas.getContext("2d")
     let cellSize = 40
 
-    canvas.addEventListener("click", event => test(event, cellSize))
+    canvas.addEventListener("click", event => test(Math.floor(event.clientX/cellSize),Math.floor(event.clientY/cellSize), cellSize))
     drawGrid(canvas, ctx, cellSize)
     getPlayerCoordinateList(ctx, cellSize);
     /*document.querySelector(".top-btn").addEventListener("click", ()=>{
