@@ -4,7 +4,8 @@ var players = []
 function test(x, y) {
     let i =playersCoordinate.some((t) => isEqual(t,{"x":x,"y":y}));
     if(i != -1)
-        console.log(players[i]);
+        console.log(i)
+        console.log(players[i])
 }
 
 
