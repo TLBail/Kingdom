@@ -498,20 +498,12 @@ margin-bottom: 0;
     width: 25vw;
     height: 25vw;
 }
-.map-grid{
-    display: grid;
-    grid-template: repeat(10, 1fr) / repeat(10, 1fr);
+.map{
     grid-column: 2;
     grid-row: 2;
     margin: auto;
-    width: 20vw;
-    height: 20vw;
 }
 
-.map-grid-item{
-    border: 0.01px solid black;
-    text-align: center;
-}
 .top-btn{
     grid-column: 2;
     margin: 0 auto;
