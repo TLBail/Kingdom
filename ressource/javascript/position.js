@@ -12,7 +12,7 @@ function test(x, y) {
 function test2(x,y, canvas, ctx, cellSize) {
     let i =playersCoordinate.findIndex((t) => isEqual(t,{"x":x,"y":y}));
     if(i != -1){
-        console.log(i, players[i])
+        console.log(i, players[i], typeof players[i])
         ctx.fillStyle = "black"
         ctx.font = "12px serif"
         let pseudo = players[i];
