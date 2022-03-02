@@ -2,8 +2,8 @@ var playersCoordinate = []
 var players = []
 
 function test(x, y) {
-    if(playersCoordinate.some((t,i) => isEqual(t,   {[players[i]]:{"x":x,"y":y}})))
-        //TODO redirect vers expedition sur un joueur
+    let i =playersCoordinate.some((t) => isEqual(t,{"x":x,"y":y}));
+    if(i != -1)
         console.log("fjkdlmqjfdklmsq");
 }
 
