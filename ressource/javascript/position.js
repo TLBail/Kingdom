@@ -1,5 +1,5 @@
 function test(x, y) {
-    if(playersCoordinate.some(t => isEqual(t, '"'+players[playersCoordinate.indexOf(t)]+'":'+{"x":x,"y":y})))
+    if(playersCoordinate.some(t => isEqual(t, '{'+players[playersCoordinate.indexOf(t)]+'}:'+{"x":x,"y":y})))
         //TODO redirect vers expedition sur un joueur
         console.log("fjkdlmqjfdklmsq");
 }
