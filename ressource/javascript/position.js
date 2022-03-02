@@ -1,7 +1,5 @@
-
-
-function test(e) {
-    let x =Math.floor(e.clientX/cellSize)
+function test(e, cellSize) {
+    let x = Math.floor(e.clientX/cellSize)
     let y = Math.floor(e.clientY/cellSize)
     if(playersCoordinate.some(e => isEqual(e, {"x":x,"y":y})))
         console.log("jfdklmsqfjdklsm")
@@ -23,12 +21,9 @@ function processResponse(response, ctx, cellSize){
     const playerListJSON = JSON.parse(response);
     Object.keys(playerListJSON).forEach((key, index)=>{
         let position = JSON.parse(playerListJSON[key]['position'])
-        console.log(typeof position)
-        console.log('-'+position+'-');
         playersCoordinate.push(position) 
     })
     playersCoordinate.forEach(coord => {
-        console.log(coord, coord.x, coord.y)
         drawPresence(ctx, cellSize, coord.x, coord.y)
     });
 }
@@ -70,7 +65,7 @@ document.body.addEventListener("changePage", ()=>{
     let ctx = canvas.getContext("2d")
     let cellSize = 40
 
-    canvas.addEventListener("click",test)
+    canvas.addEventListener("click", event => test(event, cellSize))
     drawGrid(canvas, ctx, cellSize)
     getPlayerCoordinateList(ctx, cellSize);
     /*document.querySelector(".top-btn").addEventListener("click", ()=>{
