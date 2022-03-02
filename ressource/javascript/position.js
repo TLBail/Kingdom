@@ -7,8 +7,8 @@ function test(x, y) {
 function test2(x,y, ctx) {
     if(playersCoordinate.some(t => isEqual(t, {"x":x,"y":y})))
         //TODO dessiner texte avec un offset
-        ctx.fillStyle = 'black'
-        ctx.fillText();
+        //ctx.fillStyle = 'black'
+        //ctx.fillText();
         return;
 }
 
