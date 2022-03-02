@@ -77,7 +77,7 @@ document.body.addEventListener("changePage", ()=>{
     let cellSize = 40
 
     canvas.addEventListener("click", event => test(Math.floor(event.offsetX/cellSize),Math.floor(event.offsetY/cellSize)))
-    canvas.addEventListener("mouseover", event => test2(Math.floor(event.offsetX/cellSize), Math.floor(event.offsetY.cellSize), ctx))
+    canvas.addEventListener("pointerover", event => test2(Math.floor(event.offsetX/cellSize), Math.floor(event.offsetY.cellSize), ctx))
     drawGrid(canvas, ctx, cellSize)
     getPlayerCoordinateList(ctx, cellSize);
     /*document.querySelector(".top-btn").addEventListener("click", ()=>{
