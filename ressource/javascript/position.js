@@ -7,11 +7,11 @@ function test(e) {
         console.log("jfdklmsqfjdklsm")
 }
 
-function getPlayerCoordinateList(){
+function getPlayerCoordinateList(ctx, cellSize){
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = ()=>{
         if(xhr.readyState == 4 && xhr.status == 200)
-            processResponse(xhr.responseText)
+            processResponse(xhr.responseText, ctx, cellSize)
     }
     xhr.open("GET", "./controller/map.php?")
     xhr.send(null)
@@ -19,7 +19,7 @@ function getPlayerCoordinateList(){
 
 var playersCoordinate = [];
 
-function processResponse(response){
+function processResponse(response, ctx, cellSize){
     const playerListJSON = JSON.parse(response);
     Object.keys(playerListJSON).forEach((key, index)=>{
         let x = parseInt(playerListJSON[key]['x'])
@@ -58,8 +58,6 @@ function drawPresence(ctx, cellSize, x, y) {
 
 
 document.body.addEventListener("changePage", ()=>{
-    let x = 0;
-    let y = 0;
     let contentContainer = document.querySelector("#PageContainer")
 
     let canvas = document.createElement("canvas")
@@ -72,22 +70,18 @@ document.body.addEventListener("changePage", ()=>{
 
     canvas.addEventListener("click",test)
     drawGrid(canvas, ctx, cellSize)
-    getPlayerCoordinateList();
+    getPlayerCoordinateList(ctx, cellSize);
     document.querySelector(".top-btn").addEventListener("click", ()=>{
-        y-=10
-        getPlayerCoordinateList()
+        getPlayerCoordinateList(ctx, cellSize)
     })
     document.querySelector(".left-btn").addEventListener("click", ()=>{
-        x-=10
-        getPlayerCoordinateList()
+        getPlayerCoordinateList(ctx, cellSize)
     })
     document.querySelector(".right-btn").addEventListener("click", ()=>{
-        x+=10
-        getPlayerCoordinateList()
+        getPlayerCoordinateList(ctx, cellSize)
     })
     document.querySelector(".down-btn").addEventListener("click", ()=>{
-        y+=10
-        getPlayerCoordinateList()
+        getPlayerCoordinateList(ctx, cellSize)
     })
 }, false)
 
