@@ -43,7 +43,7 @@ function createPosition()
         $position = "{x:$x,y:$y}";
         $sql = "select position from USER where position=$position";
         $response = getBDD()->query($sql);
-    } while (isset($response->fetch()));
+    } while ($response->fetch() >=1);
     return $position;
 }
 
