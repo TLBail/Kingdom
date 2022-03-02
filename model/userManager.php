@@ -27,7 +27,7 @@ function creationCompte()
         echo "<h1> ERROR L'utilisateur existe déjà !! </h1>";
     } else {
         $position = createPosition()
-        $sql = "INSERT INTO `USER` (`id`, `username`, `password`, `lastTimeOnline`, `position`) VALUES (NULL, ?, ?, current_timestamp(), floor(RAND() * 1000)) ";
+        $sql = "INSERT INTO `USER` (`id`, `username`, `password`, `lastTimeOnline`, `position`) VALUES (NULL, ?, ?, current_timestamp(), $position) ";
         $preparedSql = getBDD()->prepare($sql);
         $preparedSql->execute(array($username, $password));
 
