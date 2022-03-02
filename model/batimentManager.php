@@ -6,11 +6,11 @@
 function getBatimentsOfUser()
 {
 
-    $path = explode("/projet", __DIR__ )[0]."/projet";
+    $path = explode("/projet", __DIR__)[0] . "/projet";
     $path .= "/model/userManager.php";
     include_once($path);
 
-    $path = explode("/projet", __DIR__ )[0]."/projet";
+    $path = explode("/projet", __DIR__)[0] . "/projet";
     $path .= "/model/batiment.class.php";
     include_once($path);
 
@@ -35,7 +35,6 @@ function getBatimentsOfUser()
             $remainingTime = $ligne['remaningTimeUpgrade'] - $tempEcouler;
             if ($remainingTime < 0) {
                 $remainingTime = 0;
-                //Todo upgrade le bat
                 updateLvlOfBatiment($ligne['type']);
                 $ligne['level']++;
             }
@@ -58,11 +57,11 @@ function getBatimentsOfUser()
 function upgradeBatiment($batimentsName)
 {
 
-    $path = explode("/projet", __DIR__ )[0]."/projet";
+    $path = explode("/projet", __DIR__)[0] . "/projet";
     $path .= "/model/batiment.class.php";
     include_once($path);
 
-    $path = explode("/projet", __DIR__ )[0]."/projet";
+    $path = explode("/projet", __DIR__)[0] . "/projet";
     $path .= "/model/userManager.php";
     include_once($path);
 
@@ -133,7 +132,7 @@ function upgradeBatiment($batimentsName)
 function buyBatiment($batiment)
 {
 
-    $path = explode("/projet", __DIR__ )[0]."/projet";
+    $path = explode("/projet", __DIR__)[0] . "/projet";
     $path .= "/model/ressourceManager.php";
     include_once($path);
 
@@ -142,7 +141,6 @@ function buyBatiment($batiment)
     $coutBois = $batiment->getWoodCostForNextLevel();
     $coutNourriture = $batiment->getNourritureCostForNextLevel();
     //on vérifie que le joueur a assez de nourriture
-    //pas implementer pour l'instant
     $actualPierre = getRessourceByName("bois");
     $actualBois = getRessourceByName("pierre");
     $actualNourriture = getRessourceByName("nourriture");
@@ -166,11 +164,11 @@ function buyBatiment($batiment)
 function updateLvlOfBatiment($batimentsName)
 {
 
-    $path = explode("/projet", __DIR__ )[0]."/projet";
+    $path = explode("/projet", __DIR__)[0] . "/projet";
     $path .= "/model/batiment.class.php";
     include_once($path);
 
-    $path = explode("/projet", __DIR__ )[0]."/projet";
+    $path = explode("/projet", __DIR__)[0] . "/projet";
     $path .= "/model/userManager.php";
     include_once($path);
 

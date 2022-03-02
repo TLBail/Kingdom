@@ -158,6 +158,7 @@ if (isset($_SESSION['connected']) && $_SESSION['connected'] == 'true') {
             <script type='text/javascript' src='./ressource/javascript/unit.js' async defer></script>
             <script type='text/javascript' src='./ressource/javascript/unitPanel.js' async defer></script>
             <script type='text/javascript' src='./ressource/javascript/batimentPanel.js' async defer></script>
+            <script type='text/javascript' src='./ressource/javascript/recherchePanel.js' async defer></script>
             <script type='text/javascript' src='./ressource/javascript/expeditions.js' async defer></script>
             <script type='text/javascript' src='./ressource/javascript/chatscript.js' async defer></script>
             <script type='text/javascript' src='./ressource/javascript/classement.js' async defer></script>

@@ -5,7 +5,7 @@ function reloadClassement() {
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = xhr.responseText;
-            console.log("receive : " + response);
+            // console.log("receive : " + response);
             const object = JSON.parse(response);
 
             const tableau = document.getElementById('tableauClassement');
