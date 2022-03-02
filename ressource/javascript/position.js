@@ -60,7 +60,7 @@ function drawPresence(ctx, cellSize, x, y) {
 document.body.addEventListener("changePage", ()=>{
     let x = 0;
     let y = 0;
-    let contentContainer = document.querySelector(".PageContainer")
+    let contentContainer = document.querySelector("#PageContainer")
 
     let canvas = document.createElement("canvas")
     canvas.width = 800
