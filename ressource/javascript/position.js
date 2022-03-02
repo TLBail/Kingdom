@@ -28,6 +28,7 @@ function processResponse(response, ctx, cellSize){
         playersCoordinate.push(position) 
     })
     playersCoordinate.forEach(coord => {
+        console.log(coord, coord.x, coord.y)
         drawPresence(ctx, cellSize, coord.x, coord.y)
     });
 }
