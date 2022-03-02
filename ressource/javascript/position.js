@@ -61,8 +61,8 @@ document.body.addEventListener("changePage", ()=>{
     let contentContainer = document.querySelector("#PageContainer")
 
     let canvas = document.createElement("canvas")
-    canvas.width = 800
-    canvas.height = 800
+    canvas.width = 600
+    canvas.height = 600
     contentContainer.append(canvas)
 
     let ctx = canvas.getContext("2d")
