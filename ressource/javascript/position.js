@@ -1,66 +1,100 @@
-function populateMapGrid(x, y, playersCoordinate) {
-    let mapGrid = document.querySelector(".map-grid");
-    mapGrid.innerHTML = ""
-    for (let i = 0; i < 10; i++)
-        for(let j = 0; j < 10; j++)
-            mapGrid.appendChild(createElement(x+j, y+i, playersCoordinate));
+let contentContainer = document.querySelector(".PageContainer")
+
+let canvas = document.createElement("canvas")
+canvas.width = 800
+canvas.height = 800
+contentContainer.append(canvas)
+
+
+
+let ctx = canvas.getContext("2d")
+let cellSize = 40
+
+canvas.addEventListener("click",test)
+
+function test(e) {
+    let x =Math.floor(e.clientX/cellSize)
+    let y = Math.floor(e.clientY/cellSize)
+    if(playersCoordinate.some(e => isEqual(e, {x,y})))
+        console.log("jfdklmsqfjdklsm")
 }
 
-function createElement(i, j, playersCoordinate){
-    item = document.createElement("div")
-    console.log(playersCoordinate.some(e=>isEqual(e,{i, j})),playersCoordinate, {i, j})
-    if(playersCoordinate.some(e=> isEqual(e,{i, j})))
-        item.innerHTML = i + ", " + j
-    item.classList.add("map-grid-item")
-    return item
-}
-
-document.body.addEventListener("changePage", ()=>{
-    let x = 0;
-    let y = 0;
-    getPlayerCoordinateList(x, y);
-    document.querySelector(".top-btn").addEventListener("click", ()=>{
-        y-=10
-        getPlayerCoordinateList(x, y)
-    })
-    document.querySelector(".left-btn").addEventListener("click", ()=>{
-        x-=10
-        getPlayerCoordinateList(x, y)
-    })
-    document.querySelector(".right-btn").addEventListener("click", ()=>{
-        x+=10
-        getPlayerCoordinateList(x, y)
-    })
-    document.querySelector(".down-btn").addEventListener("click", ()=>{
-        y+=10
-        getPlayerCoordinateList(x, y)
-    })
-}, false)
-
-function getPlayerCoordinateList(x, y){
+function getPlayerCoordinateList(){
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = ()=>{
         if(xhr.readyState == 4 && xhr.status == 200)
-            processResponse(xhr.responseText, x, y)
+            processResponse(xhr.responseText)
     }
     xhr.open("GET", "./controller/map.php?")
     xhr.send(null)
 }
 
-function processResponse(response, x, y){
+var playersCoordinate = [];
+
+function processResponse(response){
     const playerListJSON = JSON.parse(response);
-    let playersCoordinate = [];
     Object.keys(playerListJSON).forEach((key, index)=>{
-        coordinateString = playerListJSON[key]['position']
-        let i = parseInt(coordinateString.slice(0, coordinateString.length/2))
-        let j = parseInt(coordinateString.slice(coordinateString.length/2, coordinateString.length))
-        coordinate = {i, j}
-        playersCoordinate.push(coordinate)  
+        let x = parseInt(playerListJSON[key]['x'])
+        let y = parseInt(playerListJSON[key]['y'])
+        playersCoordinate.push({x,y}) 
     })
-    populateMapGrid(x, y, playersCoordinate)
+    playersCoordinate.forEach(coord => {
+        drawPresence(ctx, cellSize, coord.x, coord.y)
+    });
 }
 
 const isEqual = (first, second)=>{
     return JSON.stringify(first) === JSON.stringify(second)
 }
+
+
+function drawGrid(canvas, ctx, cellSize) {
+    ctx.fillStyle = 'white'
+    ctx.fillRect(0,0,canvas.width, canvas.height)
+    for (let i = 0; i <= canvas.width; i+=cellSize) {
+        ctx.moveTo(i,0)
+        ctx.lineTo(i,canvas.height)
+        ctx.moveTo(0,i) 
+        ctx.lineTo(canvas.width, i)
+    }
+    ctx.strokeStyle = "black"
+    ctx.stroke()
+}
+
+function drawPresence(ctx, cellSize, x, y) {
+    ctx.font = '12px serif'
+    ctx.fillStyle = "black"
+    ctx.textAlign = 'center'
+    ctx.fillText("here", x*cellSize+cellSize/2, y*cellSize+cellSize/2+6, 40);
+}
+
+drawGrid(canvas, ctx, cellSize)
+
+
+document.body.addEventListener("changePage", ()=>{
+    let x = 0;
+    let y = 0;
+    drawGrid(canvas, ctx, cellSize)
+    getPlayerCoordinateList();
+    document.querySelector(".top-btn").addEventListener("click", ()=>{
+        y-=10
+        getPlayerCoordinateList()
+    })
+    document.querySelector(".left-btn").addEventListener("click", ()=>{
+        x-=10
+        getPlayerCoordinateList()
+    })
+    document.querySelector(".right-btn").addEventListener("click", ()=>{
+        x+=10
+        getPlayerCoordinateList()
+    })
+    document.querySelector(".down-btn").addEventListener("click", ()=>{
+        y+=10
+        getPlayerCoordinateList()
+    })
+}, false)
+
+
+
+
 
