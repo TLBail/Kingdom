@@ -81,13 +81,9 @@ function drawPresence(ctx, cellSize, x, y) {
 
 
 document.body.addEventListener("changePage", ()=>{
-    let mainGrid = document.querySelector("#main-grid")
-
-    let canvas = document.createElement("canvas")
-    canvas.classList.add("map")
+    let canvas = document.querySelector("#map")
     canvas.width = 600
     canvas.height = 600
-    mainGrid.append(canvas)
 
     let ctx = canvas.getContext("2d")
     let cellSize = 40
