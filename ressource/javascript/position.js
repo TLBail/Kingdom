@@ -3,7 +3,7 @@
 function test(e) {
     let x =Math.floor(e.clientX/cellSize)
     let y = Math.floor(e.clientY/cellSize)
-    if(playersCoordinate.some(e => isEqual(e, {x,y})))
+    if(playersCoordinate.some(e => isEqual(e, {"x":x,"y":y})))
         console.log("jfdklmsqfjdklsm")
 }
 
@@ -22,9 +22,9 @@ var playersCoordinate = [];
 function processResponse(response, ctx, cellSize){
     const playerListJSON = JSON.parse(response);
     Object.keys(playerListJSON).forEach((key, index)=>{
-        let x = parseInt(playerListJSON[key]['x'])
-        let y = parseInt(playerListJSON[key]['y'])
-        playersCoordinate.push({x,y}) 
+        let position = JSON.parse(playerListJSON[key]['position'])
+        console.log(position)
+        playersCoordinate.push(position) 
     })
     playersCoordinate.forEach(coord => {
         drawPresence(ctx, cellSize, coord.x, coord.y)

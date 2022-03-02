@@ -26,12 +26,25 @@ function creationCompte()
     if (isset($user)) {
         echo "<h1> ERROR L'utilisateur existe déjà !! </h1>";
     } else {
+        $position = createPosition()
         $sql = "INSERT INTO `USER` (`id`, `username`, `password`, `lastTimeOnline`, `position`) VALUES (NULL, ?, ?, current_timestamp(), floor(RAND() * 1000)) ";
         $preparedSql = getBDD()->prepare($sql);
         $preparedSql->execute(array($username, $password));
 
         echo "compte créer !";
     }
+}
+
+function createPosition()
+{
+    do {
+        $x = floor(RAND());
+        $y = floor(RAND());
+        $position = "{x:$x,y:$y}"
+        $sql = "select position from USER where position=$position";
+        $response = getBDD()->query($sql);
+    } while (isset($response->fetch()));
+    return $position;
 }
 
 function utilisateurExisteDeja($username)
