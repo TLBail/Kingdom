@@ -56,8 +56,6 @@ function drawPresence(ctx, cellSize, x, y) {
     ctx.fillText("here", x*cellSize+cellSize/2, y*cellSize+cellSize/2+6, 40);
 }
 
-drawGrid(canvas, ctx, cellSize)
-
 
 document.body.addEventListener("changePage", ()=>{
     let x = 0;
@@ -68,8 +66,6 @@ document.body.addEventListener("changePage", ()=>{
     canvas.width = 800
     canvas.height = 800
     contentContainer.append(canvas)
-
-
 
     let ctx = canvas.getContext("2d")
     let cellSize = 40
