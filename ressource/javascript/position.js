@@ -106,19 +106,19 @@ document.body.addEventListener("changePage", ()=>{
     offset = canvas.width/cellSize
 
     document.querySelector(".top-btn").addEventListener("click", ()=>{
-        y-=offset
-        getPlayerCoordinateList(canvas, ctx, cellSize)
-    })
-    document.querySelector(".left-btn").addEventListener("click", ()=>{
         x-=offset
         getPlayerCoordinateList(canvas, ctx, cellSize)
     })
+    document.querySelector(".left-btn").addEventListener("click", ()=>{
+        y-=offset
+        getPlayerCoordinateList(canvas, ctx, cellSize)
+    })
     document.querySelector(".right-btn").addEventListener("click", ()=>{
-        x+=offset
+        y+=offset
         getPlayerCoordinateList(canvas, ctx, cellSize)
     })
     document.querySelector(".down-btn").addEventListener("click", ()=>{
-        y+=offset
+        x+=offset
         getPlayerCoordinateList(canvas, ctx, cellSize)
     })
 }, false)
