@@ -495,8 +495,8 @@ margin-bottom: 0;
 
 #main-grid{
     display: grid;
-    grid-template-columns: 1fr 5fr 1fr;
-    grid-template-rows: 1fr 5fr 1fr;
+    grid-template-columns: 1fr 7fr 1fr;
+    grid-template-rows: 1fr 7fr 1fr;
 }
 #map{
     grid-column: 2;
