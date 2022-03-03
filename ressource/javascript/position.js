@@ -18,7 +18,7 @@ function tooltip(x,y, canvas, ctx, cellSize) {
         redraw(canvas, ctx, cellSize)
         ctx.fillStyle = "black"
         ctx.font = "12px serif"
-        ctx.fillText(players[i], x*cellSize+cellSize/2, y*cellSize+12)
+        ctx.fillText(players[i], (x*cellSize+cellSize/2)-x, (y*cellSize+12)-y)
     }else{
         redraw(canvas, ctx, cellSize)
     }
