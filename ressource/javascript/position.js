@@ -66,6 +66,7 @@ function expedition(x, y) {
 function tooltip(coordX, coordY) {
     let i =playersCoordinate.findIndex((t) => isEqual(t,{"x":calculateMapPosXtoStoredPosX(coordX),"y":calculateMapPosYtoStoredPosY(coordY)}));
     if(i != -1) drawTooltip(players[i], coordX, coordY)
+    else drawAllPresence()
 }
 
 //!AJAX FUNCTIONS
