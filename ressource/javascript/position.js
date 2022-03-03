@@ -14,7 +14,7 @@ function expedition(x, y) {
 
 function tooltip(coordX,coordY, canvas, ctx, cellSize) {
     let i =playersCoordinate.findIndex((t) => isEqual(t,{"x":coordX-x,"y":coordY-y}));
-    console.log(players,i, players[i], coordX, coordX-x, coordY, coordY-y)
+    console.log(players, playersCoordinate,i, players[i], coordX, coordX-x, coordY, coordY-y)
     if(i != -1){
         redraw(canvas, ctx, cellSize)
         ctx.fillStyle = "black"
