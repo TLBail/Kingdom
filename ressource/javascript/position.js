@@ -15,6 +15,7 @@ function expedition(x, y) {
 function tooltip(x,y, canvas, ctx, cellSize) {
     let i =playersCoordinate.findIndex((t) => isEqual(t,{"x":x,"y":y}));
     if(i != -1){
+        console.log(players[i]);
         redraw(canvas, ctx, cellSize)
         ctx.fillStyle = "black"
         ctx.font = "12px serif"
@@ -27,9 +28,7 @@ function tooltip(x,y, canvas, ctx, cellSize) {
 function redraw(canvas, ctx, cellSize) {
     drawGrid(canvas, ctx,cellSize)
     for (const coord of playersCoordinate) {
-        console.log(coord,coord.x, coord.y, x,x+offset, y, y+offset, coord.x>= x && coord.x<x+offset && coord.y>=y && coord.y<y+offset)
         if(coord.x>= x && coord.x<x+offset && coord.y>=y && coord.y<y+offset){
-            console.log("je suis la")
             drawPresence(ctx, cellSize, coord.x-x, coord.y-y)
         }
     }
