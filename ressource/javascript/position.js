@@ -15,7 +15,7 @@ var boxNumber
 
 document.body.addEventListener("changePage", ()=>{
 
-    initGlobalValues()
+    initGlobalValues(600)
 
     canvas.addEventListener("click", event => expedition(calculateEventXPosOnGrid(event.offsetX), calculateEventYPosOnGrid(event.offsetY)))
     canvas.addEventListener("pointermove", event => tooltip(calculateEventXPosOnGrid(event.offsetX), calculateEventYPosOnGrid(event.offsetY)))
@@ -45,10 +45,8 @@ document.body.addEventListener("changePage", ()=>{
 
 function initGlobalValues(size) {
     canvas = document.querySelector("#map")
-    console.log(canvas)
     canvas.width = size
     canvas.height = size
-    console.log(canvas)
     ctx = canvas.getContext("2d")
     cellSize = 40
     boxNumber = size/cellSize
