@@ -12,10 +12,10 @@ function expedition(x, y) {
 }
 
 
-function tooltip(x,y, canvas, ctx, cellSize) {
-    let i =playersCoordinate.findIndex((t) => isEqual(t,{"x":x,"y":y}));
+function tooltip(coordX,coordY, canvas, ctx, cellSize) {
+    let i =playersCoordinate.findIndex((t) => isEqual(t,{"x":coordX-x,"y":coordY-y}));
+    console.log(i, players[i], coordX, coordX-x, coordY, coordY-y)
     if(i != -1){
-        console.log(players[i]);
         redraw(canvas, ctx, cellSize)
         ctx.fillStyle = "black"
         ctx.font = "12px serif"
