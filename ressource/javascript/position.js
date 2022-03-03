@@ -53,7 +53,8 @@ function processResponse(response, canvas, ctx, cellSize, x, y){
     })
     drawGrid(canvas, ctx, cellSize)
     for (const coord in playersCoordinate) {
-        if(x<=coord.x<x+offset)
+        console.log(coord.x, coord.y, x,x+offset, y, y+offset)
+        if(x<=coord.x<x+offset && y<=coord.y<y+offset)
             drawPresence(ctx, cellSize, coord.x, coord.y)
     }
 }
