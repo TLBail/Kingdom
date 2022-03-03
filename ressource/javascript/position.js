@@ -76,7 +76,7 @@ function getPlayerCoordinateList(){
         if(xhr.readyState == 4 && xhr.status == 200)
             processResponse(xhr.responseText)
     }
-    xhr.open("GET", './controller/map.php?bound="'+offsetX*boxNumber+','+offsetY*boxNumber+','+boxNumber+'"')//TODO refaire map.php pour ne renvoyer que les player qui sont dans l'interval
+    xhr.open("GET", './controller/map.php?')//TODO refaire map.php pour ne renvoyer que les player qui sont dans l'interval
     xhr.send(null)
 }
 
@@ -138,6 +138,7 @@ function drawAllPresence() {
     resetCanvas()
     drawGrid()
     for (const coord of playersCoordinate) {
+        if(coord.x >= offsetX*boxNumber && coord.x < offsetX*boxNumber+boxNumber && coord.y >=offsetY*boxNumber && coord.y < offsetY*boxNumber+boxNumber)
         drawPresence(calculateStoredPosXToMapPosX(coord.x), calculateStoredPosYtoMapPosY(coord.y))
     }
 }
