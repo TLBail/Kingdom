@@ -28,8 +28,10 @@ function redraw(canvas, ctx, cellSize) {
     drawGrid(canvas, ctx,cellSize)
     for (const coord of playersCoordinate) {
         console.log(coord,coord.x, coord.y, x,x+offset, y, y+offset, coord.x>= x && coord.x<x+offset && coord.y>=y && coord.y<y+offset)
-        if(coord.x>= x && coord.x<x+offset && coord.y>=y && coord.y<y+offset)
-            drawPresence(ctx, cellSize, coord.x, coord.y)
+        if(coord.x>= x && coord.x<x+offset && coord.y>=y && coord.y<y+offset){
+            console.log("je suis la")
+            drawPresence(ctx, cellSize, coord.x-x, coord.y-y)
+        }
     }
 }
 
@@ -56,7 +58,7 @@ function processResponse(response, canvas, ctx, cellSize){
     drawGrid(canvas, ctx, cellSize)
     for (const coord of playersCoordinate) {
         if(coord.x>= x && coord.x<x+offset && coord.y>=y && coord.y<y+offset)
-            drawPresence(ctx, cellSize, coord.x, coord.y)
+            drawPresence(ctx, cellSize, coord.x-x, coord.y-y)
     }
 }
 
