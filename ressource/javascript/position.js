@@ -93,16 +93,16 @@ document.body.addEventListener("changePage", ()=>{
     drawGrid(canvas, ctx, cellSize)
     getPlayerCoordinateList(canvas, ctx, cellSize);
     document.querySelector(".top-btn").addEventListener("click", ()=>{
-        getPlayerCoordinateList(ctx, cellSize)
+        getPlayerCoordinateList(canvas, ctx, cellSize)
     })
     document.querySelector(".left-btn").addEventListener("click", ()=>{
-        getPlayerCoordinateList(ctx, cellSize)
+        getPlayerCoordinateList(canvas, ctx, cellSize)
     })
     document.querySelector(".right-btn").addEventListener("click", ()=>{
-        getPlayerCoordinateList(ctx, cellSize)
+        getPlayerCoordinateList(canvas, ctx, cellSize)
     })
     document.querySelector(".down-btn").addEventListener("click", ()=>{
-        getPlayerCoordinateList(ctx, cellSize)
+        getPlayerCoordinateList(canvas, ctx, cellSize)
     })
 }, false)
 
