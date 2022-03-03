@@ -26,16 +26,18 @@ function tooltip(x,y, canvas, ctx, cellSize) {
 
 function redraw(canvas, ctx, cellSize) {
     drawGrid(canvas, ctx,cellSize)
-    playersCoordinate.forEach(coord =>{
-        drawPresence(ctx, cellSize, coord.x, coord.y)
-    })
+    for (const coord of playersCoordinate) {
+        console.log(coord,coord.x, coord.y, x,x+offset, y, y+offset, coord.x>= x && coord.x<x+offset && coord.y>=y && coord.y<y+offset)
+        if(coord.x>= x && coord.x<x+offset && coord.y>=y && coord.y<y+offset)
+            drawPresence(ctx, cellSize, coord.x, coord.y)
+    }
 }
 
-function getPlayerCoordinateList(canvas, ctx, cellSize, x, y){
+function getPlayerCoordinateList(canvas, ctx, cellSize){
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = ()=>{
         if(xhr.readyState == 4 && xhr.status == 200)
-            processResponse(xhr.responseText,canvas, ctx, cellSize, x, y)
+            processResponse(xhr.responseText,canvas, ctx, cellSize)
     }
     xhr.open("GET", "./controller/map.php?")
     xhr.send(null)
@@ -43,7 +45,7 @@ function getPlayerCoordinateList(canvas, ctx, cellSize, x, y){
 
 
 
-function processResponse(response, canvas, ctx, cellSize, x, y){
+function processResponse(response, canvas, ctx, cellSize){
     const playerListJSON = JSON.parse(response);
     Object.keys(playerListJSON).forEach((key, index)=>{
         let position = JSON.parse(playerListJSON[key]['position'])
@@ -53,7 +55,6 @@ function processResponse(response, canvas, ctx, cellSize, x, y){
     })
     drawGrid(canvas, ctx, cellSize)
     for (const coord of playersCoordinate) {
-        console.log(coord,coord.x, coord.y, x,x+offset, y, y+offset, coord.x>= x && coord.x<x+offset && coord.y>=y && coord.y<y+offset)
         if(coord.x>= x && coord.x<x+offset && coord.y>=y && coord.y<y+offset)
             drawPresence(ctx, cellSize, coord.x, coord.y)
     }
@@ -105,19 +106,19 @@ document.body.addEventListener("changePage", ()=>{
 
     document.querySelector(".top-btn").addEventListener("click", ()=>{
         y-=offset
-        getPlayerCoordinateList(canvas, ctx, cellSize, x, y)
+        getPlayerCoordinateList(canvas, ctx, cellSize)
     })
     document.querySelector(".left-btn").addEventListener("click", ()=>{
         x-=offset
-        getPlayerCoordinateList(canvas, ctx, cellSize, x, y)
+        getPlayerCoordinateList(canvas, ctx, cellSize)
     })
     document.querySelector(".right-btn").addEventListener("click", ()=>{
         x+=offset
-        getPlayerCoordinateList(canvas, ctx, cellSize, x, y)
+        getPlayerCoordinateList(canvas, ctx, cellSize)
     })
     document.querySelector(".down-btn").addEventListener("click", ()=>{
         y+=offset
-        getPlayerCoordinateList(canvas, ctx, cellSize, x, y)
+        getPlayerCoordinateList(canvas, ctx, cellSize)
     })
 }, false)
 
