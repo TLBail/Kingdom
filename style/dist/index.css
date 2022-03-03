@@ -225,7 +225,7 @@ li {
   height: 300px;
 }
 
-.batimentPanel {
+.specificInfoPanel {
   position: absolute;
   left: 0;
   top: 0;
@@ -243,7 +243,76 @@ li {
   z-index: 2;
 }
 
-.batimentPanel > * {
+.specificInfoPanel .subFlexPanel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 250px;
+}
+
+.specificInfoPanel .subFlexPanel img {
+  width: auto;
+  height: 100%;
+}
+
+.specificInfoPanel .infoBlocPanel {
+  width: 100%;
+  margin: 2em;
+}
+
+.specificInfoPanel .headPanel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  padding-top: 10px;
+}
+
+.specificInfoPanel .headPanel h1 {
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+}
+
+.specificInfoPanel .headPanel button {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-right: 50px;
+}
+
+.specificInfoPanel .ressourceCostPanel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  padding-right: 2em;
+}
+
+.specificInfoPanel .ressourceCostPanel .ressourceBlock {
+  display: inline-block;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 80px;
+  margin-left: 20px;
+  margin-right: 2em;
+}
+
+.specificInfoPanel .ressourceCostPanel .ressourceBlock span {
+  display: block;
+  text-align: center;
+  width: 80px;
+}
+
+.specificInfoPanel .ressourceCostPanel button {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-right: 2em;
+}
+
+.specificInfoPanel * {
   margin-left: 2em;
 }
 
@@ -273,24 +342,6 @@ li {
   }
 }
 
-.batimentPanel .subFlexPanel {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  height: 250px;
-}
-
-.batimentPanel .subFlexPanel img {
-  width: auto;
-  height: 100%;
-}
-
-.batimentPanel .infoBlocPanel {
-  width: 100%;
-  margin: 2em;
-}
-
 .infoPanel {
   width: 90%;
   margin-top: 2em;
@@ -299,57 +350,6 @@ li {
   height: 58px;
   padding: 2px;
   overflow: auto;
-}
-
-.batimentPanel .headPanel {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  padding-top: 10px;
-}
-
-.batimentPanel .headPanel h1 {
-  -webkit-box-flex: 1;
-      -ms-flex: auto;
-          flex: auto;
-}
-
-.batimentPanel .headPanel button {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  margin-right: 50px;
-}
-
-.batimentPanel .ressourceCostPanel {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  padding-right: 2em;
-}
-
-.batimentPanel .ressourceCostPanel .ressourceBlock {
-  display: inline-block;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  width: 80px;
-  margin-left: 20px;
-  margin-right: 2em;
-}
-
-.batimentPanel .ressourceCostPanel .ressourceBlock span {
-  display: block;
-  text-align: center;
-  width: 80px;
-}
-
-.batimentPanel .ressourceCostPanel button {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  margin-right: 2em;
 }
 
 #PageContainer #canvasBatiments {

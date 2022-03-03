@@ -1,5 +1,5 @@
 
-const panel = '<div class="batimentPanel">';
+const panel = '<div class="specificInfoPanel">';
 
 
 var origin;

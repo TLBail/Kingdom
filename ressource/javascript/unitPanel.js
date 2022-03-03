@@ -12,7 +12,7 @@ function displayUnitPanel(unitName, unitUrlImage, info) {
         origin = container.innerHTML;
     }
     container.innerHTML +=
-        '<div class="batimentPanel">' +
+        '<div class="specificInfoPanel">' +
         '<div class="headPanel">' +
         '<h1>' +
         unitName +

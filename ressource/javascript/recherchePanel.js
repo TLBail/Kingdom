@@ -1,30 +1,31 @@
 
 
-var origin;
-var ispaneldisplayed = false;
-function displayRecherchePanel(batimentName, batimentUrlImage, info) {
+var RechercheOrigin;
+var isRecherchePanelDisplayed = false;
+function displayRecherchePanel(rechercheName, rechercheUrlImage, info) {
 
 
-    const panel = '<div class="batimentPanel">';
+    const panel = '<div class="specificInfoPanel">';
 
 
     let container = document.getElementById("recherchePanelContainer");
 
-    if (!ispaneldisplayed) {
-        origin = container.innerHTML;
+    if (!isRecherchePanelDisplayed) {
+        RechercheOrigin = container.innerHTML;
     }
 
+
     let addition = "";
-    if (batimentName == "EntrepotDePierre" ||
-        batimentName == "EntrepotDeBois" ||
-        batimentName == "Silo") {
-        addition = 'capacité : <span class="storageCapacity' + batimentName + '"></span> <br>';
+    if (rechercheName == "EntrepotDePierre" ||
+        rechercheName == "EntrepotDeBois" ||
+        rechercheName == "Silo") {
+        addition = 'capacité : <span class="storageCapacity' + rechercheName + '"></span> <br>';
     } else if (
-        batimentName == "Scierie" || batimentName == "Carriere" || batimentName == "Ferme"
+        rechercheName == "Scierie" || rechercheName == "Carriere" || rechercheName == "Ferme"
     ) {
-        addition = 'ressource par heure : <span class="ressourceRate' + batimentName + '"></span> <br>';
+        addition = 'ressource par heure : <span class="ressourceRate' + rechercheName + '"></span> <br>';
     } else {
-        addition = 'nombre de villageois : <span class="ressourceRate' + batimentName + '"></span> <br>';
+        addition = 'nombre de villageois : <span class="ressourceRate' + rechercheName + '"></span> <br>';
 
     }
 
@@ -32,30 +33,30 @@ function displayRecherchePanel(batimentName, batimentUrlImage, info) {
     container.innerHTML += panel +
         '<div class="headPanel">' +
         '<h1>' +
-        batimentName +
+        rechercheName +
         '</h1>' +
         '<button onclick="closepanel()">' +
         'Fermer' +
         '</button>' +
         '</div>' +
         '<div class="subFlexPanel">' +
-        '<img src="' + batimentUrlImage + '">' +
+        '<img src="' + rechercheUrlImage + '">' +
         '<div class="infoBlocPanel">' +
-        'batiment level : <span class="lvl' + batimentName + '"></span> <br>' + addition +
+        'recherche level : <span class="lvl' + rechercheName + '"></span> <br>' + addition +
         '<div class="ressourceCostPanel">' +
         '<div class="ressourceBlock">' +
         '<img src="./ressource/image/woodIcon.png">' +
-        '<span class="woodCost' + batimentName + '"></span>' +
+        '<span class="woodCost' + rechercheName + '"></span>' +
         '</div>' +
         '<div class="ressourceBlock">' +
         '<img src="./ressource/image/rockIcon.png">' +
-        '<span class="pierreCost' + batimentName + '"></span>' +
+        '<span class="pierreCost' + rechercheName + '"></span>' +
         '</div>' +
         '<div class="ressourceBlock">' +
         '<img src="./ressource/image/foodIcon.png">' +
-        '<span class="foodCost' + batimentName + '"></span>' +
+        '<span class="foodCost' + rechercheName + '"></span>' +
         '</div>' +
-        '<button onclick="onAmeliorationClick(\'' + batimentName + '\')">' +
+        '<button onclick="onAmeliorationRechercheClick(\'' + rechercheName + '\')">' +
         'Upgrade' +
         '</button>' +
         '</div>' +
@@ -67,14 +68,46 @@ function displayRecherchePanel(batimentName, batimentUrlImage, info) {
         '</div>';
 
 
-    ispaneldisplayed = true;
+
+    isRecherchePanelDisplayed = true;
 }
 
 
-function closepanel() {
+function closeRecherchePanel() {
     let container = document.getElementById("recherchePanelContainer");
-    if (ispaneldisplayed) {
-        container.innerHTML = origin;
-        ispaneldisplayed = false;
+    if (isRecherchePanelDisplayed) {
+        container.innerHTML = RechercheOrigin;
+        isRecherchePanelDisplayed = false;
     }
+}
+
+
+function onAmeliorationRechercheClick(recherche) {
+    console.log("amelioration" + recherche);
+
+    var xhr = getXMLHttp();
+    var saisie;
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            let response = xhr.responseText;
+            console.log("receive : " + response);
+            if (response == "erreur") alert("Impossible pour le moment");
+            const object = JSON.parse(response);
+            let field = document.getElementById(recherche);
+            field.innerHTML = "";
+            if (object[recherche]) {
+                Object.keys(object[recherche]).forEach(function (key, index) {
+                    let fieldName = key;
+                    field.innerHTML += fieldName + " " + object[recherche][fieldName] + "<br>";
+                });
+            } else {
+                field.innerHTML = "recherche non débloquer ";
+            }
+        }
+    }
+
+    xhr.open('GET', './controller/recherche.php?upgrade=' + recherche, true);
+    xhr.send(null);
+
 }

@@ -135,7 +135,7 @@ li {
 
 
 
-.batimentPanel{
+.specificInfoPanel{
     position: absolute;
     left: 0;
     top: 0;
@@ -150,11 +150,72 @@ li {
     animation-name: slidein;
     z-index: 2;
 
-}
-  
-.batimentPanel > *{
-    margin-left: 2em; 
+
+    .subFlexPanel{
+
+        display: flex;
+        width: 100%;
+        height: 250px;
+    
+    }
+
+
+    .subFlexPanel img{
+        width: auto;
+        height: 100%;
+    
+    }
+
+
+    .infoBlocPanel{
+        width: 100%;
+        margin: 2em;
+    }
+
+    .headPanel{
+        display: flex;
+        width: 100%;
+        padding-top: 10px;
+
+        h1{
+            flex: auto;
+        }
+
+        button{
+            flex: 1;
+            margin-right: 50px;
+        }
+    }
+    .ressourceCostPanel{
+        display: flex;
+        width: 100%;
+        padding-right: 2em;
+
+        .ressourceBlock{
+            display: inline-block;
+            flex-wrap: wrap;
+            width: 80px;
+            margin-left: 20px;
+            margin-right: 2em;
      
+            span{
+                display: block;
+                text-align: center;
+                width: 80px;
+            }
+     
+        }
+    
+        button{
+            flex: 1;
+            margin-right: 2em;
+        }
+    
+    }
+
+    *{
+        margin-left: 2em;
+    }
 }
 
 @keyframes slidein {
@@ -173,25 +234,7 @@ li {
     }
 }
 
-.batimentPanel .subFlexPanel{
 
-    display: flex;
-    width: 100%;
-    height: 250px;
-
-}
-
-.batimentPanel .subFlexPanel img{
-    width: auto;
-    height: 100%;
-
-}
-
-
-.batimentPanel .infoBlocPanel{
-    width: 100%;
-    margin: 2em;
-}
 
 .infoPanel{
     width: 90%;
@@ -201,47 +244,6 @@ li {
     height: 58px;
     padding: 2px;
     overflow: auto;
-}
-
-
-.batimentPanel .headPanel{
-    display: flex;
-    width: 100%;
-    padding-top: 10px;
-}
-
-.batimentPanel .headPanel h1{
-    flex: auto;
-}
-
-.batimentPanel .headPanel button{
-    flex: 1;
-    margin-right: 50px;
-}
-
-.batimentPanel .ressourceCostPanel{
-    display: flex;
-    width: 100%;
-    padding-right: 2em;
-}
-
-.batimentPanel .ressourceCostPanel .ressourceBlock{
-    display: inline-block;
-    flex-wrap: wrap;
-    width: 80px;
-    margin-left: 20px;
-    margin-right: 2em;
-}
-
-.batimentPanel .ressourceCostPanel .ressourceBlock span{
-    display: block;
-    text-align: center;
-    width: 80px;
-}
-
-.batimentPanel .ressourceCostPanel button{
-    flex: 1;
-    margin-right: 2em;
 }
 
 
