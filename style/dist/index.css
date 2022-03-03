@@ -625,7 +625,7 @@ li {
       grid-template-rows: repeat(3, 1fr);
 }
 
-.map {
+#map {
   -ms-grid-column: 2;
   grid-column: 2;
   -ms-grid-row: 2;
