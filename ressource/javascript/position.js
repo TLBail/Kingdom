@@ -88,7 +88,6 @@ function getPlayerCoordinateList(){
 function processResponse(response){
     players = []
     playersCoordinate = []
-    console.log(response)
     const playerListJSON = JSON.parse(response);
     parseResponse(playerListJSON)
     drawAllPresence()
