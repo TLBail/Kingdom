@@ -38,8 +38,8 @@ function creationCompte()
 function createPosition()
 {
     do {
-        $x = floor(RAND());
-        $y = floor(RAND());
+        $x = rand();
+        $y = rand();
         $position = '{"x":'+$x+',"y":'+$y+'}';
         $sql = "select position from USER where position="+$position;
         $response = getBDD()->query($sql);
