@@ -42,9 +42,7 @@ function createPosition()
         $y = rand();
         $position = '{"x":'.$x.',"y":'.$y.'}';
         $sql = "SELECT `position` FROM `USER` WHERE `position`=".$position.";";
-        print $position;
-        $response = getBDD()->prepare($sql);
-        $response->execute();
+        $response = getBDD()->query($sql);
     } while (count($response->fetchAll()) >=1);
     return $position;
 }
