@@ -6,6 +6,8 @@ var cellSize
 var playersCoordinate = []
 var players = []
 
+var currentUserPosition;
+
 
 var offsetX
 var offsetY
@@ -21,6 +23,7 @@ document.body.addEventListener("changePage", ()=>{
     canvas.addEventListener("click", event => expedition(calculateEventXPosOnGrid(event.offsetX), calculateEventYPosOnGrid(event.offsetY)))
     canvas.addEventListener("pointermove", event => tooltip(calculateEventXPosOnGrid(event.offsetX), calculateEventYPosOnGrid(event.offsetY)))
 
+    getCurrentPosition()
     getPlayerCoordinateList()
 
     document.querySelector(".top-btn").addEventListener("click", ()=>{
@@ -63,9 +66,6 @@ function expedition(x, y) {
         coord  = JSON.stringify({"x":calculateMapPosXtoStoredPosX(x),"y":calculateMapPosYtoStoredPosY(y)})
         changePage('pages/expedition.html')
     }
-        
-
-    //TODO link au expedition
 }
 
 
@@ -83,19 +83,36 @@ function getPlayerCoordinateList(){
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = ()=>{
         if(xhr.readyState == 4 && xhr.status == 200)
-            processResponse(xhr.responseText)
+            processCoordinateList(xhr.responseText)
     }
     xhr.open("GET", './controller/map.php?')
     xhr.send(null)
 }
 
-function processResponse(response){
+function processCoordinateList(response){
     players = []
     playersCoordinate = []
     const playerListJSON = JSON.parse(response);
     parseResponse(playerListJSON)
     drawAllPresence()
 }
+
+function getCurrentPosition() {
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = ( )=>{
+        if(xhr.readyState == 4 && xhr.status == 200)
+            processCurrentPosition(xhr.responseText)
+    }
+    xhr.open("GET", './controller/centerMap.php?')
+    xhr.send(null)
+}
+
+function processCurrentPosition(response) {
+    currentUserPosition = Json.parse(response)
+    offsetX = calculateOffset(currentUserPosition.x) 
+    offsetY = calculateOffset(currentUserPosition.y)  
+}
+
 
 //! UTILITIES FUNCTIONS
 function calculateCenteredPosXOnCanvas(x) {
@@ -127,6 +144,10 @@ function calculateMapPosXtoStoredPosX(x) {
 
 function calculateMapPosYtoStoredPosY(y) {
     return y+offsetY*boxNumber
+}
+
+function calculateOffset(p) {
+    return p / boxNumber / 2
 }
 
 function parseResponse(response) {
