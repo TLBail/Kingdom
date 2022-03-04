@@ -60,6 +60,7 @@ function sendExpeditions() {
 
         let coo = document.getElementById("coordinate");
         const xhr = getXMLHttp();
+        console.log(coo.value)
         let request = './controller/expeditions.php?new=true&coo=' + coo.value;
         if (troupe['nbchasseur']) request += '&chasseur=' + troupe['nbchasseur'];
         if (troupe['nbtemplier']) request += '&templier=' + troupe['nbtemplier'];

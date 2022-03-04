@@ -87,7 +87,7 @@ function addnewExpedition($units, $coo)
     $user = getUser();
     if (!isset($user)) return null;
 
-    $distance = abs($coo - $user->getPosition());
+    $distance = calculateDistance($coo, $user->getPosition());
 
     if ($distance == 0) {
         echo "erreur tu t'est envoyé l'expeditions à toi même";
@@ -121,6 +121,14 @@ function addnewExpedition($units, $coo)
             return $exception;
         }
     }
+}
+
+
+function calculateDistance($coord1, $coord2)
+{
+    $coordinate1 = json_decode($coord1);
+    $coordinate2 = json_decode($coord2);
+    return abs($coordinate1->x - $coordinate2->x + $coordinate1->y - $coordinate2->y)
 }
 
 
