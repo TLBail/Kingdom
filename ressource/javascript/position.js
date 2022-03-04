@@ -170,7 +170,7 @@ function drawGrid() {
 }
 
 function drawPresence(x, y) {
-    ctx.font = '12px serif'
+    ctx.font = '24px serif'
     ctx.fillStyle = "black"
     ctx.textAlign = 'center'
     ctx.fillText("🏠", calculateCenteredPosXOnCanvas(x), calculateCenteredPosYOnCanvas(y)+6, cellSize);
