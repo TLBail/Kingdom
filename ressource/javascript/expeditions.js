@@ -134,18 +134,30 @@ function showPlayers() {
 
                 return;
             }
-            field.innerHTML = "";
-            let futurToAdd = "";
-            Object.keys(object).forEach(function (key, index) {
+            let playerList = []
+            //TODO ajouter dans le dict ["username":position] puis ajouter dans le html
+            Object.keys(object).forEach((key, index) => {
+                const element = object[key];
+                playerList[element["username"]] = element["position"]
+                let playerBtn = document.createElement("p")
+                playerBtn.id = element["username"]
+                playerBtn.innerHTML += "username : " + element["username"] +"<br>"
+                playerBtn.innerHTML += "position : " + prettyCoordinates(element["position"]) + "<br>"
+                playerBtn.addEventListener("click", () => coordo(playerList[element["username"]]))
+                field.appendChild(playerBtn)
+            })
+
+            /*Object.keys(object).forEach(function (key, index) {
                 const element = object[key];
                 let futurToAdd = document.createElement("p")
                 futurToAdd.id = element['username']
+                let playerList = []
                 futurToAdd.addEventListener("click", coordo(element['position']))
                 Object.keys(element).forEach(function (key, index) {
                     futurToAdd.innerHTML += key + " " + element[key] + "<br>";
                 });
                 field.appendChild(futurToAdd);
-            });
+            });*/
 
             setTimeout(showPlayers, 1000);
         }
@@ -157,7 +169,11 @@ function showPlayers() {
 
 }
 
+function prettyCoordinates(c) {
+    let coord = JSON.parse(c)
+    return "x: " + coord.x + " y:" +coord.y 
+}
+
 function coordo(coordone) {
-    console.log("je suis la")
     document.getElementById("coordinate").value = coordone;
 }
