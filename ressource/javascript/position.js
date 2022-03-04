@@ -94,7 +94,7 @@ function calculateCenteredPosXOnCanvas(x) {
 }
 
 function calculateCenteredPosYOnCanvas(y) {
-    return (y)*(cellSize/2)+(cellSize/2)
+    return (y)*(cellSize)+(cellSize/2)
 }
 function calculateEventXPosOnGrid(x) {
     return Math.floor(x/cellSize)
