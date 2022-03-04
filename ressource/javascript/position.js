@@ -139,7 +139,7 @@ function drawAllPresence() {
     resetCanvas()
     drawGrid()
     for (const coord of playersCoordinate) {
-        console.log(coord, offsetX*boxNumber, offsetX*boxNumber+boxNumber, offsetY*boxNumber, offsetY*boxNumber+boxNumber, coord.x >= offsetX*boxNumber && coord.x < offsetX*boxNumber+boxNumber && coord.y >=offsetY*boxNumber && coord.y < offsetY*boxNumber+boxNumber)
+        console.log(coord, calculateStoredPosXToMapPosX(coord.x), calculateStoredPosYtoMapPosY(coord.y))
         if(coord.x >= offsetX*boxNumber && coord.x < offsetX*boxNumber+boxNumber && coord.y >=offsetY*boxNumber && coord.y < offsetY*boxNumber+boxNumber)
             drawPresence(calculateStoredPosXToMapPosX(coord.x), calculateStoredPosYtoMapPosY(coord.y))
     }
