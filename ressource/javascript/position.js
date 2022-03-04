@@ -64,7 +64,7 @@ function expedition(x, y) {
 
 
 function tooltip(coordX, coordY) {
-    console.log(coordX, calculateMapPosXtoStoredPosX(x), coordY, calculateMapPosYtoStoredPosY(y))
+    console.log(coordX, calculateMapPosXtoStoredPosX(coordX), coordY, calculateMapPosYtoStoredPosY(coordY))
     let i =playersCoordinate.findIndex((t) => isEqual(t,{"x":calculateMapPosXtoStoredPosX(coordX),"y":calculateMapPosYtoStoredPosY(coordY)}));
     if(i != -1) drawTooltip(players[i], coordX, coordY)
     else drawAllPresence()
