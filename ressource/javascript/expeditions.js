@@ -93,7 +93,8 @@ function sendExpeditions() {
         troupe = Array();
         if (document.getElementById("nbchasseur").value || document.getElementById("nbtemplier").value ||
             document.getElementById("nbchevalier").value) {
-            changePage('pages/expeditionsSubPage/expeditions2.html');
+            if(!coord)
+                changePage('pages/expeditionsSubPage/expeditions2.html');
             if (document.getElementById("nbchasseur").value)
                 troupe['nbchasseur'] = document.getElementById("nbchasseur").value;
             if (document.getElementById("nbtemplier").value)
