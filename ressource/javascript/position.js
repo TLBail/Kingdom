@@ -108,13 +108,9 @@ function getCurrentPosition() {
 }
 
 function processCurrentPosition(response) {
-    console.log(response)
     currentUserPosition = JSON.parse(response)
-    console.log(currentUserPosition)
     offsetX = calculateOffset(currentUserPosition.x)
-    console.log(offsetX)
-    offsetY = calculateOffset(currentUserPosition.y)  
-    console.log(offsetY)
+    offsetY = calculateOffset(currentUserPosition.y)
 }
 
 
