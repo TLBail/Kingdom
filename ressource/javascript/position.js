@@ -62,8 +62,8 @@ function initGlobalValues(size) {
 
 function expedition(x, y) {
     let i =playersCoordinate.findIndex((t) => isEqual(t,{"x":calculateMapPosXtoStoredPosX(x),"y":calculateMapPosYtoStoredPosY(y)}));
-    if(i != -1){
-        coord  = JSON.stringify({"x":calculateMapPosXtoStoredPosX(x),"y":calculateMapPosYtoStoredPosY(y)})
+    if(i != -1 && JSON.stringify(currentUserPosition) === JSON.stringify(playersCoordinate[i])){
+        coord  = playersCoordinate[i];
         changePage('pages/expedition.html')
     }
 }
