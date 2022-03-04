@@ -1,4 +1,5 @@
 var troupe;
+var coord;
 
 updateExpeditions();
 function updateExpeditions() {
@@ -50,7 +51,7 @@ function updateExpeditions() {
 
 function sendExpeditions() {
 
-    if (troupe) {
+    if (troupe || coord) {
         //on est a l'étape 2
         changePage('pages/expedition.html');
         let msg = "troupe envoyé :";
@@ -60,7 +61,6 @@ function sendExpeditions() {
 
         let coo = document.getElementById("coordinate");
         const xhr = getXMLHttp();
-        console.log(coo.value)
         let request = './controller/expeditions.php?new=true&coo=' + coo.value;
         if (troupe['nbchasseur']) request += '&chasseur=' + troupe['nbchasseur'];
         if (troupe['nbtemplier']) request += '&templier=' + troupe['nbtemplier'];
