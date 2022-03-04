@@ -169,7 +169,6 @@ function drawPresence(x, y) {
 }
 
 function drawTooltip(playerUsername, x, y) {
-    console.log(playerUsername)
     ctx.fillStyle = "black"
     ctx.font = "12px serif"
     ctx.fillText(playerUsername, calculateCenteredPosXOnCanvas(x), calculateCenteredPosYOnCanvas(y)-12)
