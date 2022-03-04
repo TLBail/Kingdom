@@ -65,7 +65,10 @@ function expedition(x, y) {
 
 function tooltip(coordX, coordY) {
     let i =playersCoordinate.findIndex((t) => isEqual(t,{"x":calculateMapPosXtoStoredPosX(coordX),"y":calculateMapPosYtoStoredPosY(coordY)}));
-    if(i != -1) drawTooltip(players[i], coordX, coordY)
+    if(i != -1) {
+        drawAllPresence()
+        drawTooltip(players[i], coordX, coordY)
+    }
     else drawAllPresence()
 }
 
@@ -169,6 +172,5 @@ function drawPresence(x, y) {
 function drawTooltip(playerUsername, x, y) {
     ctx.fillStyle = "black"
     ctx.font = "12px serif"
-    console.log(x, calculateCenteredPosXOnCanvas(x), y,calculateCenteredPosYOnCanvas(y))
     ctx.fillText(playerUsername, calculateCenteredPosXOnCanvas(x), calculateCenteredPosYOnCanvas(y)-12)
 }
