@@ -158,5 +158,6 @@ function showPlayers() {
 }
 
 function coordo(coordone) {
-    document.getElementById("coordinate").value = JSON.stringify(coordone);
+    console.log("je suis la")
+    document.getElementById("coordinate").value = coordone;
 }
