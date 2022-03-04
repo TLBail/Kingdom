@@ -88,6 +88,7 @@ function getPlayerCoordinateList(){
 function processResponse(response){
     players = []
     playersCoordinate = []
+    console.log(response)
     const playerListJSON = JSON.parse(response);
     parseResponse(playerListJSON)
     drawAllPresence()
@@ -160,6 +161,7 @@ function drawGrid() {
         ctx.moveTo(0,i) 
         ctx.lineTo(canvas.width, i)
     }
+    ctx.fillStyle= "black"
     ctx.strokeStyle = "black"
     ctx.stroke()
 }
