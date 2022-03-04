@@ -151,7 +151,7 @@ function calculateMapPosYtoStoredPosY(y) {
 }
 
 function calculateOffset(p) {
-    return p / boxNumber / 2
+    return Math.floor(p / boxNumber / 2)
 }
 
 function parseResponse(response) {
