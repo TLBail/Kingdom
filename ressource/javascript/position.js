@@ -18,7 +18,10 @@ document.body.addEventListener("changePage", ()=>{
     initGlobalValues(600)
 
     canvas.addEventListener("click", event => expedition(calculateEventXPosOnGrid(event.offsetX), calculateEventYPosOnGrid(event.offsetY)))
-    canvas.addEventListener("pointermove", event => tooltip(calculateEventXPosOnGrid(event.offsetX), calculateEventYPosOnGrid(event.offsetY)))
+    canvas.addEventListener("pointermove", event => {
+        console.log(event.offsetX, calculateEventXPosOnGrid(event.offsetX), event.offsetY, calculateEventYPosOnGrid(event.offsetY))
+        tooltip(calculateEventXPosOnGrid(event.offsetX), calculateEventYPosOnGrid(event.offsetY))
+    })
 
     getPlayerCoordinateList()
 
