@@ -41,9 +41,9 @@ function createPosition()
         $x = floor(RAND());
         $y = floor(RAND());
         $position = '{"x":$x,"y":$y}';
-        $sql = "select position from USER where position=$position";
+        $sql = "select position from USER where position="+$position;
         $response = getBDD()->query($sql);
-    } while ($response->fetch() >=1);
+    } while (count($response) >=1);
     return $position;
 }
 
