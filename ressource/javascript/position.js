@@ -138,7 +138,6 @@ function drawAllPresence() {
     resetCanvas()
     drawGrid()
     for (const coord of playersCoordinate) {
-        console.log(coord, calculateStoredPosXToMapPosX(coord.x) , calculateMapPosXtoStoredPosX(coord.x), calculateStoredPosYtoMapPosY(coord.y), calculateMapPosYtoStoredPosY(coord.y))
         if(coord.x >= offsetX*boxNumber && coord.x < offsetX*boxNumber+boxNumber && coord.y >=offsetY*boxNumber && coord.y < offsetY*boxNumber+boxNumber)
             drawPresence(calculateStoredPosXToMapPosX(coord.x), calculateStoredPosYtoMapPosY(coord.y))
     }
@@ -170,5 +169,6 @@ function drawPresence(x, y) {
 function drawTooltip(playerUsername, x, y) {
     ctx.fillStyle = "black"
     ctx.font = "12px serif"
+    console.log(x, calculateCenteredPosXOnCanvas(x), y,calculateCenteredPosYOnCanvas(y))
     ctx.fillText(playerUsername, calculateCenteredPosXOnCanvas(x), calculateCenteredPosYOnCanvas(y)-12)
 }
