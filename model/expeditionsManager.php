@@ -128,7 +128,7 @@ function calculateDistance($coord1, $coord2)
 {
     $coordinate1 = json_decode($coord1);
     $coordinate2 = json_decode($coord2);
-    return abs($coordinate1->x - $coordinate2->x + $coordinate1->y - $coordinate2->y)
+    return abs($coordinate1->x - $coordinate2->x + $coordinate1->y - $coordinate2->y);
 }
 
 
