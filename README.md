@@ -35,8 +35,11 @@ Les seules données récoltées sont celle du jeux dont le login et l'identifian
 ## Contributeurs
 
 Théo LE BAIL
+
 Nathan POLLART
+
 Axel GUÉRANGER
+
 Maxime GUINOISEAU
 
 
