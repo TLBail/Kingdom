@@ -173,7 +173,7 @@ function drawPresence(x, y) {
     ctx.font = '24px serif'
     ctx.fillStyle = "black"
     ctx.textAlign = 'center'
-    ctx.fillText("🏠", calculateCenteredPosXOnCanvas(x), calculateCenteredPosYOnCanvas(y)+6, cellSize);
+    ctx.fillText("🏠", calculateCenteredPosXOnCanvas(x), calculateCenteredPosYOnCanvas(y)+12, cellSize);
 }
 
 function drawTooltip(playerUsername, x, y) {
