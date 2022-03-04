@@ -16,6 +16,7 @@ var boxNumber
 document.body.addEventListener("changePage", ()=>{
 
     initGlobalValues(600)
+    if(canvas == null) return;
 
     canvas.addEventListener("click", event => expedition(calculateEventXPosOnGrid(event.offsetX), calculateEventYPosOnGrid(event.offsetY)))
     canvas.addEventListener("pointermove", event => tooltip(calculateEventXPosOnGrid(event.offsetX), calculateEventYPosOnGrid(event.offsetY)))
@@ -45,6 +46,7 @@ document.body.addEventListener("changePage", ()=>{
 
 function initGlobalValues(size) {
     canvas = document.querySelector("#map")
+    if(canvas == null) return;
     canvas.width = size
     canvas.height = size
     ctx = canvas.getContext("2d")
@@ -79,7 +81,7 @@ function getPlayerCoordinateList(){
         if(xhr.readyState == 4 && xhr.status == 200)
             processResponse(xhr.responseText)
     }
-    xhr.open("GET", './controller/map.php?')//TODO refaire map.php pour ne renvoyer que les player qui sont dans l'interval
+    xhr.open("GET", './controller/map.php?')
     xhr.send(null)
 }
 
