@@ -18,10 +18,7 @@ document.body.addEventListener("changePage", ()=>{
     initGlobalValues(600)
 
     canvas.addEventListener("click", event => expedition(calculateEventXPosOnGrid(event.offsetX), calculateEventYPosOnGrid(event.offsetY)))
-    canvas.addEventListener("pointermove", event => {
-        console.log(event.offsetX, calculateEventXPosOnGrid(event.offsetX), event.offsetY, calculateEventYPosOnGrid(event.offsetY))
-        tooltip(calculateEventXPosOnGrid(event.offsetX), calculateEventYPosOnGrid(event.offsetY))
-    })
+    canvas.addEventListener("pointermove", event => tooltip(calculateEventXPosOnGrid(event.offsetX), calculateEventYPosOnGrid(event.offsetY)))
 
     getPlayerCoordinateList()
 
@@ -101,7 +98,7 @@ function calculateCenteredPosYOnCanvas(y) {
     return (y)*(cellSize/2)+(cellSize/2)
 }
 function calculateEventXPosOnGrid(x) {
-    Math.floor(x/cellSize)
+    return Math.floor(x/cellSize)
 }
 
 function calculateEventYPosOnGrid(y) {
