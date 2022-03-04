@@ -138,7 +138,7 @@ function showPlayers() {
             let futurToAdd = "";
             Object.keys(object).forEach(function (key, index) {
                 const element = object[key];
-                console.log(element['position'])
+                console.log("<p onclick=\"coordo('" + element['position'] + "')\">")
                 let futurToAdd = "<p onclick=\"coordo('" + element['position'] + "')\"> players " + " : <br>";
                 Object.keys(element).forEach(function (key, index) {
                     let fieldName = key;
