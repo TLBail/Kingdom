@@ -138,15 +138,13 @@ function showPlayers() {
             let futurToAdd = "";
             Object.keys(object).forEach(function (key, index) {
                 const element = object[key];
-                console.log("<p onclick=\"coordo('" + element['position'] + "')\">")
-                let futurToAdd = "<p onclick=\"coordo('" + element['position'] + "')\"> players " + " : <br>";
+                let futurToAdd = document.createElement("p")
+                futurToAdd.id = element['username']
+                futurToAdd.addEventListener("click", coordo(element['position']))
                 Object.keys(element).forEach(function (key, index) {
-                    let fieldName = key;
-                    futurToAdd += key + " " + element[key] + "<br>";
-
+                    futurToAdd.innerHTML += key + " " + element[key] + "<br>";
                 });
-                futurToAdd += "</p>";
-                field.innerHTML += futurToAdd;
+                field.appendChild(futurToAdd);
             });
 
             setTimeout(showPlayers, 1000);
