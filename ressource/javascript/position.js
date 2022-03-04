@@ -59,8 +59,12 @@ function initGlobalValues(size) {
 
 function expedition(x, y) {
     let i =playersCoordinate.findIndex((t) => isEqual(t,{"x":calculateMapPosXtoStoredPosX(x),"y":calculateMapPosYtoStoredPosY(y)}));
-    if(i != -1)
-        console.log(players[i])
+    if(i != -1){
+        coord  = JSON.stringify({"x":calculateMapPosXtoStoredPosX(x),"y":calculateMapPosYtoStoredPosY(y)})
+        changePage('pages/expedition.html')
+    }
+        
+
     //TODO link au expedition
 }
 

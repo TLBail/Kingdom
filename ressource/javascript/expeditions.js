@@ -51,17 +51,19 @@ function updateExpeditions() {
 
 function sendExpeditions() {
 
-    if (troupe || coord) {
+    if (troupe) {
         //on est a l'étape 2
         changePage('pages/expedition.html');
         let msg = "troupe envoyé :";
         Object.keys(troupe).forEach(function (key, index) {
             msg += key + " " + troupe[key] + " |";
         });
-
-        let coo = document.getElementById("coordinate");
+        let coo;
+        let cooField = document.getElementById("coordinate");
+        if(cooField == null && coord) coo = coord;
+        else coo = cooField.value;
         const xhr = getXMLHttp();
-        let request = './controller/expeditions.php?new=true&coo=' + coo.value;
+        let request = './controller/expeditions.php?new=true&coo=' + coo;
         if (troupe['nbchasseur']) request += '&chasseur=' + troupe['nbchasseur'];
         if (troupe['nbtemplier']) request += '&templier=' + troupe['nbtemplier'];
         if (troupe['nbchevalier']) request += '&chevalier=' + troupe['nbchevalier'];
@@ -84,6 +86,7 @@ function sendExpeditions() {
         xhr.open('GET', request, true);
         xhr.send(null);
         troupe = null;
+        coord = null;
 
     } else {
         // on est a l'étape 1
@@ -97,6 +100,9 @@ function sendExpeditions() {
                 troupe['nbtemplier'] = document.getElementById("nbtemplier").value;
             if (document.getElementById("nbchevalier").value)
                 troupe['nbchevalier'] = document.getElementById("nbchevalier").value;
+            
+            if(coord)
+                sendExpeditions()
 
         } else {
             troupe = null;
