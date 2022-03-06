@@ -90,12 +90,10 @@ function getDataRecherche() {
                     let fieldName = key;
                     let spanfields = document.getElementsByClassName(fieldName + batimentName);
                     if (spanfields.length > 0) {
-
                         for (let index = 0; index < spanfields.length; index++) {
                             const spanfield = spanfields[index];
                             spanfield.innerHTML = object[batimentName][fieldName];
                         }
-
                     }
                     if (field) field.innerHTML += fieldName + " " + object[batimentName][fieldName] + "\n<br>";
 
@@ -117,6 +115,8 @@ function getDataRecherche() {
                     if (elementLoadings) {
                         for (let index = 0; index < elementLoadings.length; index++) {
                             const elementBlackLoading = elementLoadings[index].parentNode;
+                            console.log(elementBlackLoading);
+
                             elementBlackLoading.style.opacity = 1;
                             elementBlackLoading.style.height = percentComplition + "%";
 

@@ -39,29 +39,14 @@ class Recherche
     {
 
         switch ($this->type) {
-            case 'Scierie':
+            case 'hydraulique':
                 return 60 * pow(1.5, $this->level);
                 break;
-            case 'Carriere':
+            case 'outil':
                 return 48 * pow(1.6, $this->level);
                 break;
-            case 'Ferme':
+            case 'compost':
                 return 225 * pow(1.5, $this->level);
-                break;
-            case 'EntrepotDeBois':
-                return 1000 * pow(2, $this->level);
-                break;
-            case 'EntrepotDePierre':
-                return 500 * pow(2, $this->level);
-                break;
-            case 'Silo':
-                return 1000 * pow(2, $this->level);
-                break;
-            case 'Maison':
-                return 75 * pow(1.5, $this->level);
-                break;
-            case 'Immeuble':
-                return 900 * pow(1.8, $this->level);
                 break;
             default:
                 return 0;
@@ -73,26 +58,14 @@ class Recherche
     {
 
         switch ($this->type) {
-            case 'Scierie':
+            case 'hydraulique':
                 return 15 * pow(1.5, $this->level);
                 break;
-            case 'Carriere':
+            case 'outil':
                 return 24 * pow(1.6, $this->level);
                 break;
-            case 'Ferme':
+            case 'compost':
                 return 75 * pow(1.5, $this->level);
-                break;
-            case 'EntrepotDePierre':
-                return 250 * pow(2, $this->level);
-                break;
-            case 'Silo':
-                return 1000 * pow(2, $this->level);
-                break;
-            case 'Maison':
-                return 30 * pow(1.5, $this->level);
-                break;
-            case 'Immeuble':
-                return 360 * pow(1.8, $this->level);
                 break;
             default:
                 return 0;
@@ -103,33 +76,6 @@ class Recherche
     public function getNourritureCostForNextLevel()
     {
         switch ($this->type) {
-            case 'Immeuble':
-                return 180 * pow(1.8, $this->level);
-                break;
-            default:
-                return 0;
-                break;
-        }
-    }
-
-    public function getRessourceRatePerHour()
-    {
-        switch ($this->type) {
-            case 'Scierie':
-                return 30 * self::SERVERSPEED * $this->level * pow(1.1, $this->level);
-                break;
-            case 'Carriere':
-                return 20 * self::SERVERSPEED * $this->level * pow(1.1, $this->level);
-                break;
-            case 'Ferme':
-                return 10 * self::SERVERSPEED * $this->level * pow(1.1, $this->level);
-                break;
-            case 'Maison':
-                return 20 * $this->level * pow(1.1, $this->level);
-                break;
-            case 'Immeuble':
-                return 30 * $this->level * pow(1.1, $this->level);
-                break;
             default:
                 return 0;
                 break;
