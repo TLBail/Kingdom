@@ -15,17 +15,17 @@ function onAmeliorationClick(batiment) {
             let response = xhr.responseText;
             // console.log("receive : " + response);
             if (response == "erreur") alert("Impossible pour le moment");
-            const object = JSON.parse(response);
-            let field = document.getElementById(batiment);
-            field.innerHTML = "";
-            if (object[batiment]) {
-                Object.keys(object[batiment]).forEach(function (key, index) {
-                    let fieldName = key;
-                    field.innerHTML += fieldName + " " + object[batiment][fieldName] + "<br>";
-                });
-            } else {
-                field.innerHTML = "batiment non débloquer ";
-            }
+            // const object = JSON.parse(response);
+            // let field = document.getElementById(batiment);
+            // field.innerHTML = "";
+            // if (object[batiment]) {
+            //     Object.keys(object[batiment]).forEach(function (key, index) {
+            //         let fieldName = key;
+            //         field.innerHTML += fieldName + " " + object[batiment][fieldName] + "<br>";
+            //     });
+            // } else {
+            //     field.innerHTML = "batiment non débloquer ";
+            // }
         }
     }
 
