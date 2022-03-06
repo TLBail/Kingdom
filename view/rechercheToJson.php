@@ -1,21 +1,20 @@
 <?php
 
 
-function getRechercheToJson($batiments)
+function getRechercheToJson($recherches)
 {
-    if (!isset($batiments)) return "{}";
+    if (!isset($recherches)) return "{}";
 
     $index = 1;
-    foreach ($batiments as $batiment) {
-
-        $levels[$batiment->getType()] = array(
-            "lvl" => $batiment->getLevel(),
-            "woodCost" => floor($batiment->getWoodCostForNextLevel()),
-            "pierreCost" => floor($batiment->getPierreCostForNextLevel())
+    foreach ($recherches as $recherche) {
+        $levels[$recherche->getType()] = array(
+            "lvl" => $recherche->getLevel(),
+            "woodCost" => floor($recherche->getWoodCostForNextLevel()),
+            "pierreCost" => floor($recherche->getPierreCostForNextLevel())
         );
-        if ($batiment->getTimeRemainingAmelioration() !== 0) {
-            $levels[$batiment->getType()]["timeRemaining"] = floor($batiment->getTimeRemainingAmelioration());
-            $levels[$batiment->getType()]["timefrom"] = floor($batiment->getUpgradeTimeForNextLevelInSeconde());
+        if ($recherche->getTimeRemainingAmelioration() !== 0) {
+            $levels[$recherche->getType()]["timeRemaining"] = floor($recherche->getTimeRemainingAmelioration());
+            $levels[$recherche->getType()]["timefrom"] = floor($recherche->getUpgradeTimeForNextLevelInSeconde());
         }
 
         $index = $index + 1;

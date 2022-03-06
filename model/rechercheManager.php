@@ -39,7 +39,6 @@ function getRechercheOfUser()
                 $ligne['level']++;
             }
         }
-
         $recherches[$index] = new Recherche(
             $ligne['type'],
             $ligne['level'],

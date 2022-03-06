@@ -42,6 +42,5 @@ if (isset($_GET['all'])) {
 
 
     $recherche = getRechercheOfUser();
-
     echo getRechercheToJson($recherche);
 }
