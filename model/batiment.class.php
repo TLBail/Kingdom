@@ -129,22 +129,49 @@ class Batiment
         }
     }
 
+    public function getRawRessourceRatePerHour()
+    {
+        switch ($this->type) {
+            case 'Scierie':
+                return 30 * self::SERVERSPEED * $this->level * pow(1.1, $this->level);
+                break;
+            case 'Carriere':
+                return 20 * self::SERVERSPEED * $this->level * pow(1.1, $this->level);
+                break;
+            case 'Ferme':
+                return 10 * self::SERVERSPEED * $this->level * pow(1.1, $this->level);
+                break;
+            case 'Maison':
+                return 20 * $this->level * pow(1.1, $this->level);
+                break;
+            case 'Immeuble':
+                return 30 * $this->level * pow(1.1, $this->level);
+                break;
+            default:
+                return 0;
+                break;
+        }
+    }
+
     public function getRessourceRatePerHour($recherches)
     {
         switch ($this->type) {
             case 'Scierie':
                 $rate = 30 * self::SERVERSPEED * $this->level * pow(1.1, $this->level);
-                $rate = $rate + ($rate * $recherches['hydraulique']->getBonus() / 100);
+                if (isset($recherches['hydraulique']))
+                    $rate = $rate + ($rate * $recherches['hydraulique']->getBonus() / 100);
                 return $rate;
                 break;
             case 'Carriere':
                 $rate = 20 * self::SERVERSPEED * $this->level * pow(1.1, $this->level);
-                $rate = $rate + ($rate * $recherches['outil']->getBonus() * 100);
+                if (isset($recherches['outil']))
+                    $rate = $rate + ($rate * $recherches['outil']->getBonus() * 100);
                 return $rate;
                 break;
             case 'Ferme':
                 $rate =  10 * self::SERVERSPEED * $this->level * pow(1.1, $this->level);
-                $rate = $rate + ($rate * $recherches['compost']->getBonus() * 100);
+                if (isset($recherches['compost']))
+                    $rate = $rate + ($rate * $recherches['compost']->getBonus() * 100);
                 return $rate;
                 break;
             case 'Maison':

@@ -15,8 +15,8 @@ function getBatimentsToJson($batiments)
         );
         if ($batiment->getNourritureCostForNextLevel() !== 0)
             $levels[$batiment->getType()]["nourritureCost"] = floor($batiment->getNourritureCostForNextLevel());
-        if ($batiment->getRessourceRatePerHour() !== 0)
-            $levels[$batiment->getType()]["ressourceRate"] = floor($batiment->getRessourceRatePerHour());
+        if ($batiment->getRawRessourceRatePerHour() !== 0)
+            $levels[$batiment->getType()]["ressourceRate"] = floor($batiment->getRawRessourceRatePerHour());
         if ($batiment->getTotalVillageoisCost() !== 0)
             $levels[$batiment->getType()]["villageoisCost"] = floor($batiment->getTotalVillageoisCost());
         if ($batiment->getStorageCapacity() !== 0)

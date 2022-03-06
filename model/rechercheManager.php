@@ -5,6 +5,7 @@
 function getRechercheMapOfUser()
 {
     $recherches = getRechercheOfUser();
+    if (!isset($recherches)) return null;
     $toreturn = array();
     foreach ($recherches as $recherche) {
         $toreturn[$recherche->getType()] = $recherche;
