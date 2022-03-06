@@ -10,7 +10,9 @@ function getRechercheToJson($recherches)
         $levels[$recherche->getType()] = array(
             "lvl" => $recherche->getLevel(),
             "woodCost" => floor($recherche->getWoodCostForNextLevel()),
-            "pierreCost" => floor($recherche->getPierreCostForNextLevel())
+            "pierreCost" => floor($recherche->getPierreCostForNextLevel()),
+            "bonus" => floor($recherche->getBonus())
+
         );
         if ($recherche->getTimeRemainingAmelioration() !== 0) {
             $levels[$recherche->getType()]["timeRemaining"] = floor($recherche->getTimeRemainingAmelioration());

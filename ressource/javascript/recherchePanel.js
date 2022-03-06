@@ -25,7 +25,7 @@ function displayRecherchePanel(rechercheName, rechercheUrlImage, info) {
     ) {
         addition = 'ressource par heure : <span class="ressourceRate' + rechercheName + '"></span> <br>';
     } else {
-        addition = 'nombre de villageois : <span class="ressourceRate' + rechercheName + '"></span> <br>';
+        addition = 'bonus  : <span class="bonus' + rechercheName + '"></span>% <br>';
 
     }
 
