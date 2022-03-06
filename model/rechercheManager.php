@@ -2,6 +2,16 @@
 
 
 
+function getRechercheMapOfUser()
+{
+    $recherches = getRechercheOfUser();
+    $toreturn = array();
+    foreach ($recherches as $recherche) {
+        $toreturn[$recherche->getType()] = $recherche;
+    }
+    return $toreturn;
+}
+
 
 function getRechercheOfUser()
 {

@@ -9,11 +9,16 @@ function getRessourceByName($ressourceName)
         include_once($path);
         $buildings = getBatimentsofUser();
 
+        $path = explode("/projet", __DIR__)[0] . "/projet";
+        $path .= "/model/rechercheManager.php";
+        include_once($path);
+        $recherches = getRechercheMapOfUser();
+
         if ($buildings == null) return null;
         $total = 0;
         foreach ($buildings as $building) {
             if (strcmp($building->getType(), "Immeuble") == 0 || strcmp($building->getType(), "Maison") == 0) {
-                $total += $building->getRessourceRatePerHour();
+                $total += $building->getRessourceRatePerHour($recherches);
             } else {
                 $total -= $building->getTotalVillageoisCost();
             }
@@ -48,6 +53,11 @@ function getRessourcesAtConnection()
     include_once($path);
     $buildings = getBatimentsofUser();
 
+    $path = explode("/projet", __DIR__)[0] . "/projet";
+    $path .= "/model/rechercheManager.php";
+    include_once($path);
+    $recherches = getRechercheMapOfUser();
+
     $time = time();
     $elapsedTime = (time() - strtotime($user->getLastTimeOnline())) / 3600;
     $ressources = getRessources($bdd);
@@ -59,7 +69,7 @@ function getRessourcesAtConnection()
     foreach ($ressources as $ressource) {
         foreach ($buildings as $building) {
             if (isBuildingAndRessourceBound($building->getType(), $ressource->getType())) {
-                $rate = $building->getRessourceRatePerHour();
+                $rate = $building->getRessourceRatePerHour($recherches);
                 $ressource->addAmount($rate * $elapsedTime);
                 updateRessourceOfUser($ressource);
             }

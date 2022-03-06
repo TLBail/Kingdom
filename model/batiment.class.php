@@ -129,17 +129,23 @@ class Batiment
         }
     }
 
-    public function getRessourceRatePerHour()
+    public function getRessourceRatePerHour($recherches)
     {
         switch ($this->type) {
             case 'Scierie':
-                return 30 * self::SERVERSPEED * $this->level * pow(1.1, $this->level);
+                $rate = 30 * self::SERVERSPEED * $this->level * pow(1.1, $this->level);
+                $rate = $rate + ($rate * $recherches['hydraulique']->getBonus() / 100);
+                return $rate;
                 break;
             case 'Carriere':
-                return 20 * self::SERVERSPEED * $this->level * pow(1.1, $this->level);
+                $rate = 20 * self::SERVERSPEED * $this->level * pow(1.1, $this->level);
+                $rate = $rate + ($rate * $recherches['outil']->getBonus() * 100);
+                return $rate;
                 break;
             case 'Ferme':
-                return 10 * self::SERVERSPEED * $this->level * pow(1.1, $this->level);
+                $rate =  10 * self::SERVERSPEED * $this->level * pow(1.1, $this->level);
+                $rate = $rate + ($rate * $recherches['compost']->getBonus() * 100);
+                return $rate;
                 break;
             case 'Maison':
                 return 20 * $this->level * pow(1.1, $this->level);
@@ -156,7 +162,7 @@ class Batiment
     public function getTotalVillageoisCost()
     {
 
-        $path = explode("/projet", __DIR__ )[0]."/projet";
+        $path = explode("/projet", __DIR__)[0] . "/projet";
         $path .= "/model/ressource.class.php";
         include_once($path);
 

@@ -5,7 +5,9 @@
 class Recherche
 {
     const SERVERSPEED = 10; // 1 = très long 5 = normal 10 = Super rapide 20  = SPPEEDDDDDDDRUN
-
+    const COMPOST = 'compost';
+    const OUTIL = 'outil';
+    const HYDRAULIQUE = 'hydraulique';
 
     private $type;
     private $level;
@@ -73,6 +75,25 @@ class Recherche
         }
     }
 
+    public function getBonus()
+    {
+
+        switch ($this->type) {
+            case 'hydraulique':
+                return 4 * sqrt(0.5 * $this->level);
+                break;
+            case 'outil':
+                return 4 * sqrt(0.5 * $this->level);
+                break;
+            case 'compost':
+                return 4 * sqrt(0.5 * $this->level);
+                break;
+            default:
+                return 4 * sqrt(0.5 * $this->level);
+                break;
+        }
+    }
+
     public function getNourritureCostForNextLevel()
     {
         switch ($this->type) {
@@ -81,6 +102,7 @@ class Recherche
                 break;
         }
     }
+
 
 
     public function getUpgradeTimeForNextLevelInSeconde()
