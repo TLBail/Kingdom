@@ -905,4 +905,17 @@ section h3 {
 section:active h3 {
   font-weight: bold;
 }
+
+.dev-img > a {
+  width: 100%;
+  text-decoration: none;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.dev-img > a:img {
+  width: 100%;
+  height: auto;
+  border-radius: 100%;
+}
 /*# sourceMappingURL=index.css.map */

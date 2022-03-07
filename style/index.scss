@@ -12,9 +12,7 @@ $brown: #564138ff;
 $gray: #6b818cff;
 $white: #fffdfdff;
 $yellow: #f0e100ff;
-$connectButtonDivHeight : 18vh;
-
-
+$connectButtonDivHeight: 18vh;
 
 @import "./components/structure";
 @import "./components/classement";
@@ -22,16 +20,11 @@ $connectButtonDivHeight : 18vh;
 @import "./components/mainPage";
 @import "./components/recherche";
 
-
-
 body {
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	overflow: hidden;
-    color: white;
+	color: white;
 }
-
-
-
 
 .sessionInfo {
 	background-image: $plankUrl;
@@ -49,7 +42,6 @@ body {
 	font-weight: bold;
 }
 
-
 .sessionInfo > div > form > input[type="submit"],
 .sessionInfo > div > button {
 	filter: grayscale(100%);
@@ -62,7 +54,7 @@ body {
 	display: flex;
 	flex-flow: column nowrap;
 	gap: 20px;
-	overflow-y:scroll;
+	overflow-y: scroll;
 }
 
 .pageButton {
@@ -107,7 +99,6 @@ button:disabled:hover {
 	/* transition: all 0.2s ease-in-out; */
 }
 
-
 article {
 	height: 100%;
 	width: 100%;
@@ -141,4 +132,16 @@ section h3 {
 
 section:active h3 {
 	font-weight: bold;
+}
+
+.dev-img > a {
+	width: 100%;
+	text-decoration: none;
+	cursor: grab;
+
+	&:img {
+		width: 100%;
+		height: auto;
+		border-radius: 100%;
+	}
 }
