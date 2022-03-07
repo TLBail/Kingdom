@@ -75,7 +75,7 @@ body {
 	background-size: 100%;
 	background-repeat: no-repeat;
 	width: 100%;
-	height: max-content;
+	height: calc(max-content + 50px);
 	max-height: 130px;
 	align-self: center;
 }

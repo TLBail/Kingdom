@@ -832,9 +832,9 @@ body {
   background-size: 100%;
   background-repeat: no-repeat;
   width: 100%;
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
+  height: calc(-webkit-max-content + 50px);
+  height: calc(-moz-max-content + 50px);
+  height: calc(max-content + 50px);
   max-height: 130px;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
