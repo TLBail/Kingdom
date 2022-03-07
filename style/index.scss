@@ -137,11 +137,11 @@ section:active h3 {
 .dev-img > a {
 	width: 100%;
 	text-decoration: none;
-	cursor: grab;
+	cursor: pointer;
+}
 
-	&:img {
-		width: 100%;
-		height: auto;
-		border-radius: 100%;
-	}
+.dev-img > a > img {
+	width: 100%;
+	height: auto;
+	border-radius: 100%;
 }
