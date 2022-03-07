@@ -1,58 +1,73 @@
 <!DOCTYPE html>
 <html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+		<title>Accueil</title>
+	</head>
+	<div class="page-titre">
+		<h1>Découvrez le nouveau Age Of Empire sur navigateur Web !!</h1>
+		<h2>Devenez le joueur le plus puissant du jeu et détruisez vos adversaires en améliorant vos batiments !</h2>
+		<span style="line-height: 5em">
+			Notre interface claire et intuitive vous permet de jouer et de profiter de toutes les fonctionnalités du jeu intuitivement. Les images
+			proviennent majoritairement des anciens jeux <b>Age Of empire</b> pour réveiller ce sentiment de nostalgie ! Le rafraichissement
+			automatique de vos ressources est un outil indispensable pour planifier et optimiser votre conquête du serveur Le système d'équilibrage du
+			jeu est basé sur les formules du Jeu Ogame afin de vous permettre de jouer en toute sécurité et sans craindre de se faire dépop par un
+			niveau 50.
+		</span>
+		<!-- RIP DUBDUB -->
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<h2>Jeu Développé par :</h2>
+		<div class="display-dev">
+			<div class="dev-img" data-id="">
+				<span class="dev-name">Axel Guéranger</span>
+				<img src="https://cdn.discordapp.com/avatars/467683896453234738/86cadb088e4a62f2d3d0722cb5acd262.png?size=128" alt="" />
+			</div>
+			<div class="dev-img" data-id="396233379890200579">
+				<span class="dev-name">Maxime Guinoiseau</span>
+				<img src="https://cdn.discordapp.com/avatars/396233379890200579/7d6c541282615c560f5bef5d06388e74.png?size=128" alt="" />
+			</div>
+			<div class="dev-img" data-id="">
+				<span class="dev-name">Nathan Pollart</span>
+				<img src="https://cdn.discordapp.com/avatars/304588619258134528/4b220d3c3843966c6daff6570dd493fb.png?size=128" alt="" />
+			</div>
+			<div class="dev-img" data-id="">
+				<span class="dev-name">Théo Le Bail</span>
+				<img src="https://cdn.discordapp.com/avatars/229226026981392384/24a6e15249b627d3d612e93cea61b568.png?size=128" alt="" />
+			</div>
+		</div>
+		<script defer type="text/javascript">
+			function getUserProfilePicture(userId) {
+				const request = new XMLHttpRequest();
+				request.open("GET", `https://api.lanyard.rest/v1/users/${userId}`, true);
+				request.onreadystatechange = function () {
+					if (request.readyState == 4 && request.status == 200) {
+						var {
+							data: {
+								discord_user: { avatar: avatarId },
+							},
+						} = JSON.parse(request.responseText);
+						console.log(avatarId);
+						document.querySelector(`[data-id='${userId}'] img`).src = `https://cdn.discordapp.com/avatars/${userId}/${avatarId}.${
+							avatarId.startsWith("a_") ? "gif" : "png"
+						}?size=128`;
+					}
+				};
+				request.send(null);
+			}
 
-<head>
-	<meta charset="UTF-8" />
-	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
-	<title>Accueil</title>
-</head>
-<div class="page-titre">
-	<h1>Découvrez le nouveau Age Of Empire sur navigateur Web !!</h1>
-	<h2>Devenez le joueur le plus puissant du jeu et détruisez vos adversaires en améliorant vos batiments !</h2>
-	<span style="line-height: 5em">
-		Notre interface claire et intuitive vous permet de jouer et de profiter de toutes les fonctionnalités du jeu
-		intuitivement. Les images
-		proviennent majoritairement des anciens jeux <b>Age Of empire</b> pour réveiller ce sentiment de nostalgie ! Le
-		rafraichissement
-		automatique de vos ressources est un outil indispensable pour planifier et optimiser votre conquête du serveur
-		Le système d'équilibrage du
-		jeu est basé sur les formules du Jeu Ogame afin de vous permettre de jouer en toute sécurité et sans craindre de
-		se faire dépop par un
-		niveau 50.
-	</span>
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<h2>Jeu Développé par :</h2>
-	<div class="display-dev">
-		<div class="dev-img">
-			<span class="dev-name">Axel Guéranger</span>
-			<img src="https://cdn.discordapp.com/avatars/467683896453234738/86cadb088e4a62f2d3d0722cb5acd262.png?size=128"
-				alt="" />
-		</div>
-		<div class="dev-img">
-			<span class="dev-name">Maxime Guinoiseau</span>
-			<img src="https://cdn.discordapp.com/avatars/396233379890200579/7d6c541282615c560f5bef5d06388e74.png?size=128"
-				alt="" />
-		</div>
-		<div class="dev-img">
-			<span class="dev-name">Nathan Pollart</span>
-			<img src="https://cdn.discordapp.com/avatars/304588619258134528/4b220d3c3843966c6daff6570dd493fb.png?size=128"
-				alt="" />
-		</div>
-		<div class="dev-img">
-			<span class="dev-name">Théo Le Bail</span>
-			<img src="https://cdn.discordapp.com/avatars/229226026981392384/24a6e15249b627d3d612e93cea61b568.png?size=128"
-				alt="" />
-		</div>
+			for (const discordDev of document.querySelectorAll("div.dev-img:not([data-id=''])")) {
+				getUserProfilePicture(discordDev.attributes.getNamedItem("data-id").value);
+			}
+		</script>
 	</div>
-</div>
-
 </html>
