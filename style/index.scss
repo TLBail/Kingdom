@@ -75,9 +75,9 @@ body {
 	background-size: 100%;
 	background-repeat: no-repeat;
 	width: 100%;
-	min-height: 130px;
+	height: max-content;
+	max-height: 130px;
 	align-self: center;
-	flex-basis: 100%;
 }
 
 button,

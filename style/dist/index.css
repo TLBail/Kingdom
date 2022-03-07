@@ -832,12 +832,13 @@ body {
   background-size: 100%;
   background-repeat: no-repeat;
   width: 100%;
-  min-height: 130px;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  max-height: 130px;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  -ms-flex-preferred-size: 100%;
-      flex-basis: 100%;
 }
 
 button,
