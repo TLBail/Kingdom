@@ -804,8 +804,6 @@ body {
 }
 
 .pageButtonsHolder {
-  position: relative;
-  top: 2vh;
   width: 100%;
   height: 82vh;
   display: -webkit-box;
@@ -815,16 +813,8 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-flow: column wrap;
           flex-flow: column wrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-line-pack: stretch;
-      align-content: stretch;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   gap: 20px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .pageButton {
@@ -832,10 +822,7 @@ body {
   background-size: 100%;
   background-repeat: no-repeat;
   width: 100%;
-  height: calc(-webkit-max-content + 50px);
-  height: calc(-moz-max-content + 50px);
-  height: calc(max-content + 50px);
-  max-height: 130px;
+  height: 90px;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
