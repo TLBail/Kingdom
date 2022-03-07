@@ -23,12 +23,17 @@ function onAmeliorationClick(batiment) {
 
 }
 
+document.body.addEventListener("changePage", displayBatiment, false);
 
-displayBatiment();
+
+
 function displayBatiment() {
-    var xhr = getXMLHttp();
-    var saisie;
 
+    const containerPanel = document.getElementById('batimentPanelContainer');
+    if (!containerPanel) return;
+
+
+    var xhr = getXMLHttp();
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = xhr.responseText;

@@ -72,8 +72,14 @@ function displayRecherchePanel(rechercheName, rechercheUrlImage, info) {
     isRecherchePanelDisplayed = true;
 }
 
-getDataRecherche();
+document.body.addEventListener("changePage", getDataRecherche, false);
+
+
 function getDataRecherche() {
+
+    const container = document.getElementById('recherchePanelContainer');
+    if (!container) return;
+
     var xhr = getXMLHttp();
 
     xhr.onreadystatechange = function () {

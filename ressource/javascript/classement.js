@@ -1,6 +1,10 @@
 document.body.addEventListener("changePage", reloadClassement, false);
 function reloadClassement() {
 
+    const tableau = document.getElementById('tableauClassement');
+    if (!tableau) return;
+
+
     let xhr = getXMLHttp();
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
@@ -8,7 +12,6 @@ function reloadClassement() {
             // console.log("receive : " + response);
             const object = JSON.parse(response);
 
-            const tableau = document.getElementById('tableauClassement');
             var content = `<table>
                         <thead>
                         <tr>

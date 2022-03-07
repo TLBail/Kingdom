@@ -1,4 +1,3 @@
-updateUnitCost();
 
 
 
@@ -65,9 +64,17 @@ function closepanel() {
     }
 }
 
+document.body.addEventListener("changePage", updateUnitCost, false);
+
 function updateUnitCost() {
+    const fond = document.getElementById('unitePanelFon');
+
+    if (!fond) return;
+
     var xhr = getXMLHttp();
     var saisie;
+
+
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = xhr.responseText;
