@@ -35,7 +35,7 @@ function displayRecherchePanel(rechercheName, rechercheUrlImage, info) {
         '<h1>' +
         rechercheName +
         '</h1>' +
-        '<button onclick="closepanel()">' +
+        '<button onclick="closeRecherchePanel()">' +
         'Fermer' +
         '</button>' +
         '</div>' +
@@ -79,7 +79,7 @@ function getDataRecherche() {
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = xhr.responseText;
-            console.log("receive : " + response);
+            // console.log("receive : " + response);
             const object = JSON.parse(response);
             Object.keys(object).forEach(function (key, index) {
                 let batimentName = key;
@@ -115,7 +115,7 @@ function getDataRecherche() {
                     if (elementLoadings) {
                         for (let index = 0; index < elementLoadings.length; index++) {
                             const elementBlackLoading = elementLoadings[index].parentNode;
-                            console.log(elementBlackLoading);
+                            // console.log(elementBlackLoading);
 
                             elementBlackLoading.style.opacity = 1;
                             elementBlackLoading.style.height = percentComplition + "%";
@@ -151,7 +151,7 @@ function closeRecherchePanel() {
 
 
 function onAmeliorationRechercheClick(recherche) {
-    console.log("amelioration" + recherche);
+    // console.log("amelioration" + recherche);
 
     var xhr = getXMLHttp();
     var saisie;
@@ -159,7 +159,7 @@ function onAmeliorationRechercheClick(recherche) {
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = xhr.responseText;
-            console.log("receive : " + response);
+            // console.log("receive : " + response);
             if (response == "erreur") alert("Impossible pour le moment");
         }
     }
