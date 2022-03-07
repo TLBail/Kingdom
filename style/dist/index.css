@@ -807,9 +807,7 @@ body {
   position: relative;
   top: 2vh;
   width: 100%;
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
+  height: 82vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
