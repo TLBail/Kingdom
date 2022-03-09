@@ -1,6 +1,6 @@
-# Nom du jeu (A remplacer)
+# Kingdom
 
-Cette application web est un jeu qui a été réalisé lors d'un projet universitaire. Il s'agit d'un jeu de gestion de ressources où l'on est en compétition avec d'autres joueurs.
+Kingdom est jeu web qui a été réalisé lors d'un projet universitaire. Il s'agit d'un jeu de gestion de ressources où l'on est en compétition avec d'autres joueurs.
 
 ## Sommaire
 
