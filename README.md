@@ -20,7 +20,7 @@ C'est une application web. Elle est donc développée en Javascript et PHP
 
 Nous utilisons le PHP car une grande partie du web utilise PHP. Ça nous a permis d'avoir beaucoup de documentation.
 Toute la partie serveur est écrite en PHP sans framework.
-On a essayé de faire une architecture MVC.
+On a donc utilisée l'architecture MVC pour réaliser le projet.
 
 ### AJAX
 
